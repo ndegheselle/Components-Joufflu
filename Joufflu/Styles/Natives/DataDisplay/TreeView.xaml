@@ -44,9 +44,9 @@
                             x:Name="Expander"
                             Grid.Row="0"
                             Grid.Column="0"
-                            Margin="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingMd}}"
                             ClickMode="Press"
                             Focusable="False"
+                            joufflu:Sizing.IsSquare="True"
                             IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
                             RenderTransformOrigin="0.5,0.5">
                             <ToggleButton.Template>
@@ -120,17 +120,6 @@
 
                         <Trigger Property="HasItems" Value="False">
                             <Setter TargetName="Expander" Property="Visibility" Value="Hidden" />
-                        </Trigger>
-
-                        <!--  Size variants (md is the default, no trigger needed)  -->
-                        <Trigger Property="joufflu:Sizing.Size" Value="xs">
-                            <Setter TargetName="Expander" Property="Margin" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingXs}}" />
-                        </Trigger>
-                        <Trigger Property="joufflu:Sizing.Size" Value="sm">
-                            <Setter TargetName="Expander" Property="Margin" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingSm}}" />
-                        </Trigger>
-                        <Trigger Property="joufflu:Sizing.Size" Value="lg">
-                            <Setter TargetName="Expander" Property="Margin" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingLg}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
