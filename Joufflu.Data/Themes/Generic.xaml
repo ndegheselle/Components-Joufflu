@@ -1,5 +1,5 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Joufflu.Data;component/Controls/DataKindIcon.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Joufflu.Data;component/Resources.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

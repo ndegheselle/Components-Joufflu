@@ -1,0 +1,204 @@
+<UserControl
+    x:Class="Joufflu.Data.Controls.DataEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:Joufflu.Data"
+    xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
+    xmlns:inputs="clr-namespace:Joufflu.Inputs.Controls;assembly=Joufflu.Inputs"
+    xmlns:jonverters="clr-namespace:Joufflu.Converters;assembly=Joufflu"
+    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
+    xmlns:local="clr-namespace:Joufflu.Data.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="RootElement"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <!--  One widget per kind. An object and an array hold nothing of their own.  -->
+            <local:DataNodeTemplateSelector x:Key="ValueTemplateSelector">
+                <local:DataNodeTemplateSelector.NoneTemplate>
+                    <DataTemplate />
+                </local:DataNodeTemplateSelector.NoneTemplate>
+                <local:DataNodeTemplateSelector.StringTemplate>
+                    <DataTemplate>
+                        <TextBox IsReadOnly="{Binding IsReadOnly, ElementName=RootElement}" Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataTemplate>
+                </local:DataNodeTemplateSelector.StringTemplate>
+                <local:DataNodeTemplateSelector.IntegerTemplate>
+                    <DataTemplate>
+                        <inputs:NumericUpDown IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}" Value="{Binding Value, Mode=TwoWay}" />
+                    </DataTemplate>
+                </local:DataNodeTemplateSelector.IntegerTemplate>
+                <local:DataNodeTemplateSelector.NumberTemplate>
+                    <DataTemplate>
+                        <inputs:DecimalUpDown IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}" Value="{Binding Value, Mode=TwoWay}" />
+                    </DataTemplate>
+                </local:DataNodeTemplateSelector.NumberTemplate>
+                <local:DataNodeTemplateSelector.BooleanTemplate>
+                    <DataTemplate>
+                        <CheckBox
+                            VerticalAlignment="Center"
+                            IsChecked="{Binding Value, Mode=TwoWay}"
+                            IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}" />
+                    </DataTemplate>
+                </local:DataNodeTemplateSelector.BooleanTemplate>
+                <local:DataNodeTemplateSelector.DateTemplate>
+                    <DataTemplate>
+                        <DatePicker IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}" SelectedDate="{Binding Value, Mode=TwoWay}" />
+                    </DataTemplate>
+                </local:DataNodeTemplateSelector.DateTemplate>
+                <local:DataNodeTemplateSelector.TimeTemplate>
+                    <DataTemplate>
+                        <inputs:TimeSpanPicker IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}" Value="{Binding Value, Mode=TwoWay}" />
+                    </DataTemplate>
+                </local:DataNodeTemplateSelector.TimeTemplate>
+                <local:DataNodeTemplateSelector.EnumerationTemplate>
+                    <DataTemplate>
+                        <ComboBox
+                            DisplayMemberPath="Name"
+                            IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}"
+                            ItemsSource="{Binding Options}"
+                            SelectedValue="{Binding Value, Mode=TwoWay}"
+                            SelectedValuePath="Value" />
+                    </DataTemplate>
+                </local:DataNodeTemplateSelector.EnumerationTemplate>
+                <local:DataNodeTemplateSelector.RawTemplate>
+                    <DataTemplate>
+                        <!--  A schema saying nothing describes no widget : the value is edited as the JSON it is  -->
+                        <TextBox
+                            MinHeight="52"
+                            AcceptsReturn="True"
+                            AcceptsTab="True"
+                            FontFamily="Consolas"
+                            IsReadOnly="{Binding IsReadOnly, ElementName=RootElement}"
+                            Text="{Binding Json, UpdateSourceTrigger=PropertyChanged}"
+                            VerticalScrollBarVisibility="Auto" />
+                    </DataTemplate>
+                </local:DataNodeTemplateSelector.RawTemplate>
+            </local:DataNodeTemplateSelector>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <!--  No schema at all : nothing describes what could be filled in  -->
+        <TextBlock
+            Style="{StaticResource Muted}"
+            Text="{Binding EmptyText, ElementName=RootElement}"
+            TextWrapping="Wrap"
+            Visibility="{Binding IsEmpty, ElementName=RootElement, Converter={x:Static jonverters:VisibilityConverter.Default}}" />
+
+        <TreeView Grid.IsSharedSizeScope="True" ItemsSource="{Binding Roots, ElementName=RootElement}">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type data:DataNode}" ItemsSource="{Binding Children}">
+                    <Grid
+                        MinHeight="28"
+                        Margin="0,1"
+                        joufflu:Spacing.Gap="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="180" SharedSizeGroup="Name" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--
+                            Whether the value is written at all. A property the schema does not
+                            require is left out until it is filled in : an absent property and a
+                            property holding "" are not the same thing.
+                        -->
+                        <CheckBox
+                            VerticalAlignment="Center"
+                            IsChecked="{Binding IsIncluded, Mode=TwoWay}"
+                            IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}"
+                            ToolTip="Write this value"
+                            Visibility="{Binding CanExclude, Converter={x:Static jonverters:VisibilityConverter.Default}}" />
+
+                        <StackPanel
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal"
+                            ToolTip="{Binding Description}">
+                            <local:DataKindIcon Kind="{Binding Kind}" />
+                            <TextBlock
+                                Margin="6,0,0,0"
+                                VerticalAlignment="Center"
+                                Text="{Binding Name}" />
+                            <!--  What the schema requires, marked rather than spelled out  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Foreground="{DynamicResource {x:Static joufflu:Brushes.DangerBrush}}"
+                                Text="*"
+                                ToolTip="Required"
+                                Visibility="{Binding IsRequired, Converter={x:Static jonverters:VisibilityConverter.Default}}" />
+                        </StackPanel>
+
+                        <!--  The value itself, or the reference standing in for it  -->
+                        <Grid Grid.Column="2" VerticalAlignment="Center">
+                            <ContentControl
+                                Content="{Binding}"
+                                ContentTemplateSelector="{StaticResource ValueTemplateSelector}"
+                                Visibility="{Binding IsLiteral, Converter={x:Static jonverters:VisibilityConverter.Default}}" />
+
+                            <inputs:ComboBoxSearch
+                                DisplayMemberPath="Token"
+                                IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}"
+                                SelectedValue="{Binding Reference, Mode=TwoWay}"
+                                SelectedValuePath="Token"
+                                ToolTip="What this value is read from"
+                                Visibility="{Binding IsReference, Converter={x:Static jonverters:VisibilityConverter.Default}}">
+                                <inputs:ComboBoxSearch.ItemsSource>
+                                    <MultiBinding Converter="{x:Static local:ReferencesForKindConverter.Default}">
+                                        <Binding Path="Kind" />
+                                        <Binding ElementName="RootElement" Path="FlatReferences" />
+                                    </MultiBinding>
+                                </inputs:ComboBoxSearch.ItemsSource>
+                            </inputs:ComboBoxSearch>
+                        </Grid>
+
+                        <StackPanel
+                            Grid.Column="3"
+                            joufflu:Spacing.Gap="2"
+                            Orientation="Horizontal">
+                            <!--  An array holds as many values as the reader adds  -->
+                            <Button
+                                joufflu:Sizing.IsSquare="True"
+                                joufflu:Sizing.Size="sm"
+                                Command="{Binding AddItemCommand}"
+                                Style="{StaticResource GhostButton}"
+                                ToolTip="Add an item"
+                                Visibility="{Binding AddItemCommand, Converter={x:Static jonverters:VisibilityConverter.Default}}">
+                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Plus}" />
+                            </Button>
+                            <Button
+                                joufflu:Sizing.IsSquare="True"
+                                joufflu:Sizing.Size="sm"
+                                Command="{Binding RemoveItemCommand}"
+                                CommandParameter="{Binding}"
+                                Style="{StaticResource SoftDangerButton}"
+                                ToolTip="Remove this item"
+                                Visibility="{Binding RemoveItemCommand, Converter={x:Static jonverters:VisibilityConverter.Default}}">
+                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash2}" />
+                            </Button>
+
+                            <!--  A reference stands where a value stands, whatever the declared type  -->
+                            <ToggleButton
+                                joufflu:Sizing.IsSquare="True"
+                                IsChecked="{Binding IsReference, Mode=TwoWay}"
+                                ToolTip="Read this value from somewhere else"
+                                Visibility="{Binding AllowsReferences, ElementName=RootElement, Converter={x:Static jonverters:VisibilityConverter.Default}}">
+                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Link}" />
+                            </ToggleButton>
+
+                            <fonts:FontIcon
+                                VerticalAlignment="Center"
+                                Foreground="{DynamicResource {x:Static joufflu:Brushes.DangerBrush}}"
+                                Text="{x:Static fonts:LucideFontIcons.AlertCircle}"
+                                ToolTip="{Binding ErrorsText}"
+                                Visibility="{Binding HasErrors, Converter={x:Static jonverters:VisibilityConverter.Default}}" />
+                        </StackPanel>
+                    </Grid>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </Grid>
+</UserControl>

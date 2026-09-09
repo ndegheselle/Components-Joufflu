@@ -5,6 +5,7 @@
     xmlns:customDisplay="clr-namespace:Joufflu.Samples.Views.Feedback"
     xmlns:customFeedback="clr-namespace:Joufflu.Samples.Views.Feedback"
     xmlns:customNav="clr-namespace:Joufflu.Samples.Views.Navigation"
+    xmlns:dataSamples="clr-namespace:Joufflu.Samples.Views.Data"
     xmlns:customNavViews="clr-namespace:Joufflu.Samples.Views.Navigation.Views"
     xmlns:fileExplorer="clr-namespace:Joufflu.Samples.Views.FileExplorer"
     xmlns:inputs="clr-namespace:Joufflu.Samples.Views.Inputs"
@@ -154,6 +155,9 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type customNav:PagingSamplesViewModel}">
         <customNav:PagingSamples />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type dataSamples:SchemaSamplesViewModel}">
+        <dataSamples:SchemaSamples />
     </DataTemplate>
     <DataTemplate DataType="{x:Type customNav:ConfirmViewModel}">
         <customNavViews:ConfirmView />

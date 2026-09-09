@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joufflu.FileExplorer", "Jou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joufflu.Feedback", "Joufflu.Feedback\Joufflu.Feedback.csproj", "{5CBCE700-C724-4D74-9530-0B7E716D0244}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joufflu.Data", "Joufflu.Data\Joufflu.Data.csproj", "{CEA348CF-76A9-4563-8937-53217ED9E538}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{5CBCE700-C724-4D74-9530-0B7E716D0244}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CBCE700-C724-4D74-9530-0B7E716D0244}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CBCE700-C724-4D74-9530-0B7E716D0244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEA348CF-76A9-4563-8937-53217ED9E538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA348CF-76A9-4563-8937-53217ED9E538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA348CF-76A9-4563-8937-53217ED9E538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA348CF-76A9-4563-8937-53217ED9E538}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

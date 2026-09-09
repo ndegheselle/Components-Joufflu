@@ -7,6 +7,7 @@
     xmlns:converters="clr-namespace:Joufflu.Converters;assembly=Joufflu"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:dataDisplay="clr-namespace:Joufflu.Samples.Views.Natives.DataDisplay"
+    xmlns:dataSamples="clr-namespace:Joufflu.Samples.Views.Data"
     xmlns:dataInput="clr-namespace:Joufflu.Samples.Views.Natives.DataInput"
     xmlns:feedback="clr-namespace:Joufflu.Samples.Views.Feedback"
     xmlns:feedbackControls="clr-namespace:Joufflu.Feedback.Controls;assembly=Joufflu.Feedback"
@@ -382,6 +383,20 @@
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.BookOpen}" />
                             </nav:NavigationItem.Icon>
                             Paging
+                        </nav:NavigationItem>
+                    </nav:NavigationGroup>
+
+                    <!--  Schema (Joufflu.Data library)  -->
+                    <nav:NavigationGroup Header="Data">
+                        <nav:NavigationGroup.Icon>
+                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Braces}" />
+                        </nav:NavigationGroup.Icon>
+
+                        <nav:NavigationItem TargetType="{x:Type dataSamples:SchemaSamplesViewModel}">
+                            <nav:NavigationItem.Icon>
+                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Braces}" />
+                            </nav:NavigationItem.Icon>
+                            Schema
                         </nav:NavigationItem>
                     </nav:NavigationGroup>
 

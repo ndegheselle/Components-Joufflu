@@ -35,7 +35,7 @@ public static class Tooltip
             "Placement",
             typeof(TooltipPlacement),
             typeof(Tooltip),
-            new PropertyMetadata(TooltipPlacement.Top, OnChanged));
+            new PropertyMetadata(TooltipPlacement.Bottom, OnChanged));
 
     public static TooltipPlacement GetPlacement(DependencyObject obj) => (TooltipPlacement)obj.GetValue(PlacementProperty);
     public static void SetPlacement(DependencyObject obj, TooltipPlacement value) => obj.SetValue(PlacementProperty, value);

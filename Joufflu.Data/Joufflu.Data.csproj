@@ -1,15 +1,35 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0-windows7.0</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+
+    <IsPackable>true</IsPackable>
+    <PackageId>Joufflu.Data</PackageId>
+    <Title>Joufflu.Data</Title>
+    <Description>JSON Schema for Joufflu: edit a schema, and fill a value against one, as themed WPF trees instead of a raw JSON text box.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <Version>0.1.0</Version>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NJsonSchema" Version="11.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Joufflu\Joufflu.csproj" />
-    <ProjectReference Include="..\Joufflu.Data.Shared\Joufflu.Data.Shared.csproj" />
     <ProjectReference Include="..\Joufflu.Inputs\Joufflu.Inputs.csproj" />
   </ItemGroup>
 

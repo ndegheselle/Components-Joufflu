@@ -29,7 +29,9 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static joufflu:Brushes.BackgroundBrush}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static joufflu:Brushes.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static joufflu:Dimensions.BorderThickness}}" />
-        <Setter Property="Padding" Value="8,4,4,4" />
+        <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightMd}}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeMd}}" />
+        <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingMd}}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="CalendarStyle" Value="{DynamicResource {x:Type Calendar}}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -56,11 +58,11 @@
                             x:Name="PART_TextBox"
                             Grid.Column="0"
                             Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                             Background="{TemplateBinding Background}"
                             Focusable="{TemplateBinding Focusable}"
-                            Foreground="{TemplateBinding Foreground}"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            Foreground="{TemplateBinding Foreground}" />
 
                         <Button
                             x:Name="PART_Button"
@@ -68,12 +70,12 @@
                             Grid.Column="1"
                             Margin="0,4,4,4"
                             Padding="4"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             Background="Transparent"
                             BorderBrush="Transparent"
                             BorderThickness="0"
                             Focusable="False"
-                            Foreground="{TemplateBinding Foreground}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            Foreground="{TemplateBinding Foreground}">
                             <Viewbox Width="14" Height="14">
                                 <Path
                                     Data="M 0 2 L 0 11 L 11 11 L 11 2 Z M 0 5 L 11 5 M 3 0 L 3 4 M 8 0 L 8 4"
@@ -119,6 +121,23 @@
 
             <Trigger Property="Validation.HasError" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static joufflu:Brushes.DangerBrush}}" />
+            </Trigger>
+
+            <!--  Size variants  -->
+            <Trigger Property="joufflu:Sizing.Size" Value="xs">
+                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightXs}}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeXs}}" />
+                <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingXs}}" />
+            </Trigger>
+            <Trigger Property="joufflu:Sizing.Size" Value="sm">
+                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightSm}}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeSm}}" />
+                <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingSm}}" />
+            </Trigger>
+            <Trigger Property="joufflu:Sizing.Size" Value="lg">
+                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightLg}}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeLg}}" />
+                <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingLg}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

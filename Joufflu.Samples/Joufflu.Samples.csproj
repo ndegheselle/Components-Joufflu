@@ -19,6 +19,7 @@
     <ProjectReference Include="..\Joufflu\Joufflu.csproj" />
     <ProjectReference Include="..\Joufflu.Feedback\Joufflu.Feedback.csproj" />
     <ProjectReference Include="..\Joufflu.Inputs\Joufflu.Inputs.csproj" />
+    <ProjectReference Include="..\Joufflu.Data\Joufflu.Data.csproj" />
     <ProjectReference Include="..\Joufflu.FileExplorer\Joufflu.FileExplorer.csproj" />
   </ItemGroup>
 

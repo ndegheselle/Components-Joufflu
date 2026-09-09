@@ -1,0 +1,63 @@
+name: Publish Joufflu.Data
+
+on:
+  push:
+    tags: [ 'data-v*' ]
+  workflow_dispatch:
+
+permissions:
+  id-token: write   # required for OIDC trusted publishing
+  contents: read
+
+jobs:
+  publish:
+    runs-on: windows-latest   # WPF / net10.0-windows requires a Windows runner
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Derive version from tag
+        id: version
+        shell: bash
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            echo "value=${GITHUB_REF_NAME#data-v}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Restore
+        run: dotnet restore Joufflu.Data/Joufflu.Data.csproj
+
+      - name: Pack
+        shell: bash
+        run: |
+          if [ -n "${{ steps.version.outputs.value }}" ]; then
+            dotnet pack Joufflu.Data/Joufflu.Data.csproj -c Release --no-restore -p:Version=${{ steps.version.outputs.value }} -o artifacts
+          else
+            dotnet pack Joufflu.Data/Joufflu.Data.csproj -c Release --no-restore -o artifacts
+          fi
+          ls -l artifacts
+
+      # OIDC token exchange: nuget.org validates the workflow against your
+      # trusted publishing policy and returns a temporary (1 hour) API key.
+      - name: NuGet login (OIDC -> temporary API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}   # your nuget.org profile name (not email)
+
+      # The glob is expanded by bash : passed as-is, NuGet doesn't resolve it on the runner.
+      - name: Push to NuGet.org
+        shell: bash
+        run: |
+          shopt -s nullglob
+          packages=(artifacts/*.nupkg)
+          if [ ${#packages[@]} -eq 0 ]; then
+            echo "No package found in artifacts/." >&2
+            exit 1
+          fi
+          for package in "${packages[@]}"; do
+            dotnet nuget push "$package" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          done

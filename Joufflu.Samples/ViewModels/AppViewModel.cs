@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using Joufflu.Feedback;
 using Joufflu.Navigation;
 using Joufflu.Navigation.Controls;
+using Joufflu.Samples.Views.Data;
 using Joufflu.Samples.Views.Feedback;
 using Joufflu.Samples.Views.FileExplorer;
 using Joufflu.Samples.Views.Inputs;
@@ -91,6 +92,9 @@ public class AppViewModel : ObservableObject
             new NavigationMenuSamplesViewModel(),
             new OverlaySamplesViewModel(Overlays, Toasts),
             new PagingSamplesViewModel(),
+
+            // Schema (Joufflu.Data library)
+            new SchemaSamplesViewModel(),
 
             // File explorer (Joufflu.FileExplorer library)
             new ExplorerSamplesViewModel(Toasts),

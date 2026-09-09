@@ -12,6 +12,7 @@ live between Light and Dark — no restart, no flicker.
 [![Joufflu.Inputs on NuGet](https://img.shields.io/nuget/v/Joufflu.Inputs?label=Joufflu.Inputs&logo=nuget)](https://www.nuget.org/packages/Joufflu.Inputs)
 [![Joufflu.Navigation on NuGet](https://img.shields.io/nuget/v/Joufflu.Navigation?label=Joufflu.Navigation&logo=nuget)](https://www.nuget.org/packages/Joufflu.Navigation)
 [![Joufflu.FileExplorer on NuGet](https://img.shields.io/nuget/v/Joufflu.FileExplorer?label=Joufflu.FileExplorer&logo=nuget)](https://www.nuget.org/packages/Joufflu.FileExplorer)
+[![Joufflu.Data on NuGet](https://img.shields.io/nuget/v/Joufflu.Data?label=Joufflu.Data&logo=nuget)](https://www.nuget.org/packages/Joufflu.Data)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
 ![preview](./images/preview.PNG)
@@ -42,6 +43,7 @@ page's raw Markdown source. (Prefer this raw URL over the rendered site, which c
 | **Navigation** (`Joufflu.Navigation`) | `NavigationMenu`, `OverlayContainer` and modal overlays driven by a `Navigator` |
 | **Feedback** (`Joufflu.Feedback`) | `Badge`, `Spinner`, `Toasts` and their `ToastContainer` |
 | **File explorer** (`Joufflu.FileExplorer`) | `Explorer`, `ExplorerList`, `ExplorerTree`, `ExplorerControlBar` and their `IExplorerSource` |
+| **Data** (`Joufflu.Data`) | `DataEditor` filling a value in against a JSON Schema, `SchemaEditor` writing one, `SchemaView` showing one |
 | **Toolkit** (`Joufflu`) | Sizing, spacing and drop target attached properties, `ThemeManager`, live theme customization, and the application shell (`ThemedWindow`) |
 
 The **Natives** — WPF's built-in controls (buttons, text boxes, combo boxes,
@@ -51,11 +53,12 @@ data grid, …) restyled to match the design system — come along with the core
 ## Getting started
 
 1. Add the packages you need. `Joufflu` is the core (styles & theming);
-   `Joufflu.Feedback`, `Joufflu.FileExplorer`, `Joufflu.Inputs` and
+   `Joufflu.Data`, `Joufflu.Feedback`, `Joufflu.FileExplorer`, `Joufflu.Inputs` and
    `Joufflu.Navigation` are optional and all build on it:
 
    ```sh
    dotnet add package Joufflu
+   dotnet add package Joufflu.Data          # optional: JSON Schema editors (needs Joufflu.Inputs)
    dotnet add package Joufflu.Feedback      # optional: badges, spinner, toasts
    dotnet add package Joufflu.FileExplorer  # optional: file explorer (needs Joufflu.Feedback)
    dotnet add package Joufflu.Inputs        # optional: input controls
