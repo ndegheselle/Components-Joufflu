@@ -17,7 +17,10 @@ public class TreeViewSamplesViewModel : ObservableObject
     public TreeViewSamplesViewModel()
     {
         var fruits = new TreeNode { Name = "Fruits" };
-        fruits.Children.Add(new TreeNode { Name = "Apple" });
+        var apple = new TreeNode { Name = "Apple" };
+        apple.Children.Add(new TreeNode { Name = "Granny Smith" });
+        apple.Children.Add(new TreeNode { Name = "Fuji" });
+        fruits.Children.Add(apple);
         fruits.Children.Add(new TreeNode { Name = "Banana" });
 
         var veggies = new TreeNode { Name = "Vegetables" };

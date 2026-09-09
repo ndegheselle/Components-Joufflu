@@ -12,7 +12,7 @@
     <Description>WPF design system: themed styles for the native controls, live Light/Dark theming, a custom-chrome window, icons, themed tooltips and sizing/spacing layout helpers.</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <Version>0.6.7</Version>
+    <Version>0.6.8</Version>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

@@ -1,6 +1,7 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:extensions="clr-namespace:Joufflu.Extensions"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts"
     xmlns:joufflu="clr-namespace:Joufflu">
 
@@ -20,11 +21,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TreeViewItem">
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
@@ -34,57 +30,66 @@
                             x:Name="Border"
                             Grid.Row="0"
                             Grid.Column="0"
-                            Grid.ColumnSpan="3"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{DynamicResource {x:Static joufflu:Dimensions.CornerRadius}}" />
 
-                        <ToggleButton
-                            x:Name="Expander"
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            ClickMode="Press"
-                            Focusable="False"
-                            joufflu:Sizing.IsSquare="True"
-                            IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
-                            RenderTransformOrigin="0.5,0.5">
-                            <ToggleButton.Template>
-                                <ControlTemplate TargetType="ToggleButton">
-                                    <fonts:FontIcon
-                                        VerticalAlignment="Center"
-                                        Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=TreeViewItem}}"
-                                        Text="{x:Static fonts:LucideFontIcons.ChevronRight}" />
-                                </ControlTemplate>
-                            </ToggleButton.Template>
-                            <ToggleButton.RenderTransform>
-                                <RotateTransform x:Name="ExpanderRotateTransform" Angle="0" />
-                            </ToggleButton.RenderTransform>
-                        </ToggleButton>
 
-                        <ContentPresenter
-                            x:Name="PART_Header"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            ContentSource="Header" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                        <Border
-                            x:Name="VerticalLine"
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Width="1"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Stretch"
-                            Background="{DynamicResource {x:Static joufflu:Brushes.Border100Brush}}" />
+                            <ToggleButton
+                                x:Name="Expander"
+                                Grid.Column="0"
+                                joufflu:Sizing.IsSquare="True"
+                                Background="Transparent"
+                                ClickMode="Press"
+                                Focusable="False"
+                                IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                                RenderTransformOrigin="0.5,0.5">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <fonts:FontIcon
+                                            VerticalAlignment="Center"
+                                            Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=TreeViewItem}}"
+                                            Text="{x:Static fonts:LucideFontIcons.ChevronRight}" />
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                                <ToggleButton.RenderTransform>
+                                    <RotateTransform x:Name="ExpanderRotateTransform" Angle="0" />
+                                </ToggleButton.RenderTransform>
+                            </ToggleButton>
 
-                        <ItemsPresenter
-                            x:Name="ItemsHost"
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2" />
+                            <ContentPresenter
+                                x:Name="PART_Header"
+                                Grid.Column="1"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                ContentSource="Header" />
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border
+                                x:Name="VerticalLine"
+                                Grid.Column="0"
+                                Width="{DynamicResource {x:Static joufflu:Dimensions.Thickness}}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                extensions:Derive.Margin="{x:Static joufflu:Dimensions.ControlHeightMd}"
+                                extensions:Derive.MarginFactor="0.5,0,0,0"
+                                Background="{DynamicResource {x:Static joufflu:Brushes.Border100Brush}}" />
+
+                            <ItemsPresenter x:Name="ItemsHost" Grid.Column="1" />
+                        </Grid>
                     </Grid>
 
                     <ControlTemplate.Triggers>
@@ -120,6 +125,17 @@
 
                         <Trigger Property="HasItems" Value="False">
                             <Setter TargetName="Expander" Property="Visibility" Value="Hidden" />
+                        </Trigger>
+
+                        <!--  Size variants (md is the default, set inline on VerticalLine)  -->
+                        <Trigger Property="joufflu:Sizing.Size" Value="xs">
+                            <Setter TargetName="VerticalLine" Property="extensions:Derive.Margin" Value="{x:Static joufflu:Dimensions.ControlHeightXs}" />
+                        </Trigger>
+                        <Trigger Property="joufflu:Sizing.Size" Value="sm">
+                            <Setter TargetName="VerticalLine" Property="extensions:Derive.Margin" Value="{x:Static joufflu:Dimensions.ControlHeightSm}" />
+                        </Trigger>
+                        <Trigger Property="joufflu:Sizing.Size" Value="lg">
+                            <Setter TargetName="VerticalLine" Property="extensions:Derive.Margin" Value="{x:Static joufflu:Dimensions.ControlHeightLg}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
