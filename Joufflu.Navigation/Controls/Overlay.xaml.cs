@@ -96,6 +96,13 @@ public class OverlayService : ObservableObject, IOverlayService
         OnPropertyChanged(nameof(HasOverlays));
     }
 
+    public void Close(object content, bool? result = null)
+    {
+        OverlayInstance? overlay = Overlays.FirstOrDefault(x => ReferenceEquals(x.Content, content));
+        if (overlay != null)
+            Close(overlay, result);
+    }
+
     public void CloseTop(bool? result = null)
     {
         if (Overlays.Count > 0)

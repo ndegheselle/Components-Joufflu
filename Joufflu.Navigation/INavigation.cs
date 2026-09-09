@@ -81,6 +81,13 @@ public interface IOverlayService
 
     void Close(OverlayInstance overlay, bool? result = null);
 
+    /// <summary>
+    /// Closes the overlay showing <paramref name="content"/>, doing nothing when it isn't on the
+    /// stack anymore. Lets content close itself rather than whatever is on top, which is what an
+    /// overlay opening another one of its own kind needs.
+    /// </summary>
+    void Close(object content, bool? result = null);
+
     void CloseTop(bool? result = null);
 }
 

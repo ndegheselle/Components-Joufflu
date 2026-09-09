@@ -12,7 +12,7 @@
     <Description>WPF navigation for Joufflu: a navigation menu, a view-model-first navigator, and awaitable modal overlays hosted by a container wrapping your app.</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <Version>0.6.6</Version>
+    <Version>0.7.0</Version>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

@@ -26,21 +26,59 @@ this one to keep them above the overlays.
 
 ## Showing an overlay
 
-The overlay content owns its buttons and closes itself via the service (e.g.
-`overlays.CloseTop(true/false)`). `Show` completes when the overlay closes and
-returns the result it closed with — `null` when dismissed.
-
-```csharp
-var content = new SampleFormViewModel(overlays);
-var options = new OverlayOptions { Title = "Edit profile" };
-bool? result = await overlays.Show(content, options);
-```
+The overlay content owns its buttons and closes itself. `Show` completes when the overlay closes and returns the
+result it closed with - `null` when dismissed.
 
 `OverlayOptions` exposes `Title`, `ShowCloseButton`, `CloseOnClickAway` (set
 `false` to force the user through the action buttons) and `FullScreen`.
 
+### `OverlayViewModel`
+
+Deriving overlay content from `OverlayViewModel` gives it its own `Options` (set
+in the constructor, read once when the overlay is pushed), a `CancelCommand`, and
+a `Close` that closes itself:
+
+```csharp
+public class SampleFormViewModel : OverlayViewModel<string>
+{
+    public SampleFormViewModel(IOverlayService overlays) : base(overlays)
+    {
+        Options.Title = "Edit profile";
+        Options.CloseOnClickAway = false;
+    }
+
+    public string Name { get; set; } = "Joe Doe";
+
+    [RelayCommand]
+    private void Save() => Close(Name);
+}
+```
+
+Use the non-generic `OverlayViewModel` for overlays only worth a yes or a no. 
+Use `OverlayViewModel<TResult>` for overlays awaited, its static `ShowAsync` shows the 
+content and hands back what it was closed with, the default of `TResult` when it was 
+cancelled or dismissed:
+
+```csharp
+string? name = await OverlayViewModel<string>.ShowAsync(new SampleFormViewModel(overlays));
+```
+
+ Use
+
+### Any object
+
+Content doesn't have to derive from `OverlayViewModel` — any object works, with
+the options given at show time and closed via the service:
+
+```csharp
+var options = new OverlayOptions { Title = "Edit profile" };
+bool? result = await overlays.Show(content, options);
+```
+
 Content implementing `IOverlayContent` carries its own `Options`, so `Show` can be
-called without them.
+called without them; that's what `OverlayViewModel` does. Close it with
+`overlays.Close(content, result)` — rather than `CloseTop`, so content opening
+another overlay of its own kind still closes itself and not whichever is on top.
 
 ## Standard confirmation
 

@@ -1,3 +1,8 @@
+# Version 0.7.0
+
+- Add `OverlayViewModel`, a base for the content of a modal overlay : it holds the `OverlayOptions` the overlay is shown with, so `IOverlayService.Show` takes nothing but the content, it comes with a `CancelCommand`, and it closes itself rather than whatever sits on top of the stack. `OverlayViewModel<TResult>` adds what the overlay is awaited for — a `Result` set by validating it, and a static `ShowAsync` handing that result back, the default of the type when the overlay was dismissed. Replaces the `CloseTop(true)` / `CloseTop(false)` pair every awaited overlay was writing by hand
+- Add `IOverlayService.Close(object content, bool? result)`, closing the overlay showing a given content rather than the top one : an overlay opening another one of its own kind can now close itself whichever is displayed. **Breaking** for anything implementing `IOverlayService` outside the library, `OverlayService` implementing it already
+
 # Version 0.6.5
 
 - Give the text inputs — `TextBox`, `PasswordBox` and `FormatTextBox` — their own `Dimensions.InputPadding` keys (`Xs`/`Sm`/`Md`/`Lg`), half the control padding's horizontal so they read tighter than a button, covering every size variant where the base text input padding used to be fixed whatever the size. Set on a plain `Padding` setter, so a consumer local value or style overrides it; the theme customizer keeps them in lockstep with the control padding rather than editing them on their own
