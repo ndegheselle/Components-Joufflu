@@ -17,7 +17,7 @@ rounded corners and the standard spacing as padding.
 
 ```xml
 <Border Style="{StaticResource Card}">
-    <StackPanel joufflu:Spacing.Gap="4">
+    <StackPanel toolkit:Spacing.Gap="4">
         <TextBlock FontWeight="Bold" Text="Card" />
         <TextBlock
             Foreground="{DynamicResource {x:Static joufflu:Brushes.Foreground100Brush}}"
@@ -34,7 +34,7 @@ A subtly inset panel meant to sit **inside** a `Card`. It uses the deeper
 
 ```xml
 <Border Style="{StaticResource Card}">
-    <StackPanel joufflu:Spacing.Gap="8">
+    <StackPanel toolkit:Spacing.Gap="8">
         <TextBlock FontWeight="Bold" Text="Nested" />
         <Border Style="{StaticResource CardSecondary}">
             <TextBlock Text="CardSecondary inside a Card." TextWrapping="Wrap" />

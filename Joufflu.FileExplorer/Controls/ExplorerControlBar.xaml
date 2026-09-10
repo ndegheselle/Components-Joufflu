@@ -4,7 +4,8 @@
     xmlns:data="clr-namespace:Joufflu.FileExplorer.Data"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
-    xmlns:local="clr-namespace:Joufflu.FileExplorer.Controls">
+    xmlns:local="clr-namespace:Joufflu.FileExplorer.Controls"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Joufflu;component/Styles/Natives/Actions/Button.named.xaml" />
@@ -16,8 +17,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ExplorerControlBar}">
                     <Grid
-                        joufflu:Sizing.Size="sm"
-                        joufflu:Spacing.Gap="4"
+                        toolkit:Sizing.Size="sm"
+                        toolkit:Spacing.Gap="4"
                         DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -26,7 +27,7 @@
 
                         <!--  Opening the parent of the opened directory, nothing to go up to at the root.  -->
                         <Button
-                            joufflu:Sizing.IsSquare="True"
+                            toolkit:Sizing.IsSquare="True"
                             Command="{Binding Source.OpenCommand}"
                             CommandParameter="{Binding Source.Current.Parent}"
                             ToolTip="Parent folder">

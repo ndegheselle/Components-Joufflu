@@ -30,7 +30,7 @@ font icons for the icons the system associates with each file type.
 <fileExplorer:Explorer Source="{Binding Source}">
     <fileExplorer:Explorer.Resources>
         <DataTemplate x:Key="NodeWithSystemIcon">
-            <StackPanel Orientation="Horizontal" joufflu:Spacing.Gap="4">
+            <StackPanel Orientation="Horizontal" toolkit:Spacing.Gap="4">
                 <Image Width="16" Height="16"
                        Source="{Binding Converter={x:Static converters:ExplorerIconConverter.Small}}" />
                 <TextBlock Text="{Binding Name}" />
@@ -102,7 +102,7 @@ selection.
 
         <!-- Visual of the virtual nodes, implicit as the ones of the library are -->
         <DataTemplate DataType="{x:Type local:VirtualFile}">
-            <StackPanel Orientation="Horizontal" joufflu:Spacing.Gap="4">
+            <StackPanel Orientation="Horizontal" toolkit:Spacing.Gap="4">
                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.StickyNote}" />
                 <TextBlock Text="{Binding Name}" />
             </StackPanel>

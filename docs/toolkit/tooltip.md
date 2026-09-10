@@ -16,16 +16,16 @@ fade-in keep working, but unlike the native tooltip it appears with no delay.
 
 ```xml
 <!-- A string tooltip -->
-<Button Content="Save" joufflu:Tooltip.Content="Save your changes" />
+<Button Content="Save" toolkit:Tooltip.Content="Save your changes" />
 
 <!-- Arbitrary content: icons, panels, anything -->
 <Button Content="Rich tooltip">
-    <joufflu:Tooltip.Content>
-        <StackPanel Orientation="Horizontal" joufflu:Spacing.Gap="8">
+    <toolkit:Tooltip.Content>
+        <StackPanel Orientation="Horizontal" toolkit:Spacing.Gap="8">
             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Info}" />
             <TextBlock Text="Arbitrary content, icons included." />
         </StackPanel>
-    </joufflu:Tooltip.Content>
+    </toolkit:Tooltip.Content>
 </Button>
 ```
 
@@ -37,10 +37,10 @@ clear of the element, and still flips automatically when it would run off a scre
 edge.
 
 ```xml
-<Button Content="Top"    joufflu:Tooltip.Content="Placed above" joufflu:Tooltip.Placement="Top" />
-<Button Content="Bottom" joufflu:Tooltip.Content="Placed below" joufflu:Tooltip.Placement="Bottom" />
-<Button Content="Left"   joufflu:Tooltip.Content="Placed left"  joufflu:Tooltip.Placement="Left" />
-<Button Content="Right"  joufflu:Tooltip.Content="Placed right" joufflu:Tooltip.Placement="Right" />
+<Button Content="Top"    toolkit:Tooltip.Content="Placed above" toolkit:Tooltip.Placement="Top" />
+<Button Content="Bottom" toolkit:Tooltip.Content="Placed below" toolkit:Tooltip.Placement="Bottom" />
+<Button Content="Left"   toolkit:Tooltip.Content="Placed left"  toolkit:Tooltip.Placement="Left" />
+<Button Content="Right"  toolkit:Tooltip.Content="Placed right" toolkit:Tooltip.Placement="Right" />
 ```
 
 {: .note }

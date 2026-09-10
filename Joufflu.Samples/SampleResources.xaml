@@ -14,7 +14,8 @@
     xmlns:nativeDisplay="clr-namespace:Joufflu.Samples.Views.Natives.DataDisplay"
     xmlns:nativeFeedback="clr-namespace:Joufflu.Samples.Views.Natives.Feedback"
     xmlns:nativeInput="clr-namespace:Joufflu.Samples.Views.Natives.DataInput"
-    xmlns:toolkit="clr-namespace:Joufflu.Samples.Views.Toolkit"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
+    xmlns:toolkitSamples="clr-namespace:Joufflu.Samples.Views.Toolkit"
     xmlns:vm="clr-namespace:Joufflu.Samples.ViewModels">
 
     <!--  Live preview + code snippet card  -->
@@ -24,7 +25,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type c:CodeExample}">
                     <Border Style="{StaticResource Card}">
-                        <Grid joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+                        <Grid toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -190,23 +191,23 @@
     </DataTemplate>
 
     <!--  Toolkit  -->
-    <DataTemplate DataType="{x:Type toolkit:SizingSamplesViewModel}">
-        <toolkit:SizingSamples />
+    <DataTemplate DataType="{x:Type toolkitSamples:SizingSamplesViewModel}">
+        <toolkitSamples:SizingSamples />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type toolkit:SpacingSamplesViewModel}">
-        <toolkit:SpacingSamples />
+    <DataTemplate DataType="{x:Type toolkitSamples:SpacingSamplesViewModel}">
+        <toolkitSamples:SpacingSamples />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type toolkit:TooltipSamplesViewModel}">
-        <toolkit:TooltipSamples />
+    <DataTemplate DataType="{x:Type toolkitSamples:TooltipSamplesViewModel}">
+        <toolkitSamples:TooltipSamples />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type toolkit:DropTargetSamplesViewModel}">
-        <toolkit:DropTargetSamples />
+    <DataTemplate DataType="{x:Type toolkitSamples:DropTargetSamplesViewModel}">
+        <toolkitSamples:DropTargetSamples />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type toolkit:ThemeSamplesViewModel}">
-        <toolkit:ThemeSamples />
+    <DataTemplate DataType="{x:Type toolkitSamples:ThemeSamplesViewModel}">
+        <toolkitSamples:ThemeSamples />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type toolkit:ThemeCustomizerViewModel}">
-        <toolkit:ThemeCustomizer />
+    <DataTemplate DataType="{x:Type toolkitSamples:ThemeCustomizerViewModel}">
+        <toolkitSamples:ThemeCustomizer />
     </DataTemplate>
 
     <!--  File explorer  -->

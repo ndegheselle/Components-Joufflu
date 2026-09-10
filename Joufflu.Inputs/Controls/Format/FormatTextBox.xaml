@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
-    xmlns:local="clr-namespace:Joufflu.Inputs.Controls.Format">
+    xmlns:local="clr-namespace:Joufflu.Inputs.Controls.Format"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Joufflu;component/Styles/Natives/DataInput/TextBox.xaml" />
@@ -78,15 +79,15 @@
 
         <Style.Triggers>
             <!--  Size variants (md is the default, no trigger needed)  -->
-            <Trigger Property="joufflu:Sizing.Size" Value="xs">
+            <Trigger Property="toolkit:Sizing.Size" Value="xs">
                 <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightXs}}" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeXs}}" />
             </Trigger>
-            <Trigger Property="joufflu:Sizing.Size" Value="sm">
+            <Trigger Property="toolkit:Sizing.Size" Value="sm">
                 <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightSm}}" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeSm}}" />
             </Trigger>
-            <Trigger Property="joufflu:Sizing.Size" Value="lg">
+            <Trigger Property="toolkit:Sizing.Size" Value="lg">
                 <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightLg}}" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeLg}}" />
             </Trigger>

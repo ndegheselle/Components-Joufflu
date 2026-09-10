@@ -7,18 +7,19 @@
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     xmlns:vm="clr-namespace:Joufflu.Samples.Views.Toolkit"
     d:DataContext="{d:DesignInstance Type=vm:DropTargetSamplesViewModel}"
     mc:Ignorable="d">
     <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
-        <StackPanel joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+        <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <TextBlock Style="{StaticResource H1}" Text="Drag and drop" />
 
             <c:CodeExample
                 Title="DropTarget.Command"
                 Code="{Binding DropCode}"
                 Description="DropTarget.Command makes any element a drop target: AllowDrop and the four drag events are handled for you, and the command receives the dropped IDataObject. Its CanExecute is what decides the accepted data — here a drag holding nothing but .pdf files — so anything else keeps a no-drop cursor and never lights the zone up. DropTarget.IsDragOver is true while accepted data hovers, which is all a trigger needs to highlight the drop.">
-                <Grid joufflu:Spacing.Gap="8">
+                <Grid toolkit:Spacing.Gap="8">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -26,7 +27,7 @@
 
                     <Border
                         Height="150"
-                        joufflu:DropTarget.Command="{Binding DropFilesCommand}"
+                        toolkit:DropTarget.Command="{Binding DropFilesCommand}"
                         BorderThickness="{DynamicResource {x:Static joufflu:Dimensions.BorderThickness}}"
                         CornerRadius="{DynamicResource {x:Static joufflu:Dimensions.CornerRadius}}">
                         <!--  Background and BorderBrush are styled and not set here, so the trigger can override them.  -->
@@ -56,17 +57,17 @@
                                 </Setter>
                                 <Style.Triggers>
                                     <!--  Only accepted data sets IsDragOver, so the highlight means "this will land".  -->
-                                    <Trigger Property="joufflu:DropTarget.IsDragOver" Value="True">
+                                    <Trigger Property="toolkit:DropTarget.IsDragOver" Value="True">
                                         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static joufflu:Brushes.PrimaryBrush}}" />
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
 
-                        <StackPanel VerticalAlignment="Center" joufflu:Spacing.Gap="8">
+                        <StackPanel VerticalAlignment="Center" toolkit:Spacing.Gap="8">
                             <fonts:FontIcon
                                 HorizontalAlignment="Center"
-                                joufflu:Sizing.Size="xl"
+                                toolkit:Sizing.Size="xl"
                                 Opacity="0.5"
                                 Text="{x:Static fonts:LucideFontIcons.Upload}" />
                             <TextBlock HorizontalAlignment="Center" Text="Drop .pdf files here" />
@@ -81,7 +82,7 @@
                     <ItemsControl Grid.Row="1" ItemsSource="{Binding DroppedFiles}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel joufflu:Spacing.Gap="4" Orientation="Horizontal">
+                                <StackPanel toolkit:Spacing.Gap="4" Orientation="Horizontal">
                                     <fonts:FontIcon Foreground="{DynamicResource {x:Static joufflu:Brushes.SuccessBrush}}" Text="{x:Static fonts:LucideFontIcons.FileCheck}" />
                                     <TextBlock Text="{Binding}" />
                                 </StackPanel>
@@ -95,7 +96,7 @@
                 Title="DragSource.Data"
                 Code="{Binding DragCode}"
                 Description="DragSource.Data makes any element a drag source, carrying that data to the drop targets: the mouse events are handled for you, and the drag only starts once the pointer moved past the system drag threshold so clicks keep working. DragSource.AllowedEffects is the counterpart of DropTarget.Effect — both must agree for the drop to happen, here on Move. DragSource.IsDragging is true for the whole drag, which is all a trigger needs to fade the original out while it travels.">
-                <Grid joufflu:Spacing.Gap="8">
+                <Grid toolkit:Spacing.Gap="8">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -104,7 +105,7 @@
                     <ItemsControl VerticalAlignment="Top" ItemsSource="{Binding AvailableTags}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel joufflu:Spacing.Gap="4" />
+                                <StackPanel toolkit:Spacing.Gap="4" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
@@ -112,22 +113,22 @@
                                 <!--  The tag itself is the dragged data, and the target only takes it away.  -->
                                 <Border
                                     Padding="8,4"
-                                    joufflu:DragSource.AllowedEffects="Move"
-                                    joufflu:DragSource.Data="{Binding}"
+                                    toolkit:DragSource.AllowedEffects="Move"
+                                    toolkit:DragSource.Data="{Binding}"
                                     Background="{DynamicResource {x:Static joufflu:Brushes.Background100Brush}}"
                                     CornerRadius="{DynamicResource {x:Static joufflu:Dimensions.CornerRadius}}">
                                     <Border.Style>
                                         <Style TargetType="Border">
                                             <Style.Triggers>
                                                 <!--  True for the whole drag: the original fades out while it travels.  -->
-                                                <Trigger Property="joufflu:DragSource.IsDragging" Value="True">
+                                                <Trigger Property="toolkit:DragSource.IsDragging" Value="True">
                                                     <Setter Property="Opacity" Value="0.4" />
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Border.Style>
 
-                                    <StackPanel joufflu:Spacing.Gap="4" Orientation="Horizontal">
+                                    <StackPanel toolkit:Spacing.Gap="4" Orientation="Horizontal">
                                         <fonts:FontIcon Opacity="0.5" Text="{x:Static fonts:LucideFontIcons.GripVertical}" />
                                         <TextBlock Text="{Binding}" />
                                     </StackPanel>
@@ -139,25 +140,25 @@
                     <Border
                         Grid.Column="1"
                         MinHeight="120"
-                        joufflu:DropTarget.Command="{Binding TakeTagCommand}"
-                        joufflu:DropTarget.Effect="Move">
+                        toolkit:DropTarget.Command="{Binding TakeTagCommand}"
+                        toolkit:DropTarget.Effect="Move">
                         <Border.Style>
                             <Style TargetType="Border" BasedOn="{StaticResource Card}">
                                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static joufflu:Brushes.BorderBrush}}" />
                                 <Style.Triggers>
-                                    <Trigger Property="joufflu:DropTarget.IsDragOver" Value="True">
+                                    <Trigger Property="toolkit:DropTarget.IsDragOver" Value="True">
                                         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static joufflu:Brushes.PrimaryBrush}}" />
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
 
-                        <StackPanel joufflu:Spacing.Gap="4">
+                        <StackPanel toolkit:Spacing.Gap="4">
                             <TextBlock Foreground="{DynamicResource {x:Static joufflu:Brushes.Foreground100Brush}}" Text="Drag the tags here" />
                             <ItemsControl ItemsSource="{Binding TakenTags}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <StackPanel joufflu:Spacing.Gap="4" Orientation="Horizontal">
+                                        <StackPanel toolkit:Spacing.Gap="4" Orientation="Horizontal">
                                             <fonts:FontIcon Foreground="{DynamicResource {x:Static joufflu:Brushes.SuccessBrush}}" Text="{x:Static fonts:LucideFontIcons.Check}" />
                                             <TextBlock Text="{Binding}" />
                                         </StackPanel>

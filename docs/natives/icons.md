@@ -18,7 +18,8 @@ property through `x:Static`.
 <!-- Declare the namespaces once on the root element -->
 <UserControl
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
-    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu">
+    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
 
     <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Leaf}" />
 </UserControl>
@@ -31,10 +32,10 @@ The size follows the inherited `Sizing.Size` attached property (`xs` / `sm` /
 in. `md` is the default.
 
 ```xml
-<fonts:FontIcon joufflu:Sizing.Size="xs" Text="{x:Static fonts:LucideFontIcons.Leaf}" />
-<fonts:FontIcon joufflu:Sizing.Size="sm" Text="{x:Static fonts:LucideFontIcons.Leaf}" />
-<fonts:FontIcon joufflu:Sizing.Size="md" Text="{x:Static fonts:LucideFontIcons.Leaf}" />
-<fonts:FontIcon joufflu:Sizing.Size="lg" Text="{x:Static fonts:LucideFontIcons.Leaf}" />
+<fonts:FontIcon toolkit:Sizing.Size="xs" Text="{x:Static fonts:LucideFontIcons.Leaf}" />
+<fonts:FontIcon toolkit:Sizing.Size="sm" Text="{x:Static fonts:LucideFontIcons.Leaf}" />
+<fonts:FontIcon toolkit:Sizing.Size="md" Text="{x:Static fonts:LucideFontIcons.Leaf}" />
+<fonts:FontIcon toolkit:Sizing.Size="lg" Text="{x:Static fonts:LucideFontIcons.Leaf}" />
 ```
 
 ## Colour
@@ -56,11 +57,11 @@ brush to give an icon a semantic hue.
 
 ## In a button
 
-Pair an icon with `ControlProperties.IsSquare` for a compact, single-icon button.
+Pair an icon with `Sizing.IsSquare` for a compact, single-icon button.
 See [Buttons](buttons.md#icon-buttons).
 
 ```xml
-<Button joufflu:ControlProperties.IsSquare="True" Style="{StaticResource PrimaryButton}">
+<Button toolkit:Sizing.IsSquare="True" Style="{StaticResource PrimaryButton}">
     <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Plus}" />
 </Button>
 ```

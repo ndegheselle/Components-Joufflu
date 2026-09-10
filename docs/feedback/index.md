@@ -21,5 +21,5 @@ Add the package (`dotnet add package Joufflu.Feedback`) and merge its
 ```xml
 xmlns:feedback="clr-namespace:Joufflu.Feedback.Controls;assembly=Joufflu.Feedback"
 xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
-xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
+xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
 ```

@@ -21,7 +21,8 @@
     xmlns:nativeNavigation="clr-namespace:Joufflu.Samples.Views.Natives.Navigation"
     xmlns:nav="clr-namespace:Joufflu.Navigation.Controls;assembly=Joufflu.Navigation"
     xmlns:navigation="clr-namespace:Joufflu.Samples.Views.Navigation"
-    xmlns:toolkit="clr-namespace:Joufflu.Samples.Views.Toolkit"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
+    xmlns:toolkitSamples="clr-namespace:Joufflu.Samples.Views.Toolkit"
     xmlns:vm="clr-namespace:Joufflu.Samples.ViewModels"
     Width="1100"
     Height="720"
@@ -40,7 +41,7 @@
                     <nav:NavigationMenu.Header>
                         <StackPanel
                             VerticalAlignment="Center"
-                            joufflu:Spacing.Gap="8"
+                            toolkit:Spacing.Gap="8"
                             Orientation="Horizontal">
                             <fonts:FontIcon FontSize="20" Text="{x:Static fonts:LucideFontIcons.Rocket}" />
                             <TextBlock
@@ -238,44 +239,44 @@
 
                     <!--  Toolkit  -->
                     <nav:NavigationTitle>Toolkit</nav:NavigationTitle>
-                    <nav:NavigationItem TargetType="{x:Type toolkit:SizingSamplesViewModel}">
+                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:SizingSamplesViewModel}">
                         <nav:NavigationItem.Icon>
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Scaling}" />
                         </nav:NavigationItem.Icon>
                         Sizing
                     </nav:NavigationItem>
-                    <nav:NavigationItem TargetType="{x:Type toolkit:SpacingSamplesViewModel}">
+                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:SpacingSamplesViewModel}">
                         <nav:NavigationItem.Icon>
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Space}" />
                         </nav:NavigationItem.Icon>
                         Spacing
                     </nav:NavigationItem>
-                    <nav:NavigationItem TargetType="{x:Type toolkit:TooltipSamplesViewModel}">
+                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:TooltipSamplesViewModel}">
                         <nav:NavigationItem.Icon>
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.MessageSquare}" />
                         </nav:NavigationItem.Icon>
                         Tooltip
                     </nav:NavigationItem>
-                    <nav:NavigationItem TargetType="{x:Type toolkit:DropTargetSamplesViewModel}">
+                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:DropTargetSamplesViewModel}">
                         <nav:NavigationItem.Icon>
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Upload}" />
                         </nav:NavigationItem.Icon>
                         Drag and drop
                     </nav:NavigationItem>
 
-                    <nav:NavigationItem TargetType="{x:Type toolkit:ThemeSamplesViewModel}">
+                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:ThemeSamplesViewModel}">
                         <nav:NavigationItem.Icon>
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.SunMoon}" />
                         </nav:NavigationItem.Icon>
                         Theme
                     </nav:NavigationItem>
-                    <nav:NavigationItem TargetType="{x:Type toolkit:ThemeCustomizerViewModel}">
+                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:ThemeCustomizerViewModel}">
                         <nav:NavigationItem.Icon>
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Palette}" />
                         </nav:NavigationItem.Icon>
                         Customize theme
                     </nav:NavigationItem>
-                    <nav:NavigationItem TargetType="{x:Type toolkit:ShellSamples}">
+                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:ShellSamples}">
                         <nav:NavigationItem.Icon>
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.AppWindow}" />
                         </nav:NavigationItem.Icon>

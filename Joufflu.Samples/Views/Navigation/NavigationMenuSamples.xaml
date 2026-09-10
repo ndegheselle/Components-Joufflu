@@ -8,11 +8,12 @@
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:nav="clr-namespace:Joufflu.Navigation.Controls;assembly=Joufflu.Navigation"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     xmlns:vm="clr-namespace:Joufflu.Samples.Views.Navigation"
     d:DataContext="{d:DesignInstance Type=vm:NavigationMenuSamplesViewModel}"
     mc:Ignorable="d">
     <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
-        <StackPanel joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+        <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <TextBlock Style="{StaticResource H1}" Text="Navigation menu" />
 
             <c:CodeExample
@@ -35,7 +36,7 @@
                             <nav:NavigationMenu.Header>
                                 <StackPanel
                                     VerticalAlignment="Center"
-                                    joufflu:Spacing.Gap="8"
+                                    toolkit:Spacing.Gap="8"
                                     Orientation="Horizontal">
                                     <fonts:FontIcon FontSize="20" Text="{x:Static fonts:LucideFontIcons.Rocket}" />
                                     <TextBlock

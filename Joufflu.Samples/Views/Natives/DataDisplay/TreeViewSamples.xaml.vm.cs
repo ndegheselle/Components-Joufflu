@@ -41,8 +41,8 @@ public class TreeViewSamplesViewModel : ObservableObject
         "</TreeView>";
 
     public string SizesCode =>
-        "<TreeView joufflu:Sizing.Size=\"xs\" ItemsSource=\"{Binding Tree}\" />\n" +
-        "<TreeView joufflu:Sizing.Size=\"sm\" ItemsSource=\"{Binding Tree}\" />\n" +
+        "<TreeView toolkit:Sizing.Size=\"xs\" ItemsSource=\"{Binding Tree}\" />\n" +
+        "<TreeView toolkit:Sizing.Size=\"sm\" ItemsSource=\"{Binding Tree}\" />\n" +
         "<TreeView ItemsSource=\"{Binding Tree}\" /> <!-- md, the default -->\n" +
-        "<TreeView joufflu:Sizing.Size=\"lg\" ItemsSource=\"{Binding Tree}\" />";
+        "<TreeView toolkit:Sizing.Size=\"lg\" ItemsSource=\"{Binding Tree}\" />";
 }

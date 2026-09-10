@@ -17,7 +17,7 @@ so its `Style`, its content, its triggers and every attached property
 ```xml
 <ToggleButton Content="Actions">
     <inputs:Dropdown.Popup>
-        <StackPanel joufflu:Spacing.Gap="4">
+        <StackPanel toolkit:Spacing.Gap="4">
             <Button Content="Rename" Style="{StaticResource GhostButton}" />
             <Button Content="Duplicate" Style="{StaticResource GhostButton}" />
         </StackPanel>
@@ -47,8 +47,8 @@ An icon-only dropdown is just an icon-only toggle button:
 ```xml
 <ToggleButton
     inputs:Dropdown.Placement="BottomRight"
-    joufflu:Sizing.IsSquare="True"
-    joufflu:Sizing.Size="lg">
+    toolkit:Sizing.IsSquare="True"
+    toolkit:Sizing.Size="lg">
     <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.EllipsisVertical}" />
     <inputs:Dropdown.Popup>
         <TextBlock Text="An icon only dropdown." />
@@ -65,7 +65,7 @@ button inside is clicked:
 ```xml
 <ToggleButton Content="Actions" inputs:Dropdown.CloseOnClick="True">
     <inputs:Dropdown.Popup>
-        <StackPanel joufflu:Spacing.Gap="4">
+        <StackPanel toolkit:Spacing.Gap="4">
             <Button Content="Rename" Style="{StaticResource GhostButton}" />
             <Button Content="Duplicate" Style="{StaticResource GhostButton}" />
         </StackPanel>

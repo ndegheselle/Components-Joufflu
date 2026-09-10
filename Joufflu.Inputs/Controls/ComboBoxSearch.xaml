@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
-    xmlns:local="clr-namespace:Joufflu.Inputs.Controls">
+    xmlns:local="clr-namespace:Joufflu.Inputs.Controls"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Joufflu;component/Styles/Natives/DataInput/TextBox.xaml" />
@@ -79,7 +80,7 @@
                             <Button
                                 x:Name="ClearButton"
                                 Grid.Column="1"
-                                joufflu:Sizing.IsSquare="True"
+                                toolkit:Sizing.IsSquare="True"
                                 Command="{Binding ClearCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                 Focusable="False"
                                 Style="{StaticResource GhostButton}">

@@ -3,9 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
-    xmlns:extensions="clr-namespace:Joufflu.Extensions;assembly=Joufflu"
     xmlns:nav="clr-namespace:Joufflu.Navigation"
     xmlns:controls="clr-namespace:Joufflu.Navigation.Controls"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     >
 
     <ResourceDictionary.MergedDictionaries>
@@ -71,7 +71,7 @@
                             x:Name="CloseButton"
                             Grid.Column="1"
                             VerticalAlignment="Top"
-                            joufflu:Sizing.IsSquare="True"
+                            toolkit:Sizing.IsSquare="True"
                             Command="{Binding CloseCommand}"
                             Style="{StaticResource GhostButton}">
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.x}" />
@@ -79,8 +79,8 @@
                     </Grid>
 
                     <ScrollViewer
-                        extensions:Derive.Margin="{x:Static joufflu:Dimensions.Spacing}"
-                        extensions:Derive.MarginFactor="1,0,1,1"
+                        toolkit:Derive.Margin="{x:Static joufflu:Dimensions.Spacing}"
+                        toolkit:Derive.MarginFactor="1,0,1,1"
                         Grid.Row="1"
                         HorizontalScrollBarVisibility="Disabled"
                         VerticalScrollBarVisibility="Auto">
@@ -114,7 +114,7 @@
     <!--  ==================== Confirmation ====================  -->
     <!--  Implicit template: the standard content shown by IOverlayService.Confirm().  -->
     <DataTemplate DataType="{x:Type controls:ConfirmationContent}">
-        <Grid joufflu:Spacing.Gap="{DynamicResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+        <Grid toolkit:Spacing.Gap="{DynamicResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
@@ -125,7 +125,7 @@
             <StackPanel
                 Grid.Row="1"
                 HorizontalAlignment="Right"
-                joufflu:Spacing.Gap="8"
+                toolkit:Spacing.Gap="8"
                 Orientation="Horizontal">
                 <Button
                     x:Name="CancelButton"

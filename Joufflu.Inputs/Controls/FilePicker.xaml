@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
-    xmlns:local="clr-namespace:Joufflu.Inputs.Controls">
+    xmlns:local="clr-namespace:Joufflu.Inputs.Controls"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Joufflu;component/Styles/Natives/Actions/Button.named.xaml" />
@@ -22,7 +23,7 @@
 
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                             <!--  Clear button  -->
-                            <Button joufflu:Sizing.IsSquare="True" Command="{Binding ClearCommand}">
+                            <Button toolkit:Sizing.IsSquare="True" Command="{Binding ClearCommand}">
                                 <Button.Style>
                                     <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
                                         <Style.Triggers>
@@ -36,7 +37,7 @@
                             </Button>
                             <Button
                                 Margin="-1"
-                                joufflu:Sizing.IsSquare="True"
+                                toolkit:Sizing.IsSquare="True"
                                 Command="{Binding SelectCommand}">
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.File}" />
                             </Button>

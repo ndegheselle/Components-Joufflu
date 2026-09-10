@@ -21,7 +21,7 @@ public class ComboBoxSamplesViewModel : ObservableObject
         "          Text=\"{Binding SelectedOption}\" />";
 
     public string SizesCode =>
-        "<ComboBox joufflu:Sizing.Size=\"sm\" />\n" +
+        "<ComboBox toolkit:Sizing.Size=\"sm\" />\n" +
         "<ComboBox />\n" +
-        "<ComboBox joufflu:Sizing.Size=\"lg\" />";
+        "<ComboBox toolkit:Sizing.Size=\"lg\" />";
 }

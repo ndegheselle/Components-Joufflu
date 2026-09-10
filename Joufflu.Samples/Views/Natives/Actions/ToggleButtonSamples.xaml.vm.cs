@@ -18,8 +18,8 @@ public class ToggleButtonSamplesViewModel : ObservableObject
         "</ToggleButton>";
 
     public string SizesCode =>
-        "<ToggleButton joufflu:Sizing.Size=\"xs\">XS</ToggleButton>\n" +
-        "<ToggleButton joufflu:Sizing.Size=\"sm\">SM</ToggleButton>\n" +
-        "<ToggleButton joufflu:Sizing.Size=\"md\">MD</ToggleButton>\n" +
-        "<ToggleButton joufflu:Sizing.Size=\"lg\">LG</ToggleButton>";
+        "<ToggleButton toolkit:Sizing.Size=\"xs\">XS</ToggleButton>\n" +
+        "<ToggleButton toolkit:Sizing.Size=\"sm\">SM</ToggleButton>\n" +
+        "<ToggleButton toolkit:Sizing.Size=\"md\">MD</ToggleButton>\n" +
+        "<ToggleButton toolkit:Sizing.Size=\"lg\">LG</ToggleButton>";
 }

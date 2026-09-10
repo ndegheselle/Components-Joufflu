@@ -10,6 +10,7 @@
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:themes="clr-namespace:Joufflu.Themes;assembly=Joufflu"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     xmlns:vm="clr-namespace:Joufflu.Samples.Views.Toolkit"
     d:DataContext="{d:DesignInstance Type=vm:ThemeSamplesViewModel}"
     mc:Ignorable="d">
@@ -17,7 +18,7 @@
         <conv:EnumMatchToBooleanConverter x:Key="EnumMatch" />
     </UserControl.Resources>
     <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
-        <StackPanel joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+        <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <TextBlock Style="{StaticResource H1}" Text="Theme" />
             <TextBlock
                 Foreground="{DynamicResource {x:Static joufflu:Brushes.Foreground100Brush}}"
@@ -28,31 +29,31 @@
                 Title="Theme switcher"
                 Code="{Binding SwitcherCode}"
                 Description="A drop-in control bound to ThemeManager. Pick a theme by name and the whole gallery re-themes live; the choice is remembered across launches. 'Ocean' is a custom theme this app registered at startup — it sits alongside the built-ins.">
-                <StackPanel joufflu:Spacing.Gap="4">
+                <StackPanel toolkit:Spacing.Gap="4">
 
                     <RadioButton IsChecked="{Binding Theme, Source={x:Static themes:ThemeManager.Instance}, Converter={StaticResource EnumMatch}, ConverterParameter=System, Mode=TwoWay}" ToolTip="Follow the system theme">
-                        <StackPanel joufflu:Spacing.Gap="6,0" Orientation="Horizontal">
+                        <StackPanel toolkit:Spacing.Gap="6,0" Orientation="Horizontal">
                             <fonts:FontIcon VerticalAlignment="Center" Text="{x:Static fonts:LucideFontIcons.Monitor}" />
                             <TextBlock VerticalAlignment="Center" Text="System" />
                         </StackPanel>
                     </RadioButton>
 
                     <RadioButton IsChecked="{Binding Theme, Source={x:Static themes:ThemeManager.Instance}, Converter={StaticResource EnumMatch}, ConverterParameter=Light, Mode=TwoWay}" ToolTip="Use the light theme">
-                        <StackPanel joufflu:Spacing.Gap="6,0" Orientation="Horizontal">
+                        <StackPanel toolkit:Spacing.Gap="6,0" Orientation="Horizontal">
                             <fonts:FontIcon VerticalAlignment="Center" Text="{x:Static fonts:LucideFontIcons.Sun}" />
                             <TextBlock VerticalAlignment="Center" Text="Light" />
                         </StackPanel>
                     </RadioButton>
 
                     <RadioButton IsChecked="{Binding Theme, Source={x:Static themes:ThemeManager.Instance}, Converter={StaticResource EnumMatch}, ConverterParameter=Dark, Mode=TwoWay}" ToolTip="Use the dark theme">
-                        <StackPanel joufflu:Spacing.Gap="6,0" Orientation="Horizontal">
+                        <StackPanel toolkit:Spacing.Gap="6,0" Orientation="Horizontal">
                             <fonts:FontIcon VerticalAlignment="Center" Text="{x:Static fonts:LucideFontIcons.Moon}" />
                             <TextBlock VerticalAlignment="Center" Text="Dark" />
                         </StackPanel>
                     </RadioButton>
 
                     <RadioButton IsChecked="{Binding Theme, Source={x:Static themes:ThemeManager.Instance}, Converter={StaticResource EnumMatch}, ConverterParameter=Ocean, Mode=TwoWay}" ToolTip="Use the custom Ocean theme">
-                        <StackPanel joufflu:Spacing.Gap="6,0" Orientation="Horizontal">
+                        <StackPanel toolkit:Spacing.Gap="6,0" Orientation="Horizontal">
                             <fonts:FontIcon VerticalAlignment="Center" Text="{x:Static fonts:LucideFontIcons.Palette}" />
                             <TextBlock VerticalAlignment="Center" Text="Ocean (custom)" />
                         </StackPanel>

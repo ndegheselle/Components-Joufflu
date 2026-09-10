@@ -6,20 +6,20 @@ nav_order: 1
 
 # Sizing
 
-## ControlProperties.Size
+## Sizing.Size
 
 The inherited `Size` attached property (`xs` / `sm` / `md` / `lg`) scales height,
 font size and padding. Since it inherits, setting it on a panel sizes every child.
 
 ```xml
 <!-- Attached property drives height, font size and padding -->
-<Button joufflu:ControlProperties.Size="xs" />
-<Button joufflu:ControlProperties.Size="sm" />
-<Button joufflu:ControlProperties.Size="md" />  <!-- default -->
-<Button joufflu:ControlProperties.Size="lg" />
+<Button toolkit:Sizing.Size="xs" />
+<Button toolkit:Sizing.Size="sm" />
+<Button toolkit:Sizing.Size="md" />  <!-- default -->
+<Button toolkit:Sizing.Size="lg" />
 
 <!-- Size is inherited, so a panel sets it for every child -->
-<StackPanel joufflu:ControlProperties.Size="lg">
+<StackPanel toolkit:Sizing.Size="lg">
     <TextBox /> <ComboBox /> <Button>OK</Button>
 </StackPanel>
 ```
@@ -28,16 +28,16 @@ Other controls honor the same attached property — `TreeView` scales its expand
 indentation and text together:
 
 ```xml
-<TreeView joufflu:Sizing.Size="lg" ItemsSource="{Binding Tree}" />
+<TreeView toolkit:Sizing.Size="lg" ItemsSource="{Binding Tree}" />
 ```
 
-## ControlProperties.IsSquare
+## Sizing.IsSquare
 
 `IsSquare` forces equal width and height, for single-icon buttons.
 
 ```xml
-<Button joufflu:ControlProperties.IsSquare="True"
-        joufflu:ControlProperties.Size="lg">
+<Button toolkit:Sizing.IsSquare="True"
+        toolkit:Sizing.Size="lg">
     <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Leaf}" />
 </Button>
 ```

@@ -8,12 +8,13 @@
     xmlns:local="clr-namespace:Joufflu.Samples.Views.Navigation"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:nav="clr-namespace:Joufflu.Navigation.Controls;assembly=Joufflu.Navigation"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     d:DataContext="{d:DesignInstance Type=local:PagingSamplesViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
-        <StackPanel joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+        <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <TextBlock Style="{StaticResource H1}" Text="Paging" />
             <c:CodeExample
                 Title="Paging"
@@ -26,7 +27,7 @@
                 Title="Paged data grid"
                 Code="{Binding DataGridCode}"
                 Description="Paging only tells you which slice to display, it never touches the data itself. Bind Total to the number of items in the whole set, then bind PageNumber and Capacity two way so the view model is notified of every change and can load the matching slice. The control also raises a PagingChange event with the new page number and capacity for non MVVM code.">
-                <StackPanel joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+                <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
                     <DataGrid
                         Height="260"
                         AutoGenerateColumns="False"

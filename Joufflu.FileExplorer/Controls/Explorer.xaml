@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:Joufflu.Converters;assembly=Joufflu"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
-    xmlns:local="clr-namespace:Joufflu.FileExplorer.Controls">
+    xmlns:local="clr-namespace:Joufflu.FileExplorer.Controls"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Joufflu.FileExplorer;component/Controls/ExplorerControlBar.xaml" />
@@ -18,7 +19,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Explorer}">
-                    <Grid joufflu:Spacing.Gap="4" DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                    <Grid toolkit:Spacing.Gap="4" DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />

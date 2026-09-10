@@ -22,7 +22,7 @@ xmlns:fileExplorer="clr-namespace:Joufflu.FileExplorer.Controls;assembly=Joufflu
 xmlns:base="clr-namespace:Joufflu.FileExplorer.Controls.Base;assembly=Joufflu.FileExplorer"
 xmlns:data="clr-namespace:Joufflu.FileExplorer.Data;assembly=Joufflu.FileExplorer"
 xmlns:converters="clr-namespace:Joufflu.FileExplorer.Converters;assembly=Joufflu.FileExplorer"
-xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
+xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
 ```
 
 ## Sources

@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts"
-    xmlns:joufflu="clr-namespace:Joufflu">
+    xmlns:joufflu="clr-namespace:Joufflu"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit">
 
     <!--  Lucide icon font (embedded as a WPF Resource). Family name is "lucide".  -->
     <FontFamily x:Key="LucideIconFamily">/Joufflu;component/Assets/Fonts/#lucide</FontFamily>
@@ -16,16 +17,16 @@
 
         <Style.Triggers>
             <!--  Honors the inherited Sizing.Size (md keeps the default size).  -->
-            <Trigger Property="joufflu:Sizing.Size" Value="xs">
+            <Trigger Property="toolkit:Sizing.Size" Value="xs">
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeXs}}" />
             </Trigger>
-            <Trigger Property="joufflu:Sizing.Size" Value="sm">
+            <Trigger Property="toolkit:Sizing.Size" Value="sm">
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeSm}}" />
             </Trigger>
-            <Trigger Property="joufflu:Sizing.Size" Value="lg">
+            <Trigger Property="toolkit:Sizing.Size" Value="lg">
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeLg}}" />
             </Trigger>
-            <Trigger Property="joufflu:Sizing.Size" Value="xl">
+            <Trigger Property="toolkit:Sizing.Size" Value="xl">
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeXl}}" />
             </Trigger>
         </Style.Triggers>

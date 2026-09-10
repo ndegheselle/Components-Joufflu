@@ -3,11 +3,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:Joufflu.Samples.Controls"
-    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu">
+    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
     <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
         <StackPanel
 
-            joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+            toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <TextBlock
                 Style="{StaticResource H1}"
                 Text="Group box" />
@@ -18,7 +19,7 @@
                 Description="A titled frame around a set of related controls."
                 Code="&lt;GroupBox Header=&quot;Account&quot;&gt;&#x0a;    ...&#x0a;&lt;/GroupBox&gt;">
                 <GroupBox Header="Account">
-                    <StackPanel joufflu:Spacing.Gap="8">
+                    <StackPanel toolkit:Spacing.Gap="8">
                         <TextBox Text="Username" />
                         <CheckBox Content="Remember me" IsChecked="True" />
                     </StackPanel>

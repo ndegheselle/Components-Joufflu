@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace Joufflu;
+namespace Joufflu.Toolkit;
 
 /// <summary>
 /// Turns any element into a drop target from a single attached property : set

@@ -6,13 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     xmlns:vm="clr-namespace:Joufflu.Samples.Views.Natives.DataInput"
     d:DataContext="{d:DesignInstance Type=vm:DatePickerSamplesViewModel}"
     mc:Ignorable="d">
     <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
         <StackPanel
 
-            joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+            toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <TextBlock
                 Style="{StaticResource H1}"
                 Text="Date picker" />
@@ -22,7 +23,7 @@
                 
                 Code="{Binding Code}"
                 Description="A text field with a drop-down calendar. Bind SelectedDate to the view model.">
-                <StackPanel joufflu:Spacing.Gap="8">
+                <StackPanel toolkit:Spacing.Gap="8">
                     <DatePicker Width="200" HorizontalAlignment="Left" SelectedDate="{Binding SelectedDate}" />
                     <TextBlock Text="{Binding SelectedDate, StringFormat={}Selected: {0:D}}" />
                 </StackPanel>

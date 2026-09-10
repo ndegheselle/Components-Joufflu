@@ -7,34 +7,35 @@
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     xmlns:vm="clr-namespace:Joufflu.Samples.Views.Toolkit"
     d:DataContext="{d:DesignInstance Type=vm:TooltipSamplesViewModel}"
     mc:Ignorable="d">
     <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
-        <StackPanel joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+        <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <TextBlock Style="{StaticResource H1}" Text="Tooltip" />
 
             <c:CodeExample
                 Title="Tooltip.Placement"
                 Code="{Binding PlacementCode}"
                 Description="Set Tooltip.Content on any element to show a themed tooltip on hover. Tooltip.Placement chooses the side it sits on — Top, Bottom, Left or Right — and it still flips automatically near a screen edge.">
-                <WrapPanel joufflu:Spacing.Gap="8,8">
+                <WrapPanel toolkit:Spacing.Gap="8,8">
                     <Button
                         Content="Top"
-                        joufflu:Tooltip.Content="Placed above"
-                        joufflu:Tooltip.Placement="Top" />
+                        toolkit:Tooltip.Content="Placed above"
+                        toolkit:Tooltip.Placement="Top" />
                     <Button
                         Content="Bottom"
-                        joufflu:Tooltip.Content="Placed below"
-                        joufflu:Tooltip.Placement="Bottom" />
+                        toolkit:Tooltip.Content="Placed below"
+                        toolkit:Tooltip.Placement="Bottom" />
                     <Button
                         Content="Left"
-                        joufflu:Tooltip.Content="Placed left"
-                        joufflu:Tooltip.Placement="Left" />
+                        toolkit:Tooltip.Content="Placed left"
+                        toolkit:Tooltip.Placement="Left" />
                     <Button
                         Content="Right"
-                        joufflu:Tooltip.Content="Placed right"
-                        joufflu:Tooltip.Placement="Right" />
+                        toolkit:Tooltip.Content="Placed right"
+                        toolkit:Tooltip.Placement="Right" />
                 </WrapPanel>
             </c:CodeExample>
 
@@ -42,14 +43,14 @@
                 Title="Custom content"
                 Code="{Binding ContentCode}"
                 Description="Tooltip.Content is an object, so it accepts arbitrary XAML — not just text.">
-                <WrapPanel joufflu:Spacing.Gap="8,8">
-                    <Button Content="Rich tooltip" joufflu:Tooltip.Placement="Bottom">
-                        <joufflu:Tooltip.Content>
-                            <StackPanel Orientation="Horizontal" joufflu:Spacing.Gap="8">
+                <WrapPanel toolkit:Spacing.Gap="8,8">
+                    <Button Content="Rich tooltip" toolkit:Tooltip.Placement="Bottom">
+                        <toolkit:Tooltip.Content>
+                            <StackPanel Orientation="Horizontal" toolkit:Spacing.Gap="8">
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Info}" />
                                 <TextBlock Text="Arbitrary content, icons included." />
                             </StackPanel>
-                        </joufflu:Tooltip.Content>
+                        </toolkit:Tooltip.Content>
                     </Button>
                 </WrapPanel>
             </c:CodeExample>
