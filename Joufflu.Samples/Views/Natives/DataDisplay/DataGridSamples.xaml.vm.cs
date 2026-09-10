@@ -23,7 +23,7 @@ public class DataGridSamplesViewModel : ObservableObject
         "</DataGrid>";
 
     public string CompactCode =>
-        "<DataGrid joufflu:Sizing.Size=\"xs\"\n" +
+        "<DataGrid toolkit:Sizing.Size=\"xs\"\n" +
         "          ItemsSource=\"{Binding People}\" AutoGenerateColumns=\"False\">\n" +
         "    <DataGrid.Columns>\n" +
         "        <DataGridTextColumn Header=\"Name\" Binding=\"{Binding Name}\" />\n" +

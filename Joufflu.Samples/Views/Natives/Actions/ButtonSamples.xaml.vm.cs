@@ -29,13 +29,13 @@ public class ButtonSamplesViewModel : ObservableObject
         "<Button Style=\"{StaticResource OutlineDangerButton}\">Danger</Button>";
 
     public string IconCode =>
-        "<Button joufflu:Sizing.IsSquare=\"True\">\n" +
+        "<Button toolkit:Sizing.IsSquare=\"True\">\n" +
         "    <fonts:FontIcon Text=\"{x:Static fonts:LucideFontIcons.Plus}\" />\n" +
         "</Button>";
 
     public string SizesCode =>
-        "<Button joufflu:Sizing.Size=\"xs\">XS</Button>\n" +
-        "<Button joufflu:Sizing.Size=\"sm\">SM</Button>\n" +
-        "<Button joufflu:Sizing.Size=\"md\">MD</Button>\n" +
-        "<Button joufflu:Sizing.Size=\"lg\">LG</Button>";
+        "<Button toolkit:Sizing.Size=\"xs\">XS</Button>\n" +
+        "<Button toolkit:Sizing.Size=\"sm\">SM</Button>\n" +
+        "<Button toolkit:Sizing.Size=\"md\">MD</Button>\n" +
+        "<Button toolkit:Sizing.Size=\"lg\">LG</Button>";
 }

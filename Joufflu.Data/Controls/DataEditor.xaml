@@ -10,6 +10,7 @@
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
     xmlns:local="clr-namespace:Joufflu.Data.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     x:Name="RootElement"
     mc:Ignorable="d">
     <UserControl.Resources>
@@ -93,7 +94,7 @@
                     <Grid
                         MinHeight="28"
                         Margin="0,1"
-                        joufflu:Spacing.Gap="2">
+                        toolkit:Spacing.Gap="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="180" SharedSizeGroup="Name" />
@@ -157,12 +158,12 @@
 
                         <StackPanel
                             Grid.Column="3"
-                            joufflu:Spacing.Gap="2"
+                            toolkit:Spacing.Gap="2"
                             Orientation="Horizontal">
                             <!--  An array holds as many values as the reader adds  -->
                             <Button
-                                joufflu:Sizing.IsSquare="True"
-                                joufflu:Sizing.Size="sm"
+                                toolkit:Sizing.IsSquare="True"
+                                toolkit:Sizing.Size="sm"
                                 Command="{Binding AddItemCommand}"
                                 Style="{StaticResource GhostButton}"
                                 ToolTip="Add an item"
@@ -170,8 +171,8 @@
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Plus}" />
                             </Button>
                             <Button
-                                joufflu:Sizing.IsSquare="True"
-                                joufflu:Sizing.Size="sm"
+                                toolkit:Sizing.IsSquare="True"
+                                toolkit:Sizing.Size="sm"
                                 Command="{Binding RemoveItemCommand}"
                                 CommandParameter="{Binding}"
                                 Style="{StaticResource SoftDangerButton}"
@@ -182,7 +183,7 @@
 
                             <!--  A reference stands where a value stands, whatever the declared type  -->
                             <ToggleButton
-                                joufflu:Sizing.IsSquare="True"
+                                toolkit:Sizing.IsSquare="True"
                                 IsChecked="{Binding IsReference, Mode=TwoWay}"
                                 ToolTip="Read this value from somewhere else"
                                 Visibility="{Binding AllowsReferences, ElementName=RootElement, Converter={x:Static jonverters:VisibilityConverter.Default}}">

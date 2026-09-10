@@ -3,8 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:Joufflu.Converters;assembly=Joufflu"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
-    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
-    xmlns:local="clr-namespace:Joufflu.Data.Controls">
+    xmlns:local="clr-namespace:Joufflu.Data.Controls"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
 
     <Style TargetType="{x:Type local:DataKindIcon}">
         <Setter Property="Focusable" Value="False" />
@@ -13,8 +13,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:DataKindIcon}">
                     <StackPanel
-                        joufflu:Tooltip.Content="{TemplateBinding Kind}"
-                        joufflu:Tooltip.Placement="Bottom"
+                        toolkit:Tooltip.Content="{TemplateBinding Kind}"
+                        toolkit:Tooltip.Placement="Bottom"
                         Orientation="Horizontal">
                         <fonts:FontIcon VerticalAlignment="Center" Text="{TemplateBinding Glyph}" />
                         <TextBlock

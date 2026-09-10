@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:data="clr-namespace:Joufflu.FileExplorer.Data"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
-    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu">
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
 
     <!--
         Node visuals and context menus shared by every control displaying explorer nodes. The templates are implicit
@@ -16,7 +16,7 @@
     <DataTemplate DataType="{x:Type data:FileSystemFile}">
         <StackPanel
             Margin="0,4"
-            joufflu:Spacing.Gap="4"
+            toolkit:Spacing.Gap="4"
             Orientation="Horizontal">
             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.File}" />
             <TextBlock Text="{Binding Name}" />
@@ -25,7 +25,7 @@
     <DataTemplate DataType="{x:Type data:FileSystemDirectory}">
         <StackPanel
             Margin="0,4"
-            joufflu:Spacing.Gap="4"
+            toolkit:Spacing.Gap="4"
             Orientation="Horizontal">
             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Folder}" />
             <TextBlock Text="{Binding Name}" />

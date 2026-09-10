@@ -9,9 +9,10 @@
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
     xmlns:local="clr-namespace:Joufflu.Data.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     x:Name="RootElement"
     mc:Ignorable="d">
-    <Grid joufflu:Spacing.Gap="4">
+    <Grid toolkit:Spacing.Gap="4">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="auto" />
@@ -21,7 +22,7 @@
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type data:SchemaNode}" ItemsSource="{Binding Children}">
                     <StackPanel>
-                        <Grid Height="28" joufflu:Spacing.Gap="4">
+                        <Grid Height="28" toolkit:Spacing.Gap="4">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="160" SharedSizeGroup="Name" />
                                 <ColumnDefinition Width="130" />
@@ -70,12 +71,12 @@
 
                             <StackPanel
                                 Grid.Column="4"
-                                joufflu:Spacing.Gap="2"
+                                toolkit:Spacing.Gap="2"
                                 Orientation="Horizontal"
                                 Visibility="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:VisibilityConverter.Default}, ConverterParameter=False}">
                                 <Button
-                                    joufflu:Sizing.IsSquare="True"
-                                    joufflu:Sizing.Size="sm"
+                                    toolkit:Sizing.IsSquare="True"
+                                    toolkit:Sizing.Size="sm"
                                     Command="{Binding AddPropertyCommand}"
                                     Style="{StaticResource GhostButton}"
                                     ToolTip="Add a property"
@@ -83,8 +84,8 @@
                                     <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Plus}" />
                                 </Button>
                                 <Button
-                                    joufflu:Sizing.IsSquare="True"
-                                    joufflu:Sizing.Size="sm"
+                                    toolkit:Sizing.IsSquare="True"
+                                    toolkit:Sizing.Size="sm"
                                     Command="{Binding Parent.RemovePropertyCommand}"
                                     CommandParameter="{Binding}"
                                     Style="{StaticResource SoftDangerButton}"

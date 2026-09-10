@@ -17,7 +17,7 @@ public enum BadgeVariant
 
 /// <summary>
 /// A small pill that labels or counts something, themed from the design system's
-/// semantic brushes and sized through <see cref="Joufflu.Sizing.SizeProperty"/>.
+/// semantic brushes and sized through <see cref="Joufflu.Toolkit.Sizing.SizeProperty"/>.
 /// </summary>
 public class Badge : ContentControl
 {

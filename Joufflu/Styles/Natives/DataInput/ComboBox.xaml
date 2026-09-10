@@ -1,7 +1,8 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:joufflu="clr-namespace:Joufflu">
+    xmlns:joufflu="clr-namespace:Joufflu"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit">
 
     <Style x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static joufflu:Brushes.ForegroundBrush}}" />
@@ -53,15 +54,15 @@
             </Trigger>
 
             <!--  Size variants (md is the default, no trigger needed)  -->
-            <Trigger Property="joufflu:Sizing.Size" Value="xs">
+            <Trigger Property="toolkit:Sizing.Size" Value="xs">
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeXs}}" />
                 <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingXs}}" />
             </Trigger>
-            <Trigger Property="joufflu:Sizing.Size" Value="sm">
+            <Trigger Property="toolkit:Sizing.Size" Value="sm">
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeSm}}" />
                 <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingSm}}" />
             </Trigger>
-            <Trigger Property="joufflu:Sizing.Size" Value="lg">
+            <Trigger Property="toolkit:Sizing.Size" Value="lg">
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeLg}}" />
                 <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingLg}}" />
             </Trigger>
@@ -243,17 +244,17 @@
             </Trigger>
 
             <!--  Size variants (md is the default, no trigger needed)  -->
-            <Trigger Property="joufflu:Sizing.Size" Value="xs">
+            <Trigger Property="toolkit:Sizing.Size" Value="xs">
                 <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightXs}}" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeXs}}" />
                 <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingXs}}" />
             </Trigger>
-            <Trigger Property="joufflu:Sizing.Size" Value="sm">
+            <Trigger Property="toolkit:Sizing.Size" Value="sm">
                 <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightSm}}" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeSm}}" />
                 <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingSm}}" />
             </Trigger>
-            <Trigger Property="joufflu:Sizing.Size" Value="lg">
+            <Trigger Property="toolkit:Sizing.Size" Value="lg">
                 <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightLg}}" />
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeLg}}" />
                 <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingLg}}" />

@@ -11,6 +11,6 @@ public class BadgeSamplesViewModel : ObservableObject
         "<feedback:Badge Variant=\"Danger\">3</feedback:Badge>";
 
     public string SizesCode =>
-        "<feedback:Badge Variant=\"Primary\" joufflu:Sizing.Size=\"xs\">xs</feedback:Badge>\n" +
-        "<feedback:Badge Variant=\"Primary\" joufflu:Sizing.Size=\"lg\">lg</feedback:Badge>";
+        "<feedback:Badge Variant=\"Primary\" toolkit:Sizing.Size=\"xs\">xs</feedback:Badge>\n" +
+        "<feedback:Badge Variant=\"Primary\" toolkit:Sizing.Size=\"lg\">lg</feedback:Badge>";
 }

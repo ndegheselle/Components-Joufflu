@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:base="clr-namespace:Joufflu.FileExplorer.Controls.Base"
     xmlns:converters="clr-namespace:Joufflu.FileExplorer.Converters"
-    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu">
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
 
     <!--  Everything the controls displaying explorer nodes have in common, keyed on their base class.  -->
     <ResourceDictionary.MergedDictionaries>
@@ -20,7 +20,7 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             base:ExplorerRename.Command="{Binding RenameCommand, RelativeSource={RelativeSource AncestorType={x:Type base:ExplorerNodesControl}}}"
-            joufflu:Sizing.Size="xs"
+            toolkit:Sizing.Size="xs"
             Text="{Binding Name, Mode=OneWay}" />
         <!--  OneWay : the name is only written back once the rename is validated, and by the source.  -->
     </DataTemplate>

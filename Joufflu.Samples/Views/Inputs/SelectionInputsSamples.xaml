@@ -7,22 +7,23 @@
     xmlns:inputs="clr-namespace:Joufflu.Inputs.Controls;assembly=Joufflu.Inputs"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     xmlns:vm="clr-namespace:Joufflu.Samples.Views.Inputs"
     d:DataContext="{d:DesignInstance Type=vm:SelectionInputsSamplesViewModel}"
     mc:Ignorable="d">
     <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
-        <StackPanel joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+        <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <TextBlock Style="{StaticResource H1}" Text="Search &amp; combo inputs" />
 
             <c:CodeExample
                 Title="Search"
                 Code="{Binding SearchCode}"
                 Description="A text box with a built-in delay before it raises SearchChanged, to limit calls to an API or database. Escape clears it.">
-                <StackPanel joufflu:Spacing.Gap="4">
-                    <inputs:Search joufflu:Sizing.Size="xs" />
-                    <inputs:Search joufflu:Sizing.Size="sm" />
+                <StackPanel toolkit:Spacing.Gap="4">
+                    <inputs:Search toolkit:Sizing.Size="xs" />
+                    <inputs:Search toolkit:Sizing.Size="sm" />
                     <inputs:Search />
-                    <inputs:Search joufflu:Sizing.Size="lg" />
+                    <inputs:Search toolkit:Sizing.Size="lg" />
                 </StackPanel>
             </c:CodeExample>
 

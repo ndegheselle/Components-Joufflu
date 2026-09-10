@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace Joufflu;
+namespace Joufflu.Toolkit;
 
 /// <summary>
 /// The dragged data as it reaches a drop target : what the source carried, and where the pointer is

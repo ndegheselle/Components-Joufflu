@@ -44,12 +44,12 @@ Point `Derive.BorderThickness` at a resource key and pick the sides with
 
 ```xml
 <!-- Right edge only, following Dimensions.Thickness live -->
-<Border extensions:Derive.BorderThickness="{x:Static joufflu:Dimensions.Thickness}"
-        extensions:Derive.BorderThicknessFactor="0,0,1,0" />
+<Border toolkit:Derive.BorderThickness="{x:Static joufflu:Dimensions.Thickness}"
+        toolkit:Derive.BorderThicknessFactor="0,0,1,0" />
 
 <!-- Open at the bottom, with a doubled top edge -->
-<Border extensions:Derive.BorderThickness="{x:Static joufflu:Dimensions.Thickness}"
-        extensions:Derive.BorderThicknessFactor="1,2,1,0" />
+<Border toolkit:Derive.BorderThickness="{x:Static joufflu:Dimensions.Thickness}"
+        toolkit:Derive.BorderThicknessFactor="1,2,1,0" />
 ```
 
 Both properties work in a `Style` setter, so a control can derive its own border
@@ -57,8 +57,8 @@ without a keyed `Thickness`:
 
 ```xml
 <Style TargetType="{x:Type nav:NavigationMenu}">
-    <Setter Property="extensions:Derive.BorderThickness" Value="{x:Static joufflu:Dimensions.Thickness}" />
-    <Setter Property="extensions:Derive.BorderThicknessFactor" Value="0,0,1,0" />
+    <Setter Property="toolkit:Derive.BorderThickness" Value="{x:Static joufflu:Dimensions.Thickness}" />
+    <Setter Property="toolkit:Derive.BorderThicknessFactor" Value="0,0,1,0" />
 </Style>
 ```
 
@@ -77,8 +77,8 @@ Same shape, with `Derive.CornerRadiusFactor` in the
 
 ```xml
 <!-- Top corners only, matching the border it sits in -->
-<Border extensions:Derive.CornerRadius="{x:Static joufflu:Dimensions.Radius}"
-        extensions:Derive.CornerRadiusFactor="1,1,0,0" />
+<Border toolkit:Derive.CornerRadius="{x:Static joufflu:Dimensions.Radius}"
+        toolkit:Derive.CornerRadiusFactor="1,1,0,0" />
 ```
 
 ## Derive.Margin
@@ -87,8 +87,8 @@ Same shape again, on any `FrameworkElement`, with `Derive.MarginFactor`.
 
 ```xml
 <!-- Spaced everywhere but the top -->
-<Border extensions:Derive.Margin="{x:Static joufflu:Dimensions.Spacing}"
-        extensions:Derive.MarginFactor="1,0,1,1" />
+<Border toolkit:Derive.Margin="{x:Static joufflu:Dimensions.Spacing}"
+        toolkit:Derive.MarginFactor="1,0,1,1" />
 ```
 
 ## Notes
@@ -112,5 +112,5 @@ Snippets use these XML namespaces:
 
 ```xml
 xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
-xmlns:extensions="clr-namespace:Joufflu.Extensions;assembly=Joufflu"
+xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
 ```

@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Joufflu;
+namespace Joufflu.Toolkit;
 
 public enum ControlSize { xs, sm, md, lg, xl }
 

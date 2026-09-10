@@ -9,9 +9,9 @@ nav_order: 2
 ## Loading indicator
 
 An indeterminate loading indicator. Colour comes from `Foreground`, diameter from
-`ControlProperties.Size`.
+`Sizing.Size`.
 
 ```xml
 <feedback:Spinner />
-<feedback:Spinner joufflu:ControlProperties.Size="lg" />
+<feedback:Spinner toolkit:Sizing.Size="lg" />
 ```

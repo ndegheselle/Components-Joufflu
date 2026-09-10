@@ -19,18 +19,18 @@ horizontal, `Top` vertical).
 ```xml
 <!-- Gap adds spacing between children of any panel -->
 <!-- StackPanel: gap along the Orientation axis -->
-<StackPanel Orientation="Horizontal" joufflu:Spacing.Gap="8">
+<StackPanel Orientation="Horizontal" toolkit:Spacing.Gap="8">
     <Button>One</Button> <Button>Two</Button> <Button>Three</Button>
 </StackPanel>
 
 <!-- Gap is a Thickness: one value is uniform, -->
 <!-- "horizontal,vertical" sets each axis (Left/Top) -->
-<WrapPanel joufflu:Spacing.Gap="8,12">
+<WrapPanel toolkit:Spacing.Gap="8,12">
     ...
 </WrapPanel>
 
 <!-- Grid: gap sits between rows and columns -->
-<Grid joufflu:Spacing.Gap="12">
+<Grid toolkit:Spacing.Gap="12">
     ...
 </Grid>
 ```

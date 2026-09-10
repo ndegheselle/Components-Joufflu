@@ -21,8 +21,8 @@ The snippets use these namespaces:
 xmlns:controls="clr-namespace:Joufflu.Controls;assembly=Joufflu"
 xmlns:feedback="clr-namespace:Joufflu.Feedback.Controls;assembly=Joufflu.Feedback"
 xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
-xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
 xmlns:nav="clr-namespace:Joufflu.Navigation.Controls;assembly=Joufflu.Navigation"
+xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
 ```
 
 ## How it fits together
@@ -214,10 +214,10 @@ Its view:
     x:Class="MyApp.Views.HomeView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu">
-    <StackPanel Margin="24" joufflu:Spacing.Gap="12">
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
+    <StackPanel Margin="24" toolkit:Spacing.Gap="12">
         <TextBlock Style="{StaticResource H1}" Text="Home" />
-        <StackPanel Orientation="Horizontal" joufflu:Spacing.Gap="8">
+        <StackPanel Orientation="Horizontal" toolkit:Spacing.Gap="8">
             <Button Command="{Binding SayHelloCommand}" Content="Say hello" />
             <Button Command="{Binding DeleteCommand}" Content="Delete…"
                     Style="{StaticResource DangerButton}" />

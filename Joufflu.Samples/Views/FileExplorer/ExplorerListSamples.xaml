@@ -8,10 +8,11 @@
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
     xmlns:local="clr-namespace:Joufflu.Samples.Views.FileExplorer"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     d:DataContext="{d:DesignInstance Type=local:ExplorerListSamplesViewModel}"
     mc:Ignorable="d">
     <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
-        <StackPanel joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+        <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <TextBlock Style="{StaticResource H1}" Text="List" />
 
             <c:CodeExample

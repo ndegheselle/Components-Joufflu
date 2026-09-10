@@ -2,9 +2,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
-    xmlns:extensions="clr-namespace:Joufflu.Extensions;assembly=Joufflu"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
-    xmlns:nav="clr-namespace:Joufflu.Navigation.Controls">
+    xmlns:nav="clr-namespace:Joufflu.Navigation.Controls"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Joufflu;component/Styles/Dimensions.xaml" />
@@ -59,8 +59,8 @@
                             <Setter TargetName="ItemButton" Property="HorizontalContentAlignment" Value="Center" />
                             <Setter TargetName="ItemButton" Property="Padding" Value="0" />
                             <!--  Collapsed: the label is hidden, so surface it as a tooltip beside the icon  -->
-                            <Setter TargetName="ItemButton" Property="joufflu:Tooltip.Content" Value="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="ItemButton" Property="joufflu:Tooltip.Placement" Value="Right" />
+                            <Setter TargetName="ItemButton" Property="toolkit:Tooltip.Content" Value="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="ItemButton" Property="toolkit:Tooltip.Placement" Value="Right" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -135,8 +135,8 @@
                             <Setter TargetName="HeaderButton" Property="HorizontalContentAlignment" Value="Center" />
                             <Setter TargetName="HeaderButton" Property="Padding" Value="0" />
                             <!--  Collapsed: the header is hidden, so surface it as a tooltip beside the icon  -->
-                            <Setter TargetName="HeaderButton" Property="joufflu:Tooltip.Content" Value="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="HeaderButton" Property="joufflu:Tooltip.Placement" Value="Right" />
+                            <Setter TargetName="HeaderButton" Property="toolkit:Tooltip.Content" Value="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="HeaderButton" Property="toolkit:Tooltip.Placement" Value="Right" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -181,8 +181,8 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static joufflu:Brushes.Background100Brush}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static joufflu:Brushes.BorderBrush}}" />
         <!--  Right edge only: the menu just separates itself from the content beside it.  -->
-        <Setter Property="extensions:Derive.BorderThickness" Value="{x:Static joufflu:Dimensions.Thickness}" />
-        <Setter Property="extensions:Derive.BorderThicknessFactor" Value="0,0,1,0" />
+        <Setter Property="toolkit:Derive.BorderThickness" Value="{x:Static joufflu:Dimensions.Thickness}" />
+        <Setter Property="toolkit:Derive.BorderThicknessFactor" Value="0,0,1,0" />
         <Setter Property="Width" Value="220" />
         <Setter Property="Template">
             <Setter.Value>
@@ -211,7 +211,7 @@
                                     Grid.Column="1"
                                     Margin="8"
                                     HorizontalAlignment="Right"
-                                    joufflu:Sizing.IsSquare="True"
+                                    toolkit:Sizing.IsSquare="True"
                                     Command="{Binding ToggleCollapseCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                     Style="{StaticResource GhostButton}">
                                     <fonts:FontIcon x:Name="CollapseIcon" Text="{x:Static fonts:LucideFontIcons.PanelLeftClose}" />

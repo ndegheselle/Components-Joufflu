@@ -4,11 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:Joufflu.Samples.Controls"
     xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
-    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu">
+    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu">
     <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
         <StackPanel
 
-            joufflu:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+            toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
             <TextBlock
                 Style="{StaticResource H1}"
                 Text="Status bar" />
@@ -19,7 +20,7 @@
                 Code="&lt;StatusBar&gt;&#x0a;    &lt;StatusBarItem&gt;Ready&lt;/StatusBarItem&gt;&#x0a;    &lt;Separator /&gt;&#x0a;    &lt;StatusBarItem&gt;Ln 1, Col 1&lt;/StatusBarItem&gt;&#x0a;&lt;/StatusBar&gt;">
                 <StatusBar>
                     <StatusBarItem>
-                        <StackPanel Orientation="Horizontal" joufflu:Spacing.Gap="6,0">
+                        <StackPanel Orientation="Horizontal" toolkit:Spacing.Gap="6,0">
                             <fonts:FontIcon VerticalAlignment="Center" Text="{x:Static fonts:LucideFontIcons.Check}" />
                             <TextBlock Text="Ready" />
                         </StackPanel>

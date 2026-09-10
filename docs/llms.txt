@@ -11,7 +11,7 @@ Joufflu ships as five NuGet packages that build on each other: `Joufflu` (core s
 
 ## Native controls
 
-- [Buttons](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/natives/buttons.md): default button plus named styles — solid, soft and outline variants, icon (`IsSquare`) buttons, and `ControlProperties.Size`.
+- [Buttons](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/natives/buttons.md): default button plus named styles — solid, soft and outline variants, icon (`IsSquare`) buttons, and `Sizing.Size`.
 - [Icons](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/natives/icons.md): `FontIcon` and the Lucide glyph set.
 - [Card](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/natives/card.md): the `Card` and `CardSecondary` named `Border` styles.
 - [Typography](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/natives/typography.md): the named text styles (`H1`, `H2`, ...).
@@ -34,7 +34,7 @@ Joufflu ships as five NuGet packages that build on each other: `Joufflu` (core s
 
 ## Feedback (`Joufflu.Feedback`)
 
-- [Badge](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/feedback/badge.md): themed pill in the semantic colours, sized via `ControlProperties.Size`.
+- [Badge](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/feedback/badge.md): themed pill in the semantic colours, sized via `Sizing.Size`.
 - [Spinner](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/feedback/spinner.md): indeterminate loading indicator.
 - [Toasts](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/feedback/toasts.md): transient notifications from `IToastService`, including sticky toasts.
 
@@ -45,9 +45,9 @@ Joufflu ships as five NuGet packages that build on each other: `Joufflu` (core s
 - [List](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/file-explorer/list.md): `ExplorerList`, its `ExtraColumns` and the `VisibleNodes` filter.
 - [Tree](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/file-explorer/tree.md): `ExplorerTree` of the loaded hierarchy, folders only by default.
 
-## Toolkit (`Joufflu`)
+## Toolkit (`Joufflu`, namespace `Joufflu.Toolkit`)
 
-- [Sizing](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/sizing.md): `ControlProperties.Size` and `IsSquare` attached properties.
+- [Sizing](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/sizing.md): `Sizing.Size` and `IsSquare` attached properties.
 - [Spacing](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/spacing.md): `Spacing.Gap` attached property for gaps between panel children.
 - [Drop target](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/drop-target.md): `DropTarget.Command` turning any element into a drop target, the `CanExecute` filter, the `DropData` parameter carrying the dragged data and where the drop landed, the `IsDragOver` highlight and the reported `Effect`.
 - [Theme](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/theme.md): `ThemeManager` (System/Light/Dark plus registering custom themes by name) and binding a theme switcher.

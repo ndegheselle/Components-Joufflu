@@ -24,5 +24,5 @@ All snippets assume the `inputs` and `joufflu` XML namespaces:
 
 ```xml
 xmlns:inputs="clr-namespace:Joufflu.Inputs.Controls;assembly=Joufflu.Inputs"
-xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
+xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
 ```

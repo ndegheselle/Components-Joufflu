@@ -7,7 +7,7 @@ public class DropdownSamplesViewModel : ObservableObject
     public string Code =>
         "<ToggleButton Content=\"Actions\" inputs:Dropdown.CloseOnClick=\"True\">\n" +
         "    <inputs:Dropdown.Popup>\n" +
-        "        <StackPanel joufflu:Spacing.Gap=\"4\">\n" +
+        "        <StackPanel toolkit:Spacing.Gap=\"4\">\n" +
         "            <Button Content=\"Rename\" Style=\"{StaticResource GhostButton}\" />\n" +
         "            <Button Content=\"Duplicate\" Style=\"{StaticResource GhostButton}\" />\n" +
         "        </StackPanel>\n" +
@@ -25,8 +25,8 @@ public class DropdownSamplesViewModel : ObservableObject
     public string StyleCode =>
         "<ToggleButton\n" +
         "    inputs:Dropdown.Placement=\"BottomRight\"\n" +
-        "    joufflu:Sizing.IsSquare=\"True\"\n" +
-        "    joufflu:Sizing.Size=\"lg\">\n" +
+        "    toolkit:Sizing.IsSquare=\"True\"\n" +
+        "    toolkit:Sizing.Size=\"lg\">\n" +
         "    <fonts:FontIcon Text=\"{x:Static fonts:LucideFontIcons.EllipsisVertical}\" />\n" +
         "    <inputs:Dropdown.Popup>\n" +
         "        <TextBlock Text=\"An icon only dropdown.\" />\n" +

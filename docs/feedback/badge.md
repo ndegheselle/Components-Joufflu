@@ -20,9 +20,9 @@ A pill themed from the semantic brushes. Set `Variant` (`Default`, `Primary`,
 
 ## Sizes
 
-Sized through the inherited `ControlProperties.Size` attached property.
+Sized through the inherited `Sizing.Size` attached property.
 
 ```xml
-<feedback:Badge Variant="Primary" joufflu:ControlProperties.Size="xs">xs</feedback:Badge>
-<feedback:Badge Variant="Primary" joufflu:ControlProperties.Size="lg">lg</feedback:Badge>
+<feedback:Badge Variant="Primary" toolkit:Sizing.Size="xs">xs</feedback:Badge>
+<feedback:Badge Variant="Primary" toolkit:Sizing.Size="lg">lg</feedback:Badge>
 ```

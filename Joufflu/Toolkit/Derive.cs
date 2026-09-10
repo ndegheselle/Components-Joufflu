@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Joufflu.Extensions;
+namespace Joufflu.Toolkit;
 
 /// <summary>
 /// Builds a border thickness, a margin or a <see cref="CornerRadius"/> from a single scalar resource,
@@ -22,10 +22,10 @@ namespace Joufflu.Extensions;
 /// A border rounded on its top corners only, drawn on every side but the bottom:
 /// <code>
 /// &lt;Border
-///     extensions:Derive.BorderThickness="{x:Static joufflu:Dimensions.Thickness}"
-///     extensions:Derive.BorderThicknessFactor="1,1,1,0"
-///     extensions:Derive.CornerRadius="{x:Static joufflu:Dimensions.Radius}"
-///     extensions:Derive.CornerRadiusFactor="1,1,0,0" /&gt;
+///     toolkit:Derive.BorderThickness="{x:Static joufflu:Dimensions.Thickness}"
+///     toolkit:Derive.BorderThicknessFactor="1,1,1,0"
+///     toolkit:Derive.CornerRadius="{x:Static joufflu:Dimensions.Radius}"
+///     toolkit:Derive.CornerRadiusFactor="1,1,0,0" /&gt;
 /// </code>
 /// </example>
 /// </summary>

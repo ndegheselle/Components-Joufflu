@@ -11,9 +11,9 @@ public class TextBoxSamplesViewModel : ObservableObject
     public string TextCode => "<TextBox Text=\"{Binding Text}\" />";
 
     public string SizesCode =>
-        "<TextBox joufflu:Sizing.Size=\"sm\" />\n" +
+        "<TextBox toolkit:Sizing.Size=\"sm\" />\n" +
         "<TextBox />\n" +
-        "<TextBox joufflu:Sizing.Size=\"lg\" />";
+        "<TextBox toolkit:Sizing.Size=\"lg\" />";
 
     public string OtherCode =>
         "<PasswordBox />\n" +

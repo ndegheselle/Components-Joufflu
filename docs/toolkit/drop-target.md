@@ -17,7 +17,7 @@ be dropped — the cursor shows a no-drop sign — and never lights the zone up.
 
 ```xml
 <!-- AllowDrop and the drag events are handled by the behavior -->
-<Border joufflu:DropTarget.Command="{Binding DropFilesCommand}"
+<Border toolkit:DropTarget.Command="{Binding DropFilesCommand}"
         BorderThickness="{DynamicResource {x:Static joufflu:Dimensions.BorderThickness}}">
     <TextBlock VerticalAlignment="Center" Text="Drop .pdf files here" />
 </Border>
@@ -74,14 +74,14 @@ trigger needs to highlight a valid drop. It inherits, so template and content
 children see it too.
 
 ```xml
-<Border joufflu:DropTarget.Command="{Binding DropFilesCommand}">
+<Border toolkit:DropTarget.Command="{Binding DropFilesCommand}">
     <!-- Background and BorderBrush are styled, not set on the Border, so the trigger can override them -->
     <Border.Style>
         <Style TargetType="Border">
             <Setter Property="Background" Value="Transparent" />
             <Style.Triggers>
                 <!-- True only while accepted data hovers: refused files never highlight -->
-                <Trigger Property="joufflu:DropTarget.IsDragOver" Value="True">
+                <Trigger Property="toolkit:DropTarget.IsDragOver" Value="True">
                     <Setter Property="Background" Value="{DynamicResource {x:Static joufflu:Brushes.Primary100Brush}}" />
                     <Setter Property="BorderBrush" Value="{DynamicResource {x:Static joufflu:Brushes.PrimaryBrush}}" />
                 </Trigger>
@@ -99,8 +99,8 @@ drives the mouse cursor — `Copy` by default. Data the source doesn't allow thi
 effect for is rejected, so a `Move` target only accepts drags that can be moved.
 
 ```xml
-<Border joufflu:DropTarget.Command="{Binding MoveCommand}"
-        joufflu:DropTarget.Effect="Move" />
+<Border toolkit:DropTarget.Command="{Binding MoveCommand}"
+        toolkit:DropTarget.Effect="Move" />
 ```
 
 ## DragSource.Data
@@ -117,8 +117,8 @@ what the data **is** instead of having to know the exact kind it is given.
 
 ```xml
 <!-- The mouse events are handled by the behavior: the drag starts past the system threshold -->
-<Border joufflu:DragSource.Data="{Binding}"
-        joufflu:DragSource.AllowedEffects="Move">
+<Border toolkit:DragSource.Data="{Binding}"
+        toolkit:DragSource.AllowedEffects="Move">
     <TextBlock Text="{Binding}" />
 </Border>
 ```
@@ -139,8 +139,8 @@ A target asking for anything else is refused, so `AllowedEffects` and
 
 ```xml
 <!-- Both agree on Move: the item leaves the source -->
-<Border joufflu:DragSource.Data="{Binding}" joufflu:DragSource.AllowedEffects="Move" />
-<Border joufflu:DropTarget.Command="{Binding TakeCommand}" joufflu:DropTarget.Effect="Move" />
+<Border toolkit:DragSource.Data="{Binding}" toolkit:DragSource.AllowedEffects="Move" />
+<Border toolkit:DropTarget.Command="{Binding TakeCommand}" toolkit:DropTarget.Effect="Move" />
 ```
 
 ## DragSource.IsDragging
@@ -150,12 +150,12 @@ needs to fade the original out while it travels. It inherits, so template and co
 children see it too.
 
 ```xml
-<Border joufflu:DragSource.Data="{Binding}">
+<Border toolkit:DragSource.Data="{Binding}">
     <Border.Style>
         <Style TargetType="Border">
             <Style.Triggers>
                 <!-- True for the whole drag: the original fades out while it travels -->
-                <Trigger Property="joufflu:DragSource.IsDragging" Value="True">
+                <Trigger Property="toolkit:DragSource.IsDragging" Value="True">
                     <Setter Property="Opacity" Value="0.4" />
                 </Trigger>
             </Style.Triggers>

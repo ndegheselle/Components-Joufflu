@@ -70,14 +70,14 @@ public class DropTargetSamplesViewModel : ObservableObject
     public string DropCode =>
         """
         <!-- AllowDrop and the drag events are handled by the behavior -->
-        <Border joufflu:DropTarget.Command="{Binding DropFilesCommand}"
+        <Border toolkit:DropTarget.Command="{Binding DropFilesCommand}"
                 BorderThickness="{DynamicResource {x:Static joufflu:Dimensions.BorderThickness}}">
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Background" Value="Transparent" />
                     <Style.Triggers>
                         <!-- True only while accepted data hovers: refused files never highlight -->
-                        <Trigger Property="joufflu:DropTarget.IsDragOver" Value="True">
+                        <Trigger Property="toolkit:DropTarget.IsDragOver" Value="True">
                             <Setter Property="Background" Value="{DynamicResource {x:Static joufflu:Brushes.Primary100Brush}}" />
                             <Setter Property="BorderBrush" Value="{DynamicResource {x:Static joufflu:Brushes.PrimaryBrush}}" />
                         </Trigger>
@@ -104,13 +104,13 @@ public class DropTargetSamplesViewModel : ObservableObject
     public string DragCode =>
         """
         <!-- The mouse events are handled by the behavior: the drag starts past the system threshold -->
-        <Border joufflu:DragSource.Data="{Binding}"
-                joufflu:DragSource.AllowedEffects="Move">
+        <Border toolkit:DragSource.Data="{Binding}"
+                toolkit:DragSource.AllowedEffects="Move">
             <Border.Style>
                 <Style TargetType="Border">
                     <Style.Triggers>
                         <!-- True for the whole drag: the original fades out while it travels -->
-                        <Trigger Property="joufflu:DragSource.IsDragging" Value="True">
+                        <Trigger Property="toolkit:DragSource.IsDragging" Value="True">
                             <Setter Property="Opacity" Value="0.4" />
                         </Trigger>
                     </Style.Triggers>
@@ -120,8 +120,8 @@ public class DropTargetSamplesViewModel : ObservableObject
         </Border>
 
         <!-- AllowedEffects and Effect must agree, here on Move, for the drop to happen -->
-        <Border joufflu:DropTarget.Command="{Binding TakeTagCommand}"
-                joufflu:DropTarget.Effect="Move" />
+        <Border toolkit:DropTarget.Command="{Binding TakeTagCommand}"
+                toolkit:DropTarget.Effect="Move" />
 
         // Data that isn't an IDataObject is wrapped in a DataObject, so a string arrives as text
         private static string? GetTag(IDataObject? data) => data?.GetData(DataFormats.UnicodeText) as string;

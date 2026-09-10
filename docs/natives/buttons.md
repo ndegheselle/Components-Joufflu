@@ -67,19 +67,19 @@ soft tint.
 any variant.
 
 ```xml
-<Button joufflu:ControlProperties.IsSquare="True" Style="{StaticResource PrimaryButton}">
+<Button toolkit:Sizing.IsSquare="True" Style="{StaticResource PrimaryButton}">
     <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Plus}" />
 </Button>
 ```
 
 ## Sizes
 
-The inherited `ControlProperties.Size` attached property (`xs` / `sm` / `md` /
+The inherited `Sizing.Size` attached property (`xs` / `sm` / `md` /
 `lg`) scales height, font size and padding.
 
 ```xml
-<Button joufflu:ControlProperties.Size="xs">XS</Button>
-<Button joufflu:ControlProperties.Size="sm">SM</Button>
-<Button joufflu:ControlProperties.Size="md">MD</Button>
-<Button joufflu:ControlProperties.Size="lg">LG</Button>
+<Button toolkit:Sizing.Size="xs">XS</Button>
+<Button toolkit:Sizing.Size="sm">SM</Button>
+<Button toolkit:Sizing.Size="md">MD</Button>
+<Button toolkit:Sizing.Size="lg">LG</Button>
 ```

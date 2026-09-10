@@ -44,7 +44,7 @@ page's raw Markdown source. (Prefer this raw URL over the rendered site, which c
 | **Feedback** (`Joufflu.Feedback`) | `Badge`, `Spinner`, `Toasts` and their `ToastContainer` |
 | **File explorer** (`Joufflu.FileExplorer`) | `Explorer`, `ExplorerList`, `ExplorerTree`, `ExplorerControlBar` and their `IExplorerSource` |
 | **Data** (`Joufflu.Data`) | `DataEditor` filling a value in against a JSON Schema, `SchemaEditor` writing one, `SchemaView` showing one |
-| **Toolkit** (`Joufflu`) | Sizing, spacing and drop target attached properties, `ThemeManager`, live theme customization, and the application shell (`ThemedWindow`) |
+| **Toolkit** (`Joufflu`, namespace `Joufflu.Toolkit`) | Sizing, spacing and drop target attached properties, `ThemeManager`, live theme customization, and the application shell (`ThemedWindow`) |
 
 The **Natives** — WPF's built-in controls (buttons, text boxes, combo boxes,
 data grid, …) restyled to match the design system — come along with the core
