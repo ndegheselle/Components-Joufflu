@@ -178,7 +178,7 @@
                                 Style="{StaticResource SoftDangerButton}"
                                 ToolTip="Remove this item"
                                 Visibility="{Binding RemoveItemCommand, Converter={x:Static jonverters:VisibilityConverter.Default}}">
-                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash2}" />
+                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash}" />
                             </Button>
 
                             <!--  A reference stands where a value stands, whatever the declared type  -->

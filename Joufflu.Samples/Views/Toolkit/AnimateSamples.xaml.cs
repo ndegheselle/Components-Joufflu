@@ -2,9 +2,9 @@ using System.Windows.Controls;
 
 namespace Joufflu.Samples.Views.Toolkit;
 
-public partial class ThemeSamples : UserControl
+public partial class AnimateSamples : UserControl
 {
-    public ThemeSamples()
+    public AnimateSamples()
     {
         InitializeComponent();
     }

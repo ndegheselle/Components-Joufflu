@@ -29,7 +29,7 @@
                         <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Home}" />
                         <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Bell}" />
                         <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Settings}" />
-                        <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash2}" />
+                        <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash}" />
                     </WrapPanel>
 
                     <StackPanel Orientation="Horizontal" toolkit:Spacing.Gap="12,0">

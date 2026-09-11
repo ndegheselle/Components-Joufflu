@@ -1,6 +1,6 @@
 using System.Windows.Media;
 
-namespace Joufflu.Samples.Views.Toolkit;
+namespace Joufflu.Samples.Views.Themes;
 
 /// <summary>
 /// A named, ready-to-apply colour palette selectable from the theme customizer.

@@ -72,7 +72,7 @@
                         <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Settings}" />
                     </Button>
                     <Button toolkit:Sizing.IsSquare="True" Style="{StaticResource DangerButton}">
-                        <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash2}" />
+                        <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash}" />
                     </Button>
                 </StackPanel>
             </c:CodeExample>

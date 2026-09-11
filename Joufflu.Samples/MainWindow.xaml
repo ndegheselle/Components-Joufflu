@@ -7,8 +7,8 @@
     xmlns:converters="clr-namespace:Joufflu.Converters;assembly=Joufflu"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:dataDisplay="clr-namespace:Joufflu.Samples.Views.Natives.DataDisplay"
-    xmlns:dataSamples="clr-namespace:Joufflu.Samples.Views.Data"
     xmlns:dataInput="clr-namespace:Joufflu.Samples.Views.Natives.DataInput"
+    xmlns:dataSamples="clr-namespace:Joufflu.Samples.Views.Data"
     xmlns:feedback="clr-namespace:Joufflu.Samples.Views.Feedback"
     xmlns:feedbackControls="clr-namespace:Joufflu.Feedback.Controls;assembly=Joufflu.Feedback"
     xmlns:fileExplorer="clr-namespace:Joufflu.Samples.Views.FileExplorer"
@@ -21,14 +21,15 @@
     xmlns:nativeNavigation="clr-namespace:Joufflu.Samples.Views.Natives.Navigation"
     xmlns:nav="clr-namespace:Joufflu.Navigation.Controls;assembly=Joufflu.Navigation"
     xmlns:navigation="clr-namespace:Joufflu.Samples.Views.Navigation"
+    xmlns:themesSamples="clr-namespace:Joufflu.Samples.Views.Themes"
     xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
     xmlns:toolkitSamples="clr-namespace:Joufflu.Samples.Views.Toolkit"
     xmlns:vm="clr-namespace:Joufflu.Samples.ViewModels"
     Width="1100"
-    Height="720"
+    Height="725"
     d:DataContext="{d:DesignInstance Type=vm:AppViewModel}"
-    IconVisibility="Collapsed"
     AllowContentOverTitleBar="True"
+    IconVisibility="Collapsed"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <!--  Toasts sit above everything, modal overlays included.  -->
@@ -51,8 +52,27 @@
                         </StackPanel>
                     </nav:NavigationMenu.Header>
 
-                    <!--  Featured native controls (kept at top level)  -->
+                    <nav:NavigationTitle>Themes</nav:NavigationTitle>
+                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:ShellSamples}">
+                        <nav:NavigationItem.Icon>
+                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.AppWindow}" />
+                        </nav:NavigationItem.Icon>
+                        Application shell
+                    </nav:NavigationItem>
+                    <nav:NavigationItem TargetType="{x:Type themesSamples:ThemeSamplesViewModel}">
+                        <nav:NavigationItem.Icon>
+                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.SunMoon}" />
+                        </nav:NavigationItem.Icon>
+                        Theme
+                    </nav:NavigationItem>
+                    <nav:NavigationItem TargetType="{x:Type themesSamples:ThemeCustomizerViewModel}">
+                        <nav:NavigationItem.Icon>
+                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Palette}" />
+                        </nav:NavigationItem.Icon>
+                        Customize theme
+                    </nav:NavigationItem>
 
+                    <!--  Featured native controls (kept at top level)  -->
                     <nav:NavigationTitle>Natives</nav:NavigationTitle>
 
                     <nav:NavigationItem TargetType="{x:Type actions:ButtonSamplesViewModel}">
@@ -257,30 +277,17 @@
                         </nav:NavigationItem.Icon>
                         Tooltip
                     </nav:NavigationItem>
+                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:AnimateSamplesViewModel}">
+                        <nav:NavigationItem.Icon>
+                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.MoveVertical}" />
+                        </nav:NavigationItem.Icon>
+                        Animate
+                    </nav:NavigationItem>
                     <nav:NavigationItem TargetType="{x:Type toolkitSamples:DropTargetSamplesViewModel}">
                         <nav:NavigationItem.Icon>
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Upload}" />
                         </nav:NavigationItem.Icon>
                         Drag and drop
-                    </nav:NavigationItem>
-
-                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:ThemeSamplesViewModel}">
-                        <nav:NavigationItem.Icon>
-                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.SunMoon}" />
-                        </nav:NavigationItem.Icon>
-                        Theme
-                    </nav:NavigationItem>
-                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:ThemeCustomizerViewModel}">
-                        <nav:NavigationItem.Icon>
-                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Palette}" />
-                        </nav:NavigationItem.Icon>
-                        Customize theme
-                    </nav:NavigationItem>
-                    <nav:NavigationItem TargetType="{x:Type toolkitSamples:ShellSamples}">
-                        <nav:NavigationItem.Icon>
-                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.AppWindow}" />
-                        </nav:NavigationItem.Icon>
-                        Application shell
                     </nav:NavigationItem>
 
                     <nav:NavigationTitle>Joufflu controls</nav:NavigationTitle>

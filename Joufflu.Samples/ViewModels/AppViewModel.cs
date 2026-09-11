@@ -13,6 +13,7 @@ using Joufflu.Samples.Views.Natives.Feedback;
 using Joufflu.Samples.Views.Natives.Layout;
 using Joufflu.Samples.Views.Natives.Navigation;
 using Joufflu.Samples.Views.Navigation;
+using Joufflu.Samples.Views.Themes;
 using Joufflu.Samples.Views.Toolkit;
 
 namespace Joufflu.Samples.ViewModels;
@@ -111,9 +112,12 @@ public class AppViewModel : ObservableObject
             new SizingSamplesViewModel(),
             new SpacingSamplesViewModel(),
             new DropTargetSamplesViewModel(),
+            new AnimateSamplesViewModel(),
+            new ShellSamples(),
+
+            // Themes
             new ThemeSamplesViewModel(),
             new ThemeCustomizerViewModel(),
-            new ShellSamples(),
         }.ToDictionary(page => page.GetType());
 
         Navigator = new Navigator(ResolvePage);

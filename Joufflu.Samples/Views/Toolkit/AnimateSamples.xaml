@@ -1,0 +1,95 @@
+<UserControl
+    x:Class="Joufflu.Samples.Views.Toolkit.AnimateSamples"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:Joufflu.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:feedback="clr-namespace:Joufflu.Feedback.Controls;assembly=Joufflu.Feedback"
+    xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
+    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
+    xmlns:vm="clr-namespace:Joufflu.Samples.Views.Toolkit"
+    d:DataContext="{d:DesignInstance Type=vm:AnimateSamplesViewModel}"
+    mc:Ignorable="d">
+    <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
+        <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+            <TextBlock Style="{StaticResource H1}" Text="Animate" />
+            <TextBlock
+                Foreground="{DynamicResource {x:Static joufflu:Brushes.Foreground100Brush}}"
+                Text="Attached properties that animate any element without touching its template."
+                TextWrapping="Wrap" />
+
+            <c:CodeExample
+                Title="Animate.Bounce"
+                Code="{Binding BounceCode}"
+                Description="Bounce loops a vertical hop to draw attention to an element : it rises to the full height, lands, then rebounds twice at roughly 42% and 18% of it, each rebound shorter than the last, so it settles rather than pulses. It animates a RenderTransform, so it never affects layout and never moves its neighbours. BounceHeight sets how far it rises (in DIPs) and BounceDuration the length of a full cycle — the hop plus the pause before the next one. A hidden element pauses its own hop and resumes when it comes back, so a bounce left on one costs nothing.">
+                <StackPanel toolkit:Spacing.Gap="0,16">
+                    <WrapPanel VerticalAlignment="Center" toolkit:Spacing.Gap="16,12">
+                        <Button toolkit:Animate.Bounce="True" Style="{StaticResource PrimaryButton}">Look at me</Button>
+                        <fonts:FontIcon
+                            VerticalAlignment="Center"
+                            toolkit:Animate.Bounce="True"
+                            toolkit:Animate.BounceDuration="0:0:0.6"
+                            toolkit:Animate.BounceHeight="10"
+                            FontSize="20"
+                            Text="{x:Static fonts:LucideFontIcons.Bell}" />
+                        <feedback:Badge VerticalAlignment="Center" toolkit:Animate.Bounce="True">New</feedback:Badge>
+                    </WrapPanel>
+
+                    <!--  The same button at three cadences: slow idle nudge to impatient hop  -->
+                    <WrapPanel VerticalAlignment="Center" toolkit:Spacing.Gap="16,12">
+                        <Button
+                            toolkit:Animate.Bounce="True"
+                            toolkit:Animate.BounceDuration="0:0:2"
+                            Style="{StaticResource SecondaryButton}">
+                            Slow (2s)
+                        </Button>
+                        <Button
+                            toolkit:Animate.Bounce="True"
+                            toolkit:Animate.BounceDuration="0:0:1"
+                            Style="{StaticResource SecondaryButton}">
+                            Default (1s)
+                        </Button>
+                        <Button
+                            toolkit:Animate.Bounce="True"
+                            toolkit:Animate.BounceDuration="0:0:0.5"
+                            toolkit:Animate.BounceHeight="4"
+                            Style="{StaticResource SecondaryButton}">
+                            Fast (0.5s)
+                        </Button>
+                    </WrapPanel>
+                </StackPanel>
+            </c:CodeExample>
+
+            <c:CodeExample
+                Title="Binding the bounce"
+                Code="{Binding BindingCode}"
+                Description="Bounce is a plain boolean, so bind it to a view-model flag to start and stop the loop at runtime. A transform already on the element is kept and composed with the bounce, then restored once it stops.">
+                <StackPanel toolkit:Spacing.Gap="0,12">
+                    <CheckBox Content="Has unread" IsChecked="{Binding HasUnread, Mode=TwoWay}" />
+                    <WrapPanel VerticalAlignment="Center" toolkit:Spacing.Gap="16,12">
+                        <feedback:Badge VerticalAlignment="Center" toolkit:Animate.Bounce="{Binding HasUnread}">3</feedback:Badge>
+                        <fonts:FontIcon
+                            VerticalAlignment="Center"
+                            toolkit:Animate.Bounce="{Binding HasUnread}"
+                            FontSize="20"
+                            Text="{x:Static fonts:LucideFontIcons.Bell}" />
+                        <!--  Pre-existing rotation: the bounce composes with it instead of replacing it  -->
+                        <Border
+                            Padding="10,6"
+                            toolkit:Animate.Bounce="{Binding HasUnread}"
+                            Background="{DynamicResource {x:Static joufflu:Brushes.PrimaryBrush}}"
+                            CornerRadius="{DynamicResource {x:Static joufflu:Dimensions.CornerRadius}}"
+                            RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <RotateTransform Angle="8" />
+                            </Border.RenderTransform>
+                            <TextBlock Foreground="{DynamicResource {x:Static joufflu:Brushes.PrimaryContentBrush}}" Text="Rotated + bouncing" />
+                        </Border>
+                    </WrapPanel>
+                </StackPanel>
+            </c:CodeExample>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

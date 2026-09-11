@@ -35,7 +35,7 @@
                         </ToggleButton>
                         <Separator />
                         <Button>
-                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash2}" />
+                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash}" />
                         </Button>
                     </ToolBar>
                 </ToolBarTray>

@@ -49,7 +49,7 @@ can paste into your views.
 | [Navigation](navigation/index.md) | `NavigationMenu`, overlays (modal dialogs), `Paging`, `FullContainer` |
 | [Feedback](feedback/index.md) | `Badge`, `Spinner`, toasts (`Joufflu.Feedback`) |
 | [File explorer](file-explorer/index.md) | `Explorer`, `ExplorerList`, `ExplorerTree` and their sources (`Joufflu.FileExplorer`) |
-| [Toolkit](toolkit/index.md) | Sizing, spacing, theme customization, application shell |
+| [Toolkit](toolkit/index.md) | Sizing, spacing, animation, theme customization, application shell |
 
 ## Getting started
 

@@ -1,6 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Joufflu.Samples.Views.Toolkit;
+namespace Joufflu.Samples.Views.Themes;
 
 public class ThemeSamplesViewModel : ObservableObject
 {

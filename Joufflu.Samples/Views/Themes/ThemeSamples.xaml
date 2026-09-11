@@ -1,5 +1,5 @@
 <UserControl
-    x:Class="Joufflu.Samples.Views.Toolkit.ThemeSamples"
+    x:Class="Joufflu.Samples.Views.Themes.ThemeSamples"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:Joufflu.Samples.Controls"
@@ -11,7 +11,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:themes="clr-namespace:Joufflu.Themes;assembly=Joufflu"
     xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
-    xmlns:vm="clr-namespace:Joufflu.Samples.Views.Toolkit"
+    xmlns:vm="clr-namespace:Joufflu.Samples.Views.Themes"
     d:DataContext="{d:DesignInstance Type=vm:ThemeSamplesViewModel}"
     mc:Ignorable="d">
     <UserControl.Resources>

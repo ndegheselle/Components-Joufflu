@@ -12,7 +12,7 @@ using JBrushes = Joufflu.Brushes;
 using JColors = Joufflu.Colors;
 using JDimensions = Joufflu.Dimensions;
 
-namespace Joufflu.Samples.Views.Toolkit;
+namespace Joufflu.Samples.Views.Themes;
 
 /// <summary>A single editable theme colour, wired to a live resource key.</summary>
 public class ThemeColorEntry : ObservableObject

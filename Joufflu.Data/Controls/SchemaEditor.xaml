@@ -91,7 +91,7 @@
                                     Style="{StaticResource SoftDangerButton}"
                                     ToolTip="Remove"
                                     Visibility="{Binding IsNamed, Converter={x:Static jonverters:VisibilityConverter.Default}}">
-                                    <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash2}" />
+                                    <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash}" />
                                 </Button>
                             </StackPanel>
                         </Grid>
