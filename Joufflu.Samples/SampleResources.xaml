@@ -5,8 +5,8 @@
     xmlns:customDisplay="clr-namespace:Joufflu.Samples.Views.Feedback"
     xmlns:customFeedback="clr-namespace:Joufflu.Samples.Views.Feedback"
     xmlns:customNav="clr-namespace:Joufflu.Samples.Views.Navigation"
-    xmlns:dataSamples="clr-namespace:Joufflu.Samples.Views.Data"
     xmlns:customNavViews="clr-namespace:Joufflu.Samples.Views.Navigation.Views"
+    xmlns:dataSamples="clr-namespace:Joufflu.Samples.Views.Data"
     xmlns:fileExplorer="clr-namespace:Joufflu.Samples.Views.FileExplorer"
     xmlns:inputs="clr-namespace:Joufflu.Samples.Views.Inputs"
     xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
@@ -42,27 +42,24 @@
                                     TextWrapping="Wrap" />
                             </StackPanel>
 
-                            <Border Grid.Row="1" Style="{StaticResource CardSecondary}" x:Name="ContentArea">
+                            <Border
+                                x:Name="ContentArea"
+                                Grid.Row="1"
+                                Style="{StaticResource CardSecondary}">
                                 <ContentPresenter />
                             </Border>
 
-                            <Border
+                            <TextBox
                                 x:Name="CodeArea"
                                 Grid.Row="2"
-                                Style="{StaticResource CardSecondary}">
-                                <TextBox
-                                    Height="Auto"
-                                    MaxHeight="320"
-                                    VerticalAlignment="Stretch"
-                                    Background="Transparent"
-                                    BorderThickness="0"
-                                    FontFamily="Consolas, Cascadia Mono, monospace"
-                                    Foreground="{DynamicResource {x:Static joufflu:Brushes.Foreground100Brush}}"
-                                    HorizontalScrollBarVisibility="Auto"
-                                    IsReadOnly="True"
-                                    Text="{TemplateBinding Code}"
-                                    TextWrapping="NoWrap" />
-                            </Border>
+                                Height="Auto"
+                                MaxHeight="320"
+                                VerticalAlignment="Stretch"
+                                FontFamily="Consolas, Cascadia Mono, monospace"
+                                HorizontalScrollBarVisibility="Auto"
+                                IsReadOnly="True"
+                                Text="{TemplateBinding Code}"
+                                TextWrapping="NoWrap" />
                         </Grid>
                     </Border>
 
@@ -217,6 +214,9 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type fileExplorer:ExplorerListSamplesViewModel}">
         <fileExplorer:ExplorerListSamples />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type fileExplorer:ExplorerSourcesSamplesViewModel}">
+        <fileExplorer:ExplorerSourcesSamples />
     </DataTemplate>
     <DataTemplate DataType="{x:Type fileExplorer:ExplorerTreeSamplesViewModel}">
         <fileExplorer:ExplorerTreeSamples />

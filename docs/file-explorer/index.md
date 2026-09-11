@@ -12,6 +12,7 @@ A themed file explorer from the optional
 - **Explorer** — everything together: control bar, tree, list and a status bar.
 - **List** — the nodes of the opened folder, with extra columns of your own.
 - **Tree** — the loaded hierarchy, folders only by default.
+- **Sources** — what the controls display: the disk, the disk watched live, or a source of your own.
 
 Add the package (`dotnet add package Joufflu.FileExplorer`) and merge its
 `Resources.xaml` after the core one and after `Joufflu.Feedback` (the sources report
@@ -46,13 +47,16 @@ clicking one in the list or using the breadcrumb opens it for all of them.
 > shell, so they come with its progress window, its "replace or skip" prompt and its
 > recycle bin.
 
+`FileSystemWatcherSource` reads the same disk and keeps up with it, and a source of
+your own displays whatever you hand over — see [sources](sources.md).
+
 ## Nodes
 
 A source hands over `IExplorerNode`s: a `Name`, a `Path`, a `ModifiedAt` and the
 `Parent` directory. `IExplorerDirectory` adds its `Children`, `IExplorerFile` a `Size`.
 `FileSystemFile` and `FileSystemDirectory` implement them for the disk, and a type of
 your own is displayed like the others — see
-[virtual nodes](explorer.md#virtual-nodes).
+[virtual nodes](sources.md#virtual-nodes).
 
 ## Interactions
 

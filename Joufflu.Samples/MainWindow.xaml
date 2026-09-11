@@ -437,6 +437,12 @@
                             </nav:NavigationItem.Icon>
                             Explorer
                         </nav:NavigationItem>
+                        <nav:NavigationItem TargetType="{x:Type fileExplorer:ExplorerSourcesSamplesViewModel}">
+                            <nav:NavigationItem.Icon>
+                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.HardDrive}" />
+                            </nav:NavigationItem.Icon>
+                            Sources
+                        </nav:NavigationItem>
                     </nav:NavigationGroup>
                 </nav:NavigationMenu>
 

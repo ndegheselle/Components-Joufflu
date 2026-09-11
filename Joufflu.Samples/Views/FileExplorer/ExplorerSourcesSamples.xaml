@@ -1,0 +1,125 @@
+<UserControl
+    x:Class="Joufflu.Samples.Views.FileExplorer.ExplorerSourcesSamples"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="clr-namespace:Joufflu.FileExplorer.Controls.Base;assembly=Joufflu.FileExplorer"
+    xmlns:c="clr-namespace:Joufflu.Samples.Controls"
+    xmlns:conv="clr-namespace:Joufflu.Converters;assembly=Joufflu"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fileExplorer="clr-namespace:Joufflu.FileExplorer.Controls;assembly=Joufflu.FileExplorer"
+    xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts;assembly=Joufflu"
+    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
+    xmlns:local="clr-namespace:Joufflu.Samples.Views.FileExplorer"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
+    d:DataContext="{d:DesignInstance Type=local:ExplorerSourcesSamplesViewModel}"
+    mc:Ignorable="d">
+    <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
+        <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+            <TextBlock Style="{StaticResource H1}" Text="Sources" />
+            <TextBlock
+                Style="{StaticResource Lead}"
+                Text="Every control binds a Source, an IExplorerSource : it holds the opened directory (Current), the loaded hierarchy (Root) and the commands the menus and the shortcuts act with. Controls sharing the same source stay in sync."
+                TextWrapping="Wrap" />
+
+            <c:CodeExample
+                Title="FileSystemSource"
+                Code="{Binding FileSystemSourceCode}"
+                Description="A directory of this machine, read when it is opened. Copying, moving, renaming and deleting are handed over to the Windows shell, so they come with its progress window, its replace or skip prompt and its recycle bin.">
+                <fileExplorer:Explorer Height="300" Source="{Binding Source}" />
+            </c:CodeExample>
+
+            <c:CodeExample
+                Title="FileSystemWatcherSource"
+                Code="{Binding FileSystemWatcherSourceCode}"
+                Description="The same source, watching the disk : a node created, deleted, renamed or moved outside of the explorer shows up in it without a refresh. The buttons write into the watched folder behind its back, only the loaded directories being maintained.">
+                <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+                    <StackPanel Orientation="Horizontal" toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+                        <Button Command="{Binding CreateFileCommand}" Content="Create a file" />
+                        <Button Command="{Binding CreateDirectoryCommand}" Content="Create a folder" />
+                        <Button Command="{Binding ClearCommand}" Content="Empty the folder" />
+                    </StackPanel>
+                    <fileExplorer:Explorer Height="300" Source="{Binding WatcherSource}" />
+                </StackPanel>
+            </c:CodeExample>
+
+            <c:CodeExample
+                Title="Virtual nodes"
+                Code="{Binding VirtualNodesCode}"
+                Description="A source hands over the nodes it wants : VirtualFilesSource adds a notes.md of its own in every directory, associated to a path no file of the disk stands behind. A node type of the application is templated like the others : its visual and its context menu are keyed on its type, and an extra column shows the state it carries, toggled from that menu (right click a notes.md).">
+                <fileExplorer:Explorer Height="400" Source="{Binding VirtualSource}">
+                    <fileExplorer:Explorer.Resources>
+                        <conv:TypeConverter x:Key="NodeTypeConverter" />
+
+                        <!--  Visual of the virtual nodes, implicit as the ones of the node types of the library are.  -->
+                        <DataTemplate DataType="{x:Type local:VirtualFile}">
+                            <StackPanel
+                                Margin="0,4"
+                                toolkit:Spacing.Gap="4"
+                                Orientation="Horizontal">
+                                <fonts:FontIcon Foreground="{DynamicResource {x:Static joufflu:Brushes.InfoBrush}}" Text="{x:Static fonts:LucideFontIcons.StickyNote}" />
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+
+                        <!--  Context menu of the virtual nodes, keyed on their type : it replaces the one of the files nowhere else.  -->
+                        <DataTemplate x:Key="{base:ContextMenuTemplateKey local:VirtualFile}">
+                            <ContextMenu d:DataContext="{d:DesignInstance Type=base:ExplorerMenuContext}">
+                                <!--  Checkable : the check mark takes the place of the icon while the node is pinned.  -->
+                                <MenuItem
+                                    Header="Pinned"
+                                    IsCheckable="True"
+                                    IsChecked="{Binding Node.IsPinned, Mode=TwoWay}">
+                                    <MenuItem.Icon>
+                                        <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Pin}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <Separator />
+                                <MenuItem
+                                    Command="{Binding Source.OpenCommand}"
+                                    CommandParameter="{Binding Node}"
+                                    Header="Open">
+                                    <MenuItem.Icon>
+                                        <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.FileSearch}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem
+                                    Command="{Binding Source.CopyPathCommand}"
+                                    CommandParameter="{Binding Node}"
+                                    Header="Copy path">
+                                    <MenuItem.Icon>
+                                        <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Copy}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </DataTemplate>
+                    </fileExplorer:Explorer.Resources>
+                    <fileExplorer:Explorer.ExtraColumns>
+                        <GridViewColumn Header="Pinned">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!--  The column is shared by every row, so the box only shows on the nodes carrying the state.  -->
+                                    <CheckBox
+                                        Focusable="False"
+                                        IsChecked="{Binding IsPinned, Mode=OneWay}"
+                                        IsHitTestVisible="False">
+                                        <CheckBox.Style>
+                                            <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Converter={StaticResource NodeTypeConverter}}" Value="{x:Type local:VirtualFile}">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </CheckBox.Style>
+                                    </CheckBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </fileExplorer:Explorer.ExtraColumns>
+                </fileExplorer:Explorer>
+            </c:CodeExample>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
@@ -25,7 +25,7 @@ namespace Joufflu.FileExplorer.Sources
         /// Levels of sub directories loaded along with a directory, so that the tree shows an expander without
         /// reading the disk again.
         /// </summary>
-        private const int LoadDepth = 2;
+        protected const int LoadDepth = 2;
 
         /// <summary>Characters a name is refused for, as the Windows explorer lists them.</summary>
         private const string InvalidNameCharacters = @"\ / : * ? "" < > |";
@@ -59,7 +59,7 @@ namespace Joufflu.FileExplorer.Sources
 
         #region Open
 
-        public Task Open()
+        public virtual Task Open()
         {
             Root = new FileSystemDirectory(new DirectoryInfo(rootDirectoryPath), null);
             return Open(Root);
@@ -117,19 +117,22 @@ namespace Joufflu.FileExplorer.Sources
             var dirInfo = new DirectoryInfo(directory.Path);
             foreach (var entry in dirInfo.EnumerateFileSystemInfos())
             {
-                if (entry is FileInfo fi)
-                {
-                    directory.Children.Add(new FileSystemFile(fi, directory));
-                }
-                else if (entry is DirectoryInfo di)
-                {
-                    FileSystemDirectory subDirectory = new FileSystemDirectory(di, directory);
-                    directory.Children.Add(subDirectory);
-                    if (depth > 0)
-                        LoadDirectory(subDirectory, depth - 1);
-                }
+                IExplorerNode node = CreateNode(entry, directory);
+                directory.Children.Add(node);
+
+                if (depth > 0 && node is IExplorerDirectory subDirectory)
+                    LoadDirectory(subDirectory, depth - 1);
             }
         }
+
+        /// <summary>
+        /// Node displaying a file system entry. Every node of the source goes through it, so a derived source
+        /// overrides it to display nodes of its own.
+        /// </summary>
+        protected virtual IExplorerNode CreateNode(FileSystemInfo entry, IExplorerDirectory? parent)
+            => entry is DirectoryInfo directory
+                ? new FileSystemDirectory(directory, parent)
+                : new FileSystemFile((FileInfo)entry, parent);
 
         /// <summary>
         /// Open the file with the default programm.
@@ -354,7 +357,7 @@ namespace Joufflu.FileExplorer.Sources
         /// <summary>
         /// Reload the directories whose content changed, ignoring the ones that aren't part of the loaded tree.
         /// </summary>
-        private void Refresh(IEnumerable<IExplorerDirectory?> directories)
+        protected void Refresh(IEnumerable<IExplorerDirectory?> directories)
         {
             foreach (IExplorerDirectory directory in directories.OfType<IExplorerDirectory>().Distinct())
             {
@@ -451,7 +454,7 @@ namespace Joufflu.FileExplorer.Sources
         /// <summary>
         /// Whether two paths designate the same node, the file system of Windows being case insensitive.
         /// </summary>
-        private static bool PathsEqual(string left, string right)
+        protected static bool PathsEqual(string left, string right)
             => string.Equals(Normalize(left), Normalize(right), StringComparison.OrdinalIgnoreCase);
 
         /// <summary>
@@ -461,7 +464,7 @@ namespace Joufflu.FileExplorer.Sources
         /// Compared on whole segments, by ending both with a separator : a plain StartsWith would report "C:\foo2" as
         /// being inside "C:\foo".
         /// </remarks>
-        private static bool IsSameOrAncestor(string candidate, string path)
+        protected static bool IsSameOrAncestor(string candidate, string path)
             => (Normalize(path) + Path.DirectorySeparatorChar).StartsWith(
                 Normalize(candidate) + Path.DirectorySeparatorChar,
                 StringComparison.OrdinalIgnoreCase);

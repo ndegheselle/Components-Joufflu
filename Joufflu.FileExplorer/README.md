@@ -16,7 +16,7 @@ by a source you can replace or extend with nodes of your own.
 | `ExplorerList` | The nodes of the opened folder, with their date and size. Adds columns of your own through `ExtraColumns`. |
 | `ExplorerTree` | The loaded hierarchy, folders only by default. |
 | `ExplorerControlBar` | Breadcrumb of the opened path, each folder reopened by a click, plus a button going up. |
-| `IExplorerSource` | What the controls display and navigate through. `FileSystemSource` reads a folder of this machine. |
+| `IExplorerSource` | What the controls display and navigate through. `FileSystemSource` reads a folder of this machine, `FileSystemWatcherSource` keeps up with the changes made to it. |
 | `IExplorerNode` | A node of a source: `FileSystemFile`, `FileSystemDirectory`, or a type of your own. |
 
 Every control shares the same `Source`, which is what keeps them in sync: opening a

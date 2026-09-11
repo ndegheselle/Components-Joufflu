@@ -101,6 +101,7 @@ public class AppViewModel : ObservableObject
             new ExplorerSamplesViewModel(Toasts),
             new ExplorerListSamplesViewModel(Toasts),
             new ExplorerTreeSamplesViewModel(Toasts),
+            new ExplorerSourcesSamplesViewModel(Toasts),
 
             // Custom controls
             new BadgeSamplesViewModel(),

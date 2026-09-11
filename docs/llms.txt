@@ -41,9 +41,10 @@ Joufflu ships as five NuGet packages that build on each other: `Joufflu` (core s
 ## File explorer (`Joufflu.FileExplorer`)
 
 - [Overview](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/file-explorer/index.md): `IExplorerSource` / `IExplorerNode`, `FileSystemSource`, shell-backed file operations, context menus, drag and drop, shortcuts and `VisibleNodes`.
-- [Explorer](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/file-explorer/explorer.md): the complete `Explorer` (control bar, tree, list, status bar), replacing the node templates, and adding node types of your own with their context menu and columns.
+- [Explorer](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/file-explorer/explorer.md): the complete `Explorer` (control bar, tree, list, status bar) and replacing the node templates.
 - [List](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/file-explorer/list.md): `ExplorerList`, its `ExtraColumns` and the `VisibleNodes` filter.
 - [Tree](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/file-explorer/tree.md): `ExplorerTree` of the loaded hierarchy, folders only by default.
+- [Sources](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/file-explorer/sources.md): `IExplorerSource`, `FileSystemSource`, the live `FileSystemWatcherSource`, and a source handing over node types of your own with their context menu and columns.
 
 ## Toolkit (`Joufflu`, namespace `Joufflu.Toolkit`)
 
