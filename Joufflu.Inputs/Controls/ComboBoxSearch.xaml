@@ -91,14 +91,19 @@
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.x}" />
                             </Button>
 
+                            <!--  Chevron handle : the text box takes the control surface, so the drop down needs a target of its own  -->
                             <ToggleButton
                                 x:Name="ToggleButton"
                                 Grid.Column="2"
+                                Width="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
+                                Height="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
+                                toolkit:Derive.Margin="{x:Static joufflu:Dimensions.InputPaddingMd}"
+                                toolkit:Derive.MarginFactor="0,0,1,0"
                                 ClickMode="Press"
                                 Focusable="False"
                                 Foreground="{TemplateBinding Foreground}"
                                 IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                                Template="{StaticResource ComboBoxToggleButtonTemplate}" />
+                                Template="{StaticResource ComboBoxChevronToggleButtonTemplate}" />
                         </Grid>
 
                         <!--  Popup showing items  -->
@@ -134,14 +139,17 @@
                         <Trigger Property="toolkit:Sizing.Size" Value="xs">
                             <Setter TargetName="TextArea" Property="Margin" Value="{DynamicResource {x:Static joufflu:Dimensions.InputPaddingXs}}" />
                             <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingXs}" />
+                            <Setter TargetName="ToggleButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingXs}" />
                         </Trigger>
                         <Trigger Property="toolkit:Sizing.Size" Value="sm">
                             <Setter TargetName="TextArea" Property="Margin" Value="{DynamicResource {x:Static joufflu:Dimensions.InputPaddingSm}}" />
                             <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingSm}" />
+                            <Setter TargetName="ToggleButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingSm}" />
                         </Trigger>
                         <Trigger Property="toolkit:Sizing.Size" Value="lg">
                             <Setter TargetName="TextArea" Property="Margin" Value="{DynamicResource {x:Static joufflu:Dimensions.InputPaddingLg}}" />
                             <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingLg}" />
+                            <Setter TargetName="ToggleButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingLg}" />
                         </Trigger>
 
                         <Trigger Property="Text" Value="">

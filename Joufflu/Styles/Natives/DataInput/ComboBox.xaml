@@ -74,6 +74,29 @@
         <Border Background="Transparent" />
     </ControlTemplate>
 
+    <!--  Chevron of the drop down, pointing at the popup it opens  -->
+    <PathGeometry x:Key="ComboBoxChevronGeometry" Figures="M 0 0 L 5 5 L 10 0" />
+
+    <!--  Hit target drawing the chevron itself, for the templates whose surface is taken by  -->
+    <!--  something else (an editable text box, tags…) and cannot host the chevron on their own  -->
+    <ControlTemplate x:Key="ComboBoxChevronToggleButtonTemplate" TargetType="ToggleButton">
+        <Border Background="Transparent" SnapsToDevicePixels="True">
+            <Viewbox
+                Width="10"
+                Height="10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Path
+                    Data="{StaticResource ComboBoxChevronGeometry}"
+                    Stroke="{TemplateBinding Foreground}"
+                    StrokeEndLineCap="Round"
+                    StrokeLineJoin="Round"
+                    StrokeStartLineCap="Round"
+                    StrokeThickness="1.5" />
+            </Viewbox>
+        </Border>
+    </ControlTemplate>
+
     <Style x:Key="{x:Type ComboBox}" TargetType="ComboBox">
         <Setter Property="ItemContainerStyle" Value="{StaticResource {x:Type ComboBoxItem}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static joufflu:Brushes.ForegroundBrush}}" />
@@ -162,7 +185,7 @@
                                 Margin="6,0,10,0"
                                 IsHitTestVisible="False">
                                 <Path
-                                    Data="M 0 0 L 5 5 L 10 0"
+                                    Data="{StaticResource ComboBoxChevronGeometry}"
                                     Stroke="{TemplateBinding Foreground}"
                                     StrokeEndLineCap="Round"
                                     StrokeLineJoin="Round"

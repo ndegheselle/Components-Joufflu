@@ -30,12 +30,25 @@
             <c:CodeExample
                 Title="ComboBoxSearch"
                 Code="{Binding ComboSearchCode}"
-                Description="An editable combo box that filters its items as you type.">
-                <inputs:ComboBoxSearch
+                Description="An editable combo box that filters its items as you type. The chevron opens the whole list, whatever is already selected.">
+                <StackPanel
                     Width="360"
                     HorizontalAlignment="Left"
-                    ItemsSource="{Binding Countries}"
-                    SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
+                    toolkit:Spacing.Gap="4">
+                    <inputs:ComboBoxSearch
+                        toolkit:Sizing.Size="xs"
+                        ItemsSource="{Binding Countries}"
+                        SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
+                    <inputs:ComboBoxSearch
+                        toolkit:Sizing.Size="sm"
+                        ItemsSource="{Binding Countries}"
+                        SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
+                    <inputs:ComboBoxSearch ItemsSource="{Binding Countries}" SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
+                    <inputs:ComboBoxSearch
+                        toolkit:Sizing.Size="lg"
+                        ItemsSource="{Binding Countries}"
+                        SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
+                </StackPanel>
             </c:CodeExample>
         </StackPanel>
     </ScrollViewer>
