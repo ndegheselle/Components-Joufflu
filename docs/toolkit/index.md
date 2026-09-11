@@ -19,6 +19,7 @@ in `Joufflu.Controls`.
 - **Drag and drop** — the `DropTarget.Command`, `IsDragOver` and `Effect` attached properties for turning any element into a drop target, with the `DropData` telling what was dropped and where, and `DragSource.Data`, `AllowedEffects` and `IsDragging` for turning any element into a drag source.
 - **Animate** — the `Animate.Bounce` attached property for a looping vertical hop on any element, with `BounceHeight` and `BounceDuration` shaping it.
 - **Theme** — `ThemeManager` for System/Light/Dark plus registering custom themes, and how to bind a theme switcher UI to it.
+- **Design tokens** — the reference of every `Colors`, `Brushes` and `Dimensions` key a theme is made of, and the role each one plays in the control styles.
 - **Customize theme** — the live theme editor and preset themes.
 - **Application shell** — the window styles, the `FullContainer` page host and the overlay/toast containers wrapping the app.
 

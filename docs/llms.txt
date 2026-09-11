@@ -49,12 +49,14 @@ Joufflu ships as five NuGet packages that build on each other: `Joufflu` (core s
 
 - [Sizing](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/sizing.md): `Sizing.Size` and `IsSquare` attached properties.
 - [Spacing](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/spacing.md): `Spacing.Gap` attached property for gaps between panel children.
-- [Drop target](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/drop-target.md): `DropTarget.Command` turning any element into a drop target, the `CanExecute` filter, the `DropData` parameter carrying the dragged data and where the drop landed, the `IsDragOver` highlight and the reported `Effect`.
-- [Animate](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/animate.md): `Animate.Bounce` looping a vertical hop on any element, with `BounceHeight` and `BounceDuration`.
-- [Theme](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/theme.md): `ThemeManager` (System/Light/Dark plus registering custom themes by name) and binding a theme switcher.
-- [Customize theme](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/customize-theme.md): the live theme editor, presets and override resource keys.
 - [Tooltip](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/tooltip.md): `Tooltip.Content` and `Tooltip.Placement` for themed tooltips on any element.
+- [Drag and drop](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/drop-target.md): `DropTarget.Command` turning any element into a drop target, the `CanExecute` filter, the `DropData` parameter carrying the dragged data and where the drop landed, the `IsDragOver` highlight and the reported `Effect`; and `DragSource.Data`, `AllowedEffects` and `IsDragging` turning any element into a drag source.
+- [Theme](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/theme.md): `ThemeManager` (System/Light/Dark plus registering custom themes by name) and binding a theme switcher.
+- [Design tokens](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/tokens.md): reference of every `Colors`, `Brushes` and `Dimensions` key a theme is made of, with the role each plays in the control styles — surfaces, text, the six accent families (`X` / `X100` / `XContent`), shape, layout, control heights, font sizes and paddings.
+- [Customize theme](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/customize-theme.md): the live theme editor, presets and override resource keys.
 - [Application shell](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/application-shell.md): `ThemedWindow`, `AllowContentOverTitleBar` and the `FullContainer` page host, plus the `OverlayContainer` / `ToastContainer` wrappers.
+- [Derived dimensions](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/derived-dimensions.md): `Derive.BorderThickness`, `Derive.CornerRadius` and `Derive.Margin` with their per-side and per-corner factors, scaling a theme dimension live.
+- [Animate](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/toolkit/animate.md): `Animate.Bounce` looping a vertical hop on any element, with `BounceHeight` and `BounceDuration`.
 
 ## Optional
 

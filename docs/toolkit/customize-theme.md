@@ -12,13 +12,9 @@ generated resource dictionary and merge it into your app **after** the Joufflu
 resources to apply it.
 
 The design system is exposed as resource keys you override in a dictionary:
-
-- **Colours / brushes** — `joufflu:Colors.*` and `joufflu:Brushes.*`
-  (foreground, background layers, border, and the semantic families: primary,
-  secondary, success, info, warning, danger, each with a base, `100` and
-  `Content` variant).
-- **Dimensions** — `joufflu:Dimensions.*` (corner radius, border thickness,
-  spacing, control heights, font sizes and padding per size).
+`joufflu:Colors.*` / `joufflu:Brushes.*` for the colours and `joufflu:Dimensions.*`
+for the metrics. [Design tokens](tokens.html) lists them all, with the role each one
+plays in the control styles.
 
 ```xml
 <!-- Merge your overrides AFTER the Joufflu resources -->
