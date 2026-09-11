@@ -26,7 +26,7 @@
     xmlns:toolkitSamples="clr-namespace:Joufflu.Samples.Views.Toolkit"
     xmlns:vm="clr-namespace:Joufflu.Samples.ViewModels"
     Width="1100"
-    Height="725"
+    Height="790"
     d:DataContext="{d:DesignInstance Type=vm:AppViewModel}"
     AllowContentOverTitleBar="True"
     IconVisibility="Collapsed"
@@ -64,6 +64,12 @@
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.SunMoon}" />
                         </nav:NavigationItem.Icon>
                         Theme
+                    </nav:NavigationItem>
+                    <nav:NavigationItem TargetType="{x:Type themesSamples:ThemeTokensViewModel}">
+                        <nav:NavigationItem.Icon>
+                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Ruler}" />
+                        </nav:NavigationItem.Icon>
+                        Design tokens
                     </nav:NavigationItem>
                     <nav:NavigationItem TargetType="{x:Type themesSamples:ThemeCustomizerViewModel}">
                         <nav:NavigationItem.Icon>

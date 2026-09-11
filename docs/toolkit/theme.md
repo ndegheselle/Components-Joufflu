@@ -1,4 +1,4 @@
----
+﻿---
 title: Theme
 parent: Toolkit
 nav_order: 5
@@ -10,6 +10,9 @@ Joufflu ships two colour palettes — `Themes/Light.xaml` and `Themes/Dark.xaml`
 same keys, different values. `ThemeManager` swaps the active one at runtime through a single
 merged dictionary; since every control reads its colours through `DynamicResource`, the whole
 UI re-themes live.
+
+The keys themselves — what each colour and dimension is used for — are listed in
+[Design tokens](tokens.html).
 
 Themes are selected **by name**. Three are always available — `System`, `Light` and `Dark` —
 and you can register your own palettes so they become selectable alongside the built-ins.

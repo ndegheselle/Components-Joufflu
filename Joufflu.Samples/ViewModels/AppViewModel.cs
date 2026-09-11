@@ -1,4 +1,4 @@
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Joufflu.Feedback;
 using Joufflu.Navigation;
 using Joufflu.Navigation.Controls;
@@ -117,6 +117,7 @@ public class AppViewModel : ObservableObject
 
             // Themes
             new ThemeSamplesViewModel(),
+            new ThemeTokensViewModel(),
             new ThemeCustomizerViewModel(),
         }.ToDictionary(page => page.GetType());
 

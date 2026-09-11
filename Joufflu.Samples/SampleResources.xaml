@@ -226,6 +226,9 @@
     <DataTemplate DataType="{x:Type themesSamples:ThemeSamplesViewModel}">
         <themesSamples:ThemeSamples />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type themesSamples:ThemeTokensViewModel}">
+        <themesSamples:ThemeTokens />
+    </DataTemplate>
     <DataTemplate DataType="{x:Type themesSamples:ThemeCustomizerViewModel}">
         <themesSamples:ThemeCustomizer />
     </DataTemplate>
