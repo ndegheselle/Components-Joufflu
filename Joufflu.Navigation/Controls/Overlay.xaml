@@ -49,7 +49,7 @@
                 BorderBrush="{DynamicResource {x:Static joufflu:Brushes.BorderBrush}}"
                 BorderThickness="{DynamicResource {x:Static joufflu:Dimensions.BorderThickness}}"
                 CornerRadius="{DynamicResource {x:Static joufflu:Dimensions.CornerRadius}}">
-                <Grid>
+                <Grid Margin="{DynamicResource {x:Static joufflu:Dimensions.SpacingThickness}}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
@@ -62,7 +62,6 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock
-                            Margin="{DynamicResource {x:Static joufflu:Dimensions.SpacingThickness}}"
                             VerticalAlignment="Center"
                             Style="{StaticResource H4}"
                             Text="{Binding Options.Title}" />
@@ -79,8 +78,6 @@
                     </Grid>
 
                     <ScrollViewer
-                        toolkit:Derive.Margin="{x:Static joufflu:Dimensions.Spacing}"
-                        toolkit:Derive.MarginFactor="1,0,1,1"
                         Grid.Row="1"
                         HorizontalScrollBarVisibility="Disabled"
                         VerticalScrollBarVisibility="Auto">

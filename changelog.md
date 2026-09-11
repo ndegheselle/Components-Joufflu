@@ -1,4 +1,4 @@
-# Version 0.7.0
+﻿# Version 0.7.0
 
 - Add `Animate.Bounce`, a looping vertical hop on any element, landing and rebounding twice before it rests so it settles rather than pulses : bindable, so the loop starts and stops with a view model flag, with `Animate.BounceHeight` (DIPs) and `Animate.BounceDuration` (a full cycle, hop plus the pause before the next one) shaping it. It animates a `TranslateTransform` of its own added to the element's `RenderTransform`, so it affects no layout and moves no neighbour, and a transform already there is composed with rather than replaced, then restored when the bounce stops. The hop pauses itself while the element is not visible — collapsed, hidden, under a collapsed ancestor or out of the visual tree — and resumes when it comes back, and the element stays collectable whether the bounce was stopped first or not
 - Move the toolkit helpers out of the root `Joufflu` namespace into a `Joufflu.Toolkit` one : `Sizing`, `Spacing`, `Tooltip`, `DropTarget`, `DropData` and `DragSource`, joined by `Derive` which leaves `Joufflu.Extensions`. The design system keys — `Colors`, `Brushes`, `Dimensions` — stay in `Joufflu`, `ThemeManager` in `Joufflu.Themes` and `ThemedWindow` in `Joufflu.Controls`, so the root namespace is the design system and the toolkit is what shapes controls with it. **Breaking** : XAML declaring `xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"` (or `xmlns:extensions="clr-namespace:Joufflu.Extensions;assembly=Joufflu"` for `Derive`) needs a `xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"` and the matching prefix on those attached properties, and C# touching them needs a `using Joufflu.Toolkit;`
@@ -39,7 +39,7 @@
 # Version 0.2.0
 
 - Add the `Joufflu.FileExplorer` package : `Explorer`, `ExplorerList`, `ExplorerTree` and `ExplorerControlBar` sharing an `IExplorerSource`, with node visuals and context menus keyed on the node type, drag and drop, keyboard shortcuts, and file operations handed over to the Windows shell
-- Add the `xl` control size and its `ControlFontSizeXl` dimension
+- Add the `xl` control size and its `FontSizeXl` dimension
 - Size `FontIcon` from the design system instead of a fixed value
 - Improve the toasts look, with a progress bar of their remaining duration
 - Restyle the native `ListView` and `TreeView` (rounded border, centered cell content)

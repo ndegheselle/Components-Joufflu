@@ -10,9 +10,9 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static joufflu:Brushes.BackgroundBrush}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static joufflu:Brushes.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static joufflu:Dimensions.BorderThickness}}" />
-        <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightMd}}" />
-        <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeMd}}" />
-        <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingMd}}" />
+        <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightMd}}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.FontSizeMd}}" />
+        <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.PaddingMd}}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -105,19 +105,19 @@
 
             <!--  Size variants (md is the default, no trigger needed)  -->
             <Trigger Property="toolkit:Sizing.Size" Value="xs">
-                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightXs}}" />
-                <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeXs}}" />
-                <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingXs}}" />
+                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightXs}}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.FontSizeXs}}" />
+                <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.PaddingXs}}" />
             </Trigger>
             <Trigger Property="toolkit:Sizing.Size" Value="sm">
-                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightSm}}" />
-                <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeSm}}" />
-                <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingSm}}" />
+                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightSm}}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.FontSizeSm}}" />
+                <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.PaddingSm}}" />
             </Trigger>
             <Trigger Property="toolkit:Sizing.Size" Value="lg">
-                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightLg}}" />
-                <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeLg}}" />
-                <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingLg}}" />
+                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightLg}}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.FontSizeLg}}" />
+                <Setter Property="Padding" Value="{DynamicResource {x:Static joufflu:Dimensions.PaddingLg}}" />
             </Trigger>
 
             <!--  Square (icon button): Width = Height, Padding = 0  -->
@@ -126,7 +126,7 @@
                     <Condition Property="toolkit:Sizing.IsSquare" Value="True" />
                     <Condition Property="toolkit:Sizing.Size" Value="xs" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightXs}}" />
+                <Setter Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightXs}}" />
                 <Setter Property="Padding" Value="0" />
             </MultiTrigger>
             <MultiTrigger>
@@ -134,7 +134,7 @@
                     <Condition Property="toolkit:Sizing.IsSquare" Value="True" />
                     <Condition Property="toolkit:Sizing.Size" Value="sm" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightSm}}" />
+                <Setter Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightSm}}" />
                 <Setter Property="Padding" Value="0" />
             </MultiTrigger>
             <MultiTrigger>
@@ -142,7 +142,7 @@
                     <Condition Property="toolkit:Sizing.IsSquare" Value="True" />
                     <Condition Property="toolkit:Sizing.Size" Value="md" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightMd}}" />
+                <Setter Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightMd}}" />
                 <Setter Property="Padding" Value="0" />
             </MultiTrigger>
             <MultiTrigger>
@@ -150,7 +150,7 @@
                     <Condition Property="toolkit:Sizing.IsSquare" Value="True" />
                     <Condition Property="toolkit:Sizing.Size" Value="lg" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightLg}}" />
+                <Setter Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightLg}}" />
                 <Setter Property="Padding" Value="0" />
             </MultiTrigger>
         </Style.Triggers>

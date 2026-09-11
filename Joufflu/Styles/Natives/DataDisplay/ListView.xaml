@@ -50,7 +50,7 @@
                                     VerticalScrollBarVisibility="Hidden">
                                     <GridViewHeaderRowPresenter
                                         x:Name="PART_GridViewHeaderRowPresenter"
-                                        Margin="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingMd}}"
+                                        Margin="{StaticResource {x:Static joufflu:Dimensions.PaddingMd}}"
                                         AllowsColumnReorder="{Binding Path=TemplatedParent.View.AllowsColumnReorder, RelativeSource={RelativeSource TemplatedParent}}"
                                         ColumnHeaderContainerStyle="{Binding Path=TemplatedParent.View.ColumnHeaderContainerStyle, RelativeSource={RelativeSource TemplatedParent}}"
                                         ColumnHeaderContextMenu="{Binding Path=TemplatedParent.View.ColumnHeaderContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
@@ -147,7 +147,7 @@
     <Style x:Key="{x:Type ListViewItem}" TargetType="ListViewItem">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static joufflu:Brushes.ForegroundBrush}}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingMd}}" />
+        <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingMd}}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="UseLayoutRounding" Value="True" />
@@ -199,13 +199,13 @@
 
             <!--  Size variants (md is the default, no trigger needed)  -->
             <Trigger Property="toolkit:Sizing.Size" Value="xs">
-                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingXs}}" />
+                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingXs}}" />
             </Trigger>
             <Trigger Property="toolkit:Sizing.Size" Value="sm">
-                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingSm}}" />
+                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingSm}}" />
             </Trigger>
             <Trigger Property="toolkit:Sizing.Size" Value="lg">
-                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingLg}}" />
+                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingLg}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

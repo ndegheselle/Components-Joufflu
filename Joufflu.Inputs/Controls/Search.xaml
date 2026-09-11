@@ -16,48 +16,65 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Search}">
-                    <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
-                        <Border
-                            Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="{DynamicResource {x:Static joufflu:Dimensions.CornerRadius}}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
+                    <Border
+                        Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{DynamicResource {x:Static joufflu:Dimensions.CornerRadius}}"
+                        DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
 
-                                <fonts:FontIcon
-                                    Margin="6,0,0,0"
-                                    HorizontalAlignment="Right"
-                                    Opacity="0.5"
-                                    Text="{x:Static fonts:LucideFontIcons.Search}" />
+                            <fonts:FontIcon
+                                Margin="6,0,0,0"
+                                HorizontalAlignment="Right"
+                                Opacity="0.5"
+                                Text="{x:Static fonts:LucideFontIcons.Search}" />
 
-                                <TextBlock Grid.Column="1"
-                                    Name="PlaceholderText"
-                                    Margin="{TemplateBinding Padding}"
-                                    VerticalAlignment="Center"
-                                    IsHitTestVisible="False"
-                                    Style="{StaticResource Muted}"
-                                    Text="Search ..."
-                                    Visibility="Collapsed" />
+                            <TextBlock
+                                Name="PlaceholderText"
+                                Grid.Column="1"
+                                Margin="{TemplateBinding Padding}"
+                                VerticalAlignment="Center"
+                                IsHitTestVisible="False"
+                                Style="{StaticResource Muted}"
+                                Text="Search ..."
+                                Visibility="Collapsed" />
 
-                                <ScrollViewer Grid.Column="1" x:Name="PART_ContentHost" />
-                            </Grid>
-                        </Border>
-                        <!--  Clear button  -->
-                        <Button
-                            Name="ClearButton"
-                            HorizontalAlignment="Right"
-                            toolkit:Sizing.IsSquare="True"
-                            Command="{Binding ClearSearchCommand}"
-                            Style="{StaticResource GhostButton}">
-                            <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.x}" />
-                        </Button>
-                    </Grid>
+                            <ScrollViewer x:Name="PART_ContentHost" Grid.Column="1" />
+
+                            <!--  Clear button  -->
+                            <Button
+                                Name="ClearButton"
+                                Grid.Column="1"
+                                Width="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
+                                Height="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
+                                Padding="0"
+                                HorizontalAlignment="Right"
+                                toolkit:Derive.Margin="{x:Static joufflu:Dimensions.InputPaddingMd}"
+                                toolkit:Derive.MarginFactor="1,0"
+                                Command="{Binding ClearSearchCommand}"
+                                Style="{StaticResource GhostButton}">
+                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.x}" />
+                            </Button>
+                        </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
+                        <!--  Keeps the clear button flush with the text padding (md is the default set above).  -->
+                        <Trigger Property="toolkit:Sizing.Size" Value="xs">
+                            <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingXs}" />
+                        </Trigger>
+                        <Trigger Property="toolkit:Sizing.Size" Value="sm">
+                            <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingSm}" />
+                        </Trigger>
+                        <Trigger Property="toolkit:Sizing.Size" Value="lg">
+                            <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingLg}" />
+                        </Trigger>
+
                         <Trigger Property="Text" Value="{x:Null}">
                             <Setter TargetName="ClearButton" Property="Visibility" Value="Collapsed" />
                         </Trigger>

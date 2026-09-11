@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -432,27 +432,27 @@ public class ThemeCustomizerViewModel : ObservableObject
             _allScales.Add(entry);
         }
 
-        Scale("Control height", "md", 16, 72, ReadDouble(JDimensions.ControlHeightMd), null, "px",
-            new ThemeScaleStep("xs", "ControlHeightXs", 0.75),
-            new ThemeScaleStep("sm", "ControlHeightSm", 0.875),
-            new ThemeScaleStep("md", "ControlHeightMd", 1),
-            new ThemeScaleStep("lg", "ControlHeightLg", 1.25));
+        Scale("Control height", "md", 16, 72, ReadDouble(JDimensions.HeightMd), null, "px",
+            new ThemeScaleStep("xs", "HeightXs", 0.75),
+            new ThemeScaleStep("sm", "HeightSm", 0.875),
+            new ThemeScaleStep("md", "HeightMd", 1),
+            new ThemeScaleStep("lg", "HeightLg", 1.25));
 
-        Scale("Font size", "md", 8, 32, ReadDouble(JDimensions.ControlFontSizeMd), null, "px",
-            new ThemeScaleStep("xs", "ControlFontSizeXs", 0.85),
-            new ThemeScaleStep("sm", "ControlFontSizeSm", 0.92),
-            new ThemeScaleStep("md", "ControlFontSizeMd", 1),
-            new ThemeScaleStep("lg", "ControlFontSizeLg", 1.23),
-            new ThemeScaleStep("xl", "ControlFontSizeXl", 1.85));
+        Scale("Font size", "md", 8, 32, ReadDouble(JDimensions.FontSizeMd), null, "px",
+            new ThemeScaleStep("xs", "FontSizeXs", 0.85),
+            new ThemeScaleStep("sm", "FontSizeSm", 0.92),
+            new ThemeScaleStep("md", "FontSizeMd", 1),
+            new ThemeScaleStep("lg", "FontSizeLg", 1.23),
+            new ThemeScaleStep("xl", "FontSizeXl", 1.85));
 
         // ControlPadding thicknesses are symmetric (Left==Right, Top==Bottom), so one base per axis.
         // The text input paddings are derived from these at half the horizontal, not edited on their own.
-        Thickness padding = ReadThickness(JDimensions.ControlPaddingMd);
+        Thickness padding = ReadThickness(JDimensions.PaddingMd);
         Scale("Control padding", "md", 0, 40, padding.Left, padding.Top, "px",
-            new ThemeScaleStep("xs", "ControlPaddingXs", 0.5),
-            new ThemeScaleStep("sm", "ControlPaddingSm", 0.75),
-            new ThemeScaleStep("md", "ControlPaddingMd", 1),
-            new ThemeScaleStep("lg", "ControlPaddingLg", 1.5));
+            new ThemeScaleStep("xs", "PaddingXs", 0.5),
+            new ThemeScaleStep("sm", "PaddingSm", 0.75),
+            new ThemeScaleStep("md", "PaddingMd", 1),
+            new ThemeScaleStep("lg", "PaddingLg", 1.5));
     }
 
     /// <summary>
@@ -546,6 +546,9 @@ public class ThemeCustomizerViewModel : ObservableObject
     /// <summary>Horizontal ratio the text input paddings keep to the control paddings they follow.</summary>
     private const double InputPaddingHorizontalFactor = 0.5;
 
+    /// <summary>Ratio of <see cref="Dimensions.HeightEmbedded"/> to the control height scale's base (md) value.</summary>
+    private const double CloseHeightFactor = 0.625;
+
     /// <summary>Pushes every derived step of a scale to its live resource.</summary>
     private static void ApplyScale(ThemeScaleEntry entry)
     {
@@ -562,10 +565,17 @@ public class ThemeCustomizerViewModel : ObservableObject
         if (IsControlPadding(entry))
             foreach (var step in entry.Steps)
                 res[InputPaddingKey(step.ResourceName)] = InputPaddingFrom(step);
+
+        // The close-button height is not edited on its own: it follows the control height's base value.
+        if (IsControlHeight(entry))
+            res[JDimensions.HeightEmbedded] = Math.Round(entry.Base * CloseHeightFactor);
     }
 
     private static bool IsControlPadding(ThemeScaleEntry entry)
-        => entry.Steps.Count > 0 && entry.Steps[0].ResourceName.StartsWith("ControlPadding", StringComparison.Ordinal);
+        => entry.Steps.Count > 0 && entry.Steps[0].ResourceName.StartsWith("Padding", StringComparison.Ordinal);
+
+    private static bool IsControlHeight(ThemeScaleEntry entry)
+        => entry.Steps.Count > 0 && entry.Steps[0].ResourceName.StartsWith("Height", StringComparison.Ordinal);
 
     /// <summary>The input padding thickness derived from a control padding step.</summary>
     private static Thickness InputPaddingFrom(ThemeScaleStep controlPaddingStep)
@@ -574,9 +584,9 @@ public class ThemeCustomizerViewModel : ObservableObject
         return new Thickness(h, controlPaddingStep.Vertical, h, controlPaddingStep.Vertical);
     }
 
-    /// <summary>The input padding key a control padding step feeds (e.g. <c>ControlPaddingSm</c> → <c>InputPaddingSm</c>).</summary>
+    /// <summary>The input padding key a control padding step feeds (e.g. <c>PaddingSm</c> → <c>InputPaddingSm</c>).</summary>
     private static ComponentResourceKey InputPaddingKey(string controlPaddingName)
-        => PaddingKey(controlPaddingName.Replace("Control", "Input", StringComparison.Ordinal));
+        => PaddingKey("Input" + controlPaddingName);
 
     private void ApplyDimension(ThemeDimensionEntry entry)
     {
@@ -707,24 +717,25 @@ public class ThemeCustomizerViewModel : ObservableObject
         "Radius" => JDimensions.Radius,
         "Thickness" => JDimensions.Thickness,
         "Spacing" => JDimensions.Spacing,
-        "ControlHeightXs" => JDimensions.ControlHeightXs,
-        "ControlHeightSm" => JDimensions.ControlHeightSm,
-        "ControlHeightMd" => JDimensions.ControlHeightMd,
-        "ControlHeightLg" => JDimensions.ControlHeightLg,
-        "ControlFontSizeXs" => JDimensions.ControlFontSizeXs,
-        "ControlFontSizeSm" => JDimensions.ControlFontSizeSm,
-        "ControlFontSizeMd" => JDimensions.ControlFontSizeMd,
-        "ControlFontSizeLg" => JDimensions.ControlFontSizeLg,
-        "ControlFontSizeXl" => JDimensions.ControlFontSizeXl,
+        "HeightXs" => JDimensions.HeightXs,
+        "HeightSm" => JDimensions.HeightSm,
+        "HeightMd" => JDimensions.HeightMd,
+        "HeightLg" => JDimensions.HeightLg,
+        "HeightEmbedded" => JDimensions.HeightEmbedded,
+        "FontSizeXs" => JDimensions.FontSizeXs,
+        "FontSizeSm" => JDimensions.FontSizeSm,
+        "FontSizeMd" => JDimensions.FontSizeMd,
+        "FontSizeLg" => JDimensions.FontSizeLg,
+        "FontSizeXl" => JDimensions.FontSizeXl,
         _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown dimension"),
     };
 
     private static ComponentResourceKey PaddingKey(string name) => name switch
     {
-        "ControlPaddingXs" => JDimensions.ControlPaddingXs,
-        "ControlPaddingSm" => JDimensions.ControlPaddingSm,
-        "ControlPaddingMd" => JDimensions.ControlPaddingMd,
-        "ControlPaddingLg" => JDimensions.ControlPaddingLg,
+        "PaddingXs" => JDimensions.PaddingXs,
+        "PaddingSm" => JDimensions.PaddingSm,
+        "PaddingMd" => JDimensions.PaddingMd,
+        "PaddingLg" => JDimensions.PaddingLg,
         "InputPaddingXs" => JDimensions.InputPaddingXs,
         "InputPaddingSm" => JDimensions.InputPaddingSm,
         "InputPaddingMd" => JDimensions.InputPaddingMd,
@@ -734,7 +745,7 @@ public class ThemeCustomizerViewModel : ObservableObject
 
     /// <summary>The key of a scale step, whichever kind of resource it feeds.</summary>
     private static ComponentResourceKey ScaleKey(string name)
-        => name.StartsWith("ControlPadding", StringComparison.Ordinal) ? PaddingKey(name) : DimensionKey(name);
+        => name.StartsWith("Padding", StringComparison.Ordinal) ? PaddingKey(name) : DimensionKey(name);
 
     private IEnumerable<ComponentResourceKey> AllDimensionKeys()
     {
@@ -744,6 +755,7 @@ public class ThemeCustomizerViewModel : ObservableObject
         yield return JDimensions.BorderThickness;
         yield return JDimensions.Spacing;
         yield return JDimensions.SpacingThickness;
+        yield return JDimensions.HeightEmbedded;
         foreach (var dim in _allDimensions)
         {
             if (dim.ResourceName is "Radius" or "Thickness" or "Spacing")
@@ -826,8 +838,16 @@ public class ThemeCustomizerViewModel : ObservableObject
                 foreach (var step in scale.Steps)
                 {
                     Thickness input = InputPaddingFrom(step);
-                    sb.AppendLine($"    <Thickness x:Key=\"{{x:Static joufflu:Dimensions.{step.ResourceName.Replace("Control", "Input")}}}\">{Num(input.Left)},{Num(input.Top)}</Thickness>");
+                    sb.AppendLine($"    <Thickness x:Key=\"{{x:Static joufflu:Dimensions.{"Input" + step.ResourceName}}}\">{Num(input.Left)},{Num(input.Top)}</Thickness>");
                 }
+                sb.AppendLine();
+            }
+
+            // The close-button height rides along with the control height's base value.
+            if (IsControlHeight(scale))
+            {
+                sb.AppendLine("    <!--  Close button height (0.625 of the control height's base value)  -->");
+                sb.AppendLine($"    <system:Double x:Key=\"{{x:Static joufflu:Dimensions.HeightEmbedded}}\">{Num(Math.Round(scale.Base * CloseHeightFactor))}</system:Double>");
                 sb.AppendLine();
             }
         }

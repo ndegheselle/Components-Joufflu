@@ -80,7 +80,11 @@
                             <Button
                                 x:Name="ClearButton"
                                 Grid.Column="1"
-                                toolkit:Sizing.IsSquare="True"
+                                Width="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
+                                Height="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
+                                Padding="0"
+                                toolkit:Derive.Margin="{x:Static joufflu:Dimensions.InputPaddingMd}"
+                                toolkit:Derive.MarginFactor="1,0"
                                 Command="{Binding ClearCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                 Focusable="False"
                                 Style="{StaticResource GhostButton}">
@@ -126,6 +130,17 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
+                        <!--  Keeps the clear button flush with the text padding (md is the default set above).  -->
+                        <Trigger Property="toolkit:Sizing.Size" Value="xs">
+                            <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingXs}" />
+                        </Trigger>
+                        <Trigger Property="toolkit:Sizing.Size" Value="sm">
+                            <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingSm}" />
+                        </Trigger>
+                        <Trigger Property="toolkit:Sizing.Size" Value="lg">
+                            <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingLg}" />
+                        </Trigger>
+
                         <Trigger Property="Text" Value="">
                             <Setter TargetName="ClearButton" Property="Visibility" Value="Collapsed" />
                         </Trigger>

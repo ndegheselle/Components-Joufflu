@@ -34,8 +34,8 @@
     </Style>
 
     <Style TargetType="{x:Type DataGridCell}">
-        <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingMd}}" />
-        <Setter Property="FontSize" Value="{StaticResource {x:Static joufflu:Dimensions.ControlFontSizeMd}}" />
+        <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingMd}}" />
+        <Setter Property="FontSize" Value="{StaticResource {x:Static joufflu:Dimensions.FontSizeMd}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
@@ -57,16 +57,16 @@
 
             <!--  Size variants (md is the default, no trigger needed)  -->
             <Trigger Property="toolkit:Sizing.Size" Value="xs">
-                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingXs}}" />
-                <Setter Property="FontSize" Value="{StaticResource {x:Static joufflu:Dimensions.ControlFontSizeXs}}" />
+                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingXs}}" />
+                <Setter Property="FontSize" Value="{StaticResource {x:Static joufflu:Dimensions.FontSizeXs}}" />
             </Trigger>
             <Trigger Property="toolkit:Sizing.Size" Value="sm">
-                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingSm}}" />
-                <Setter Property="FontSize" Value="{StaticResource {x:Static joufflu:Dimensions.ControlFontSizeSm}}" />
+                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingSm}}" />
+                <Setter Property="FontSize" Value="{StaticResource {x:Static joufflu:Dimensions.FontSizeSm}}" />
             </Trigger>
             <Trigger Property="toolkit:Sizing.Size" Value="lg">
-                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingLg}}" />
-                <Setter Property="FontSize" Value="{StaticResource {x:Static joufflu:Dimensions.ControlFontSizeLg}}" />
+                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingLg}}" />
+                <Setter Property="FontSize" Value="{StaticResource {x:Static joufflu:Dimensions.FontSizeLg}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -170,7 +170,7 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static joufflu:Brushes.ForegroundBrush}}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingMd}}" />
+        <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingMd}}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -203,13 +203,13 @@
 
             <!--  Size variants (md is the default, no trigger needed)  -->
             <Trigger Property="toolkit:Sizing.Size" Value="xs">
-                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingXs}}" />
+                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingXs}}" />
             </Trigger>
             <Trigger Property="toolkit:Sizing.Size" Value="sm">
-                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingSm}}" />
+                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingSm}}" />
             </Trigger>
             <Trigger Property="toolkit:Sizing.Size" Value="lg">
-                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.ControlPaddingLg}}" />
+                <Setter Property="Padding" Value="{StaticResource {x:Static joufflu:Dimensions.PaddingLg}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

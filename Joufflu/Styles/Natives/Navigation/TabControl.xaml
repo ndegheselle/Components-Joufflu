@@ -28,7 +28,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}">
                             <ContentPresenter
                                 x:Name="ContentSite"
-                                Margin="{DynamicResource {x:Static joufflu:Dimensions.ControlPaddingMd}}"
+                                Margin="{DynamicResource {x:Static joufflu:Dimensions.PaddingMd}}"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 ContentSource="Header"

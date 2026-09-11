@@ -15,13 +15,13 @@
     <!--  ============================ NavigationItem ============================  -->
     <Style TargetType="{x:Type nav:NavigationItem}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static joufflu:Brushes.ForegroundBrush}}" />
-        <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlFontSizeMd}}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static joufflu:Dimensions.FontSizeMd}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type nav:NavigationItem}">
                     <Button
                         x:Name="ItemButton"
-                        Height="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightMd}}"
+                        Height="{DynamicResource {x:Static joufflu:Dimensions.HeightMd}}"
                         HorizontalContentAlignment="Stretch"
                         Command="{Binding SelectCommand, RelativeSource={RelativeSource AncestorType={x:Type nav:NavigationMenu}}}"
                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
@@ -55,7 +55,7 @@
                         </Trigger>
                         <DataTrigger Binding="{Binding IsCollapsed, RelativeSource={RelativeSource AncestorType={x:Type nav:NavigationMenu}}}" Value="True">
                             <Setter TargetName="ContentPresenter" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="ItemButton" Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightMd}}" />
+                            <Setter TargetName="ItemButton" Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightMd}}" />
                             <Setter TargetName="ItemButton" Property="HorizontalContentAlignment" Value="Center" />
                             <Setter TargetName="ItemButton" Property="Padding" Value="0" />
                             <!--  Collapsed: the label is hidden, so surface it as a tooltip beside the icon  -->
@@ -131,7 +131,7 @@
                             <Setter TargetName="ChildrenHost" Property="Margin" Value="0" />
                             <Setter TargetName="ChildrenHost" Property="Padding" Value="0" />
                             <Setter TargetName="ChildrenHost" Property="BorderThickness" Value="0" />
-                            <Setter TargetName="HeaderButton" Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.ControlHeightMd}}" />
+                            <Setter TargetName="HeaderButton" Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightMd}}" />
                             <Setter TargetName="HeaderButton" Property="HorizontalContentAlignment" Value="Center" />
                             <Setter TargetName="HeaderButton" Property="Padding" Value="0" />
                             <!--  Collapsed: the header is hidden, so surface it as a tooltip beside the icon  -->
