@@ -5,6 +5,7 @@
         <ResourceDictionary Source="pack://application:,,,/Joufflu.Inputs;component/Controls/DecimalUpDown.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Joufflu.Inputs;component/Controls/NumericUpDown.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Joufflu.Inputs;component/Controls/ComboBoxSearch.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Joufflu.Inputs;component/Controls/Autocomplete.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Joufflu.Inputs;component/Controls/ComboBoxTags.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Joufflu.Inputs;component/Controls/FilePicker.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Joufflu.Inputs;component/Controls/TextEditable.xaml" />

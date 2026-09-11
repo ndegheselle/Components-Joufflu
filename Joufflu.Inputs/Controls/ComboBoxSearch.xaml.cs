@@ -181,6 +181,16 @@ namespace Joufflu.Inputs.Controls
             base.OnLostKeyboardFocus(e);
         }
 
+        protected override void OnDropDownOpened(EventArgs e)
+        {
+            // Opened through the chevron (or the arrow keys) rather than by typing : the text is
+            // then the item that is selected, not a search, so the whole list has to be shown back
+            // instead of the single item the previous filter left.
+            RefreshFilter(true);
+
+            base.OnDropDownOpened(e);
+        }
+
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             if (_editableTextBox == null)
@@ -211,13 +221,17 @@ namespace Joufflu.Inputs.Controls
             Text = null;
         }
 
-        private void RefreshFilter()
+        /// <param name="force">
+        /// Refresh even if the text has not changed, for the cases where what the filter makes of
+        /// that text did change (the drop down being opened on a selected item, typically).
+        /// </param>
+        private void RefreshFilter(bool force = false)
         {
             if (ItemsSource == null)
                 return;
 
             // Prevent unnecessary refresh if the text has not changed
-            if (_previousRefreshText == Text)
+            if (!force && _previousRefreshText == Text)
                 return;
             _previousRefreshText = Text;
 
@@ -246,6 +260,10 @@ namespace Joufflu.Inputs.Controls
             if (value == null)
                 return false;
             if (string.IsNullOrEmpty(Text))
+                return true;
+            // Text left by a selection is not something the user searched for : the list stays whole
+            // so that the other choices remain reachable once an item has been picked.
+            if (SelectedItem != null && Text == GetTextFromItem(SelectedItem))
                 return true;
 
             return DoesValueContainSearch(value);

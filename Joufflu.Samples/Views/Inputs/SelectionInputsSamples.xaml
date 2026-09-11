@@ -30,12 +30,53 @@
             <c:CodeExample
                 Title="ComboBoxSearch"
                 Code="{Binding ComboSearchCode}"
-                Description="An editable combo box that filters its items as you type.">
-                <inputs:ComboBoxSearch
+                Description="An editable combo box that filters its items as you type. The chevron opens the whole list, whatever is already selected.">
+                <StackPanel
                     Width="360"
                     HorizontalAlignment="Left"
-                    ItemsSource="{Binding Countries}"
-                    SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
+                    toolkit:Spacing.Gap="4">
+                    <inputs:ComboBoxSearch
+                        toolkit:Sizing.Size="xs"
+                        ItemsSource="{Binding Countries}"
+                        SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
+                    <inputs:ComboBoxSearch
+                        toolkit:Sizing.Size="sm"
+                        ItemsSource="{Binding Countries}"
+                        SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
+                    <inputs:ComboBoxSearch ItemsSource="{Binding Countries}" SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
+                    <inputs:ComboBoxSearch
+                        toolkit:Sizing.Size="lg"
+                        ItemsSource="{Binding Countries}"
+                        SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
+                </StackPanel>
+            </c:CodeExample>
+
+            <c:CodeExample
+                Title="Autocomplete"
+                Code="{Binding AutocompleteCode}"
+                Description="A text box completing what is typed with the most likely item, greyed after the caret : Tab takes it, the arrows walk the suggestions, and a text the list doesn't hold stays as it is typed.">
+                <StackPanel
+                    Width="360"
+                    HorizontalAlignment="Left"
+                    toolkit:Spacing.Gap="4">
+                    <inputs:Autocomplete ItemsSource="{Binding Countries}" />
+
+                    <inputs:Autocomplete
+                        ItemsSource="{Binding Airports}"
+                        SelectedItem="{Binding SelectedAirport, Mode=TwoWay}"
+                        TextMemberPath="Code">
+                        <inputs:Autocomplete.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel toolkit:Spacing.Gap="6" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="{Binding Code}" />
+                                    <TextBlock Style="{StaticResource Muted}" Text="{Binding City}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </inputs:Autocomplete.ItemTemplate>
+                    </inputs:Autocomplete>
+
+                    <TextBlock Style="{StaticResource Muted}" Text="{Binding SelectedAirport, StringFormat='SelectedItem : {0}', TargetNullValue='SelectedItem : (none)'}" />
+                </StackPanel>
             </c:CodeExample>
         </StackPanel>
     </ScrollViewer>
