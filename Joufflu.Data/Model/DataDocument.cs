@@ -218,8 +218,12 @@ public partial class DataDocument : ObservableObject
 
     private void OnNodeChanged(object? sender, PropertyChangedEventArgs e)
     {
-        // The errors are written by the checking itself : following them would loop.
-        if (e.PropertyName is nameof(DataNode.Errors) or nameof(DataNode.IsExpanded))
+        // The errors are written by the checking itself, HasErrors and ErrorsText with them :
+        // following any of them would have the checking ask for another one, endlessly.
+        if (e.PropertyName is nameof(DataNode.Errors)
+            or nameof(DataNode.HasErrors)
+            or nameof(DataNode.ErrorsText)
+            or nameof(DataNode.IsExpanded))
             return;
 
         Refresh();

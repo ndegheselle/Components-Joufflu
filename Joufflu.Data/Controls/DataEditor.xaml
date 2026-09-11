@@ -96,26 +96,12 @@
                         Margin="0,1"
                         toolkit:Spacing.Gap="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="180" SharedSizeGroup="Name" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
 
-                        <!--
-                            Whether the value is written at all. A property the schema does not
-                            require is left out until it is filled in : an absent property and a
-                            property holding "" are not the same thing.
-                        -->
-                        <CheckBox
-                            VerticalAlignment="Center"
-                            IsChecked="{Binding IsIncluded, Mode=TwoWay}"
-                            IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}"
-                            ToolTip="Write this value"
-                            Visibility="{Binding CanExclude, Converter={x:Static jonverters:VisibilityConverter.Default}}" />
-
                         <StackPanel
-                            Grid.Column="1"
                             VerticalAlignment="Center"
                             Orientation="Horizontal"
                             ToolTip="{Binding Description}">
@@ -134,7 +120,7 @@
                         </StackPanel>
 
                         <!--  The value itself, or the reference standing in for it  -->
-                        <Grid Grid.Column="2" VerticalAlignment="Center">
+                        <Grid Grid.Column="1" VerticalAlignment="Center">
                             <ContentControl
                                 Content="{Binding}"
                                 ContentTemplateSelector="{StaticResource ValueTemplateSelector}"
@@ -157,7 +143,7 @@
                         </Grid>
 
                         <StackPanel
-                            Grid.Column="3"
+                            Grid.Column="2"
                             toolkit:Spacing.Gap="2"
                             Orientation="Horizontal">
                             <!--  An array holds as many values as the reader adds  -->
@@ -170,24 +156,48 @@
                                 Visibility="{Binding AddItemCommand, Converter={x:Static jonverters:VisibilityConverter.Default}}">
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Plus}" />
                             </Button>
-                            <Button
+                            <!--  What can be done to the row, held behind the one button rather than spelled out in as many  -->
+                            <ToggleButton
+                                inputs:Dropdown.CloseOnClick="True"
+                                inputs:Dropdown.Placement="BottomRight"
                                 toolkit:Sizing.IsSquare="True"
                                 toolkit:Sizing.Size="sm"
-                                Command="{Binding RemoveItemCommand}"
-                                CommandParameter="{Binding}"
-                                Style="{StaticResource SoftDangerButton}"
-                                ToolTip="Remove this item"
-                                Visibility="{Binding RemoveItemCommand, Converter={x:Static jonverters:VisibilityConverter.Default}}">
-                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash}" />
-                            </Button>
-
-                            <!--  A reference stands where a value stands, whatever the declared type  -->
-                            <ToggleButton
-                                toolkit:Sizing.IsSquare="True"
-                                IsChecked="{Binding IsReference, Mode=TwoWay}"
-                                ToolTip="Read this value from somewhere else"
-                                Visibility="{Binding AllowsReferences, ElementName=RootElement, Converter={x:Static jonverters:VisibilityConverter.Default}}">
-                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Link}" />
+                                IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}"
+                                Style="{StaticResource ToggleGhost}"
+                                Tag="{Binding AllowsReferences, ElementName=RootElement}"
+                                ToolTip="Options">
+                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.EllipsisVertical}" />
+                                <inputs:Dropdown.Popup>
+                                    <StackPanel MinWidth="150" toolkit:Spacing.Gap="2">
+                                        <!--  A reference stands where a value stands, whatever the declared type  -->
+                                        <CheckBox
+                                            Margin="{DynamicResource {x:Static joufflu:Dimensions.SpacingThickness}}"
+                                            Content="Reference"
+                                            IsChecked="{Binding IsReference, Mode=TwoWay}"
+                                            ToolTip="Read this value from somewhere else"
+                                            Visibility="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource AncestorType={x:Type inputs:DropdownPopupHost}}, Converter={x:Static jonverters:VisibilityConverter.Default}}" />
+                                        <Button
+                                            HorizontalContentAlignment="Left"
+                                            Command="{Binding SetNullCommand}"
+                                            Style="{StaticResource GhostButton}">
+                                            <StackPanel toolkit:Spacing.Gap="6" Orientation="Horizontal">
+                                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.CircleSlash}" />
+                                                <TextBlock Text="Set to null" />
+                                            </StackPanel>
+                                        </Button>
+                                        <Button
+                                            HorizontalContentAlignment="Left"
+                                            Command="{Binding RemoveItemCommand}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource SoftDangerButton}"
+                                            Visibility="{Binding RemoveItemCommand, Converter={x:Static jonverters:VisibilityConverter.Default}}">
+                                            <StackPanel toolkit:Spacing.Gap="6" Orientation="Horizontal">
+                                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Trash}" />
+                                                <TextBlock Text="Remove" />
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </inputs:Dropdown.Popup>
                             </ToggleButton>
 
                             <fonts:FontIcon

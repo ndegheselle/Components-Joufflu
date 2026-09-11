@@ -44,17 +44,6 @@ public abstract partial class DataNode : ObservableObject
         ? Name
         : Name.StartsWith('[') ? Parent.Path + Name : $"{Parent.Path}.{Name}";
 
-    /// <summary>
-    /// Whether the value is written at all. A property the schema does not require is left out
-    /// until it is filled in : to a schema an absent property and a property holding "" are not
-    /// the same thing, and writing the second where the first was meant changes the value.
-    /// </summary>
-    [ObservableProperty]
-    private bool _isIncluded = true;
-
-    /// <summary>A required value is always written, so there is nothing to toggle.</summary>
-    public bool CanExclude => !IsRequired;
-
     /// <summary>Whether the value is a reference to be resolved rather than a literal.</summary>
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsLiteral))]
@@ -89,9 +78,24 @@ public abstract partial class DataNode : ObservableObject
 
     /// <summary>
     /// Take this value out of what holds it, for an item of an array. Null everywhere else : a
-    /// property is left out by not writing it rather than by being removed.
+    /// property is declared by the schema and stays, holding null rather than being removed.
     /// </summary>
     public IRelayCommand? RemoveItemCommand => (Parent as DataArrayNode)?.RemoveCommand;
+
+    /// <summary>
+    /// Hold nothing : whatever was filled in is dropped, so the value is written as the null it
+    /// now is rather than as the empty value of its kind.
+    /// </summary>
+    [RelayCommand]
+    private void SetNull()
+    {
+        IsReference = false;
+        Reference = null;
+        Clear();
+    }
+
+    /// <summary>Drop what the node holds, each kind holding its own thing.</summary>
+    protected virtual void Clear() { }
 
     /// <summary>The document this node hangs under, which owns what a reference looks like.</summary>
     internal DataDocument? Document { get; set; }
@@ -109,9 +113,6 @@ public abstract partial class DataNode : ObservableObject
     /// <summary>What the node holds, <see langword="null"/> when it holds nothing to be written.</summary>
     public JToken? ToToken()
     {
-        if (!IsIncluded)
-            return null;
-
         // A reference is written as the string it is : what it points at is only known once
         // something resolves it, which is not this editor's business.
         if (IsReference)
@@ -127,14 +128,11 @@ public abstract partial class DataNode : ObservableObject
     {
         if (token == null)
         {
-            IsIncluded = IsRequired;
             IsReference = false;
             Reference = null;
             LoadLiteral(null);
             return;
         }
-
-        IsIncluded = true;
 
         if (token.Type == JTokenType.String && Document?.IsReference(token.Value<string>()) == true)
         {
@@ -239,6 +237,8 @@ public partial class DataValueNode : DataNode
         ];
     }
 
+    protected override void Clear() => Value = null;
+
     protected override JToken? ToLiteral() => Value == null ? JValue.CreateNull() : JToken.FromObject(Value);
 
     protected override void LoadLiteral(JToken? token)
@@ -301,12 +301,16 @@ public partial class DataObjectNode : DataNode
         {
             DataNode node = Build(property, declared, declared.IsRequired, walking);
             node.Parent = this;
-            // Only what the schema asks for is written until the reader fills the rest in.
-            node.IsIncluded = declared.IsRequired || declared.ActualSchema.Default != null;
             Properties.Add(node);
         }
 
         IsExpanded = true;
+    }
+
+    protected override void Clear()
+    {
+        foreach (DataNode property in Properties)
+            property.SetNullCommand.Execute(null);
     }
 
     protected override JToken? ToLiteral()
@@ -388,6 +392,12 @@ public partial class DataArrayNode : DataNode
             Items[index].Rename($"[{index}]");
     }
 
+    protected override void Clear()
+    {
+        Items.Clear();
+        Document?.Refresh();
+    }
+
     protected override JToken? ToLiteral()
     {
         var written = new JArray();
@@ -420,6 +430,8 @@ public partial class DataRawNode : DataNode
 
     public DataRawNode(string name, JsonSchema? schema, bool isRequired) : base(name, schema, isRequired)
     { }
+
+    protected override void Clear() => Json = null;
 
     protected override JToken? ToLiteral()
     {

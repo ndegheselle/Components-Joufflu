@@ -35,7 +35,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <Grid Margin="{TemplateBinding Padding}">
+                            <Grid x:Name="TextArea" Margin="{DynamicResource {x:Static joufflu:Dimensions.InputPaddingMd}}">
                                 <ContentPresenter
                                     x:Name="ContentSite"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -130,14 +130,17 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
-                        <!--  Keeps the clear button flush with the text padding (md is the default set above).  -->
+                        <!--  Text inputs carry their own padding key, and the clear button stays flush with it (md is the default set above).  -->
                         <Trigger Property="toolkit:Sizing.Size" Value="xs">
+                            <Setter TargetName="TextArea" Property="Margin" Value="{DynamicResource {x:Static joufflu:Dimensions.InputPaddingXs}}" />
                             <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingXs}" />
                         </Trigger>
                         <Trigger Property="toolkit:Sizing.Size" Value="sm">
+                            <Setter TargetName="TextArea" Property="Margin" Value="{DynamicResource {x:Static joufflu:Dimensions.InputPaddingSm}}" />
                             <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingSm}" />
                         </Trigger>
                         <Trigger Property="toolkit:Sizing.Size" Value="lg">
+                            <Setter TargetName="TextArea" Property="Margin" Value="{DynamicResource {x:Static joufflu:Dimensions.InputPaddingLg}}" />
                             <Setter TargetName="ClearButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingLg}" />
                         </Trigger>
 

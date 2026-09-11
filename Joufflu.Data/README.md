@@ -32,9 +32,8 @@ Bind the shape and the value; the value is written back on every edit.
 ```
 
 `Json` comes back `null` when nothing was filled in, so a caller storing "nothing" as null keeps
-storing null rather than `{}`. A property the schema does not require is left out until its
-checkbox is ticked: to a schema an absent property and a property holding `""` are not the same
-thing.
+storing null rather than `{}`. Every property the schema declares is written; the row's options
+menu holds "Set to null" for a value the reader means to leave empty rather than fill in.
 
 Ask for the errors whenever you need them — each field is handed its own, and the call returns
 them as a whole:
