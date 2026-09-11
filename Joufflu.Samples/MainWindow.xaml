@@ -419,13 +419,6 @@
                         <nav:NavigationGroup.Icon>
                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.FolderTree}" />
                         </nav:NavigationGroup.Icon>
-
-                        <nav:NavigationItem TargetType="{x:Type fileExplorer:ExplorerSamplesViewModel}">
-                            <nav:NavigationItem.Icon>
-                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Folder}" />
-                            </nav:NavigationItem.Icon>
-                            Explorer
-                        </nav:NavigationItem>
                         <nav:NavigationItem TargetType="{x:Type fileExplorer:ExplorerListSamplesViewModel}">
                             <nav:NavigationItem.Icon>
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.LayoutList}" />
@@ -437,6 +430,12 @@
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.ListTree}" />
                             </nav:NavigationItem.Icon>
                             Tree
+                        </nav:NavigationItem>
+                        <nav:NavigationItem TargetType="{x:Type fileExplorer:ExplorerSamplesViewModel}">
+                            <nav:NavigationItem.Icon>
+                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Folder}" />
+                            </nav:NavigationItem.Icon>
+                            Explorer
                         </nav:NavigationItem>
                     </nav:NavigationGroup>
                 </nav:NavigationMenu>

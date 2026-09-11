@@ -1,8 +1,10 @@
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Joufflu.FileExplorer.Data;
 using Joufflu.FileExplorer.Sources;
 using Joufflu.Helpers;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -419,17 +421,60 @@ public abstract partial class ExplorerNodesControl : ExplorerControl, IExplorerU
 
     private void ItemsHost_Drop(object sender, DragEventArgs e)
     {
-        if (e.Data.GetDataPresent(DataFormats.FileDrop) == false)
+        if (!TryGetDrop(e, out IExplorerDirectory? target, out IReadOnlyList<string> files))
             return;
 
-        var element = e.OriginalSource as FrameworkElement;
-        IExplorerDirectory? target = element?.DataContext as IExplorerDirectory ?? Source.Current;
-
-        if (target == null)
-            return;
-
-        string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
         Source.Transfer(files, target, isMove: false);
+    }
+
+    /// <summary>
+    /// Directory a drop would land in : the one under the pointer, or the opened one anywhere else.
+    /// </summary>
+    private IExplorerDirectory? GetDropTarget(DragEventArgs e)
+        => (e.OriginalSource as FrameworkElement)?.DataContext as IExplorerDirectory ?? Source.Current;
+
+    /// <summary>
+    /// Target and dropped paths of a drag, false when it has nothing to transfer : the paths already in the target
+    /// directory are left out, so that dragging a node around the folder it is displayed in doesn't copy it next to
+    /// itself.
+    /// </summary>
+    private bool TryGetDrop(DragEventArgs e, [NotNullWhen(true)] out IExplorerDirectory? target, out IReadOnlyList<string> files)
+    {
+        target = null;
+        files = [];
+
+        if (e.Data.GetDataPresent(DataFormats.FileDrop) == false)
+            return false;
+
+        IExplorerDirectory? directory = GetDropTarget(e);
+        if (directory == null)
+            return false;
+
+        if (e.Data.GetData(DataFormats.FileDrop) is not string[] paths)
+            return false;
+
+        target = directory;
+        files = [.. paths.Where(path => !IsInDirectory(path, directory.Path))];
+        return files.Count > 0;
+    }
+
+    /// <summary>
+    /// Whether a path is a node of a directory, the file system of Windows being case insensitive.
+    /// </summary>
+    private static bool IsInDirectory(string path, string directoryPath)
+    {
+        try
+        {
+            return string.Equals(
+                Path.GetDirectoryName(Path.TrimEndingDirectorySeparator(Path.GetFullPath(path))),
+                Path.TrimEndingDirectorySeparator(Path.GetFullPath(directoryPath)),
+                StringComparison.OrdinalIgnoreCase);
+        }
+        catch (ArgumentException)
+        {
+            // An invalid path is left to the transfer, which ignores what doesn't exist.
+            return false;
+        }
     }
 
     private void ItemsHost_MouseMove(object sender, MouseEventArgs e)
@@ -468,7 +513,7 @@ public abstract partial class ExplorerNodesControl : ExplorerControl, IExplorerU
     }
     private void ItemsHost_DragOver(object sender, DragEventArgs e)
     {
-        if (e.Data.GetDataPresent(DataFormats.FileDrop) == false)
+        if (!TryGetDrop(e, out _, out _))
         {
             e.Effects = DragDropEffects.None;
             e.Handled = true;

@@ -1,4 +1,5 @@
-using System.Windows.Input;
+using System.Windows;
+﻿using System.Windows.Input;
 using System.Windows.Markup;
 using Joufflu.FileExplorer.Data;
 using Joufflu.FileExplorer.Sources;
@@ -9,31 +10,41 @@ namespace Joufflu.FileExplorer.Controls.Base
 
     /// <summary>
     /// Resource key of the context menu template of a data type.
-    /// Inherits <see cref="TypeExtension"/> because the XAML compiler only accepts String, TypeExtension and
-    /// StaticExtension as x:Key markup extensions.
+    /// Inherits <see cref="ComponentResourceKey"/> because the templates live in the theme dictionary of the library
+    /// (Themes/Generic.xaml) : a resource lookup only reaches a theme dictionary for a Type or a ComponentResourceKey
+    /// key, any other key would only be found by a consumer merging the dictionaries into its own resources.
     /// </summary>
-    public sealed class ContextMenuTemplateKey : TypeExtension, IEquatable<ContextMenuTemplateKey>
+    public sealed class ContextMenuTemplateKey : ComponentResourceKey, IEquatable<ContextMenuTemplateKey>
     {
-        public ContextMenuTemplateKey() { }
+        /// <summary>Type name declared in XAML, resolved in <see cref="ProvideValue"/>.</summary>
+        private readonly string? _typeName;
 
-        public ContextMenuTemplateKey(Type dataType) : base(dataType) { }
+        public ContextMenuTemplateKey()
+        {
+            // Points the lookup at the theme dictionary of this assembly.
+            TypeInTargetAssembly = typeof(ContextMenuTemplateKey);
+        }
 
-        public ContextMenuTemplateKey(string typeName) : base(typeName) { }
+        public ContextMenuTemplateKey(Type dataType) : this() { DataType = dataType; }
 
-        public Type DataType => Type;
+        public ContextMenuTemplateKey(string typeName) : this() { _typeName = typeName; }
+
+        public Type? DataType { get; private set; }
 
         public MenuScope Scope { get; set; } = MenuScope.Single;
 
         public override object ProvideValue(IServiceProvider sp)
         {
             // Resolves the type name declared in XAML
-            Type ??= (Type)base.ProvideValue(sp);
+            if (DataType == null && _typeName != null)
+                DataType = (sp.GetService(typeof(IXamlTypeResolver)) as IXamlTypeResolver)?.Resolve(_typeName);
+
             return this;
         }
 
-        public bool Equals(ContextMenuTemplateKey? o) => o is not null && o.Type == Type && o.Scope == Scope;
+        public bool Equals(ContextMenuTemplateKey? o) => o is not null && o.DataType == DataType && o.Scope == Scope;
         public override bool Equals(object? o) => Equals(o as ContextMenuTemplateKey);
-        public override int GetHashCode() => HashCode.Combine(Type, Scope);
+        public override int GetHashCode() => HashCode.Combine(DataType, Scope);
     }
 
     /// <summary>
