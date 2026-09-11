@@ -11,8 +11,8 @@ inputs.
 
 - **Numeric & format inputs** — `NumericUpDown`, `DecimalUpDown`,
   `TimeSpanPicker` and the underlying `FormatTextBox`.
-- **Search & combo** — a debounced `Search` box and the searchable
-  `ComboBoxSearch`.
+- **Search & combo** — a debounced `Search` box, the searchable
+  `ComboBoxSearch` and the completing `Autocomplete`.
 - **Combo box tags** — multi-selection built on `ComboBoxSearch`.
 - **Text editable** — a value that becomes editable on demand.
 - **File picker** — pick a file through the system dialog.

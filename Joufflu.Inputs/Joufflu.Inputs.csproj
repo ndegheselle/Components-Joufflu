@@ -9,7 +9,7 @@
     <IsPackable>true</IsPackable>
     <PackageId>Joufflu.Inputs</PackageId>
     <Title>Joufflu.Inputs</Title>
-    <Description>WPF input controls for Joufflu: numeric / decimal / timespan pickers, searchable and tag combo boxes, file and color pickers, inline-editable text, and a dropdown.</Description>
+    <Description>WPF input controls for Joufflu: numeric / decimal / timespan pickers, searchable and tag combo boxes, an autocomplete text box, file and color pickers, inline-editable text, and a dropdown.</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <Version>0.6.7</Version>

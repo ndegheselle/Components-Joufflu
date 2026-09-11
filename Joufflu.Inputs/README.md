@@ -18,6 +18,7 @@ re-theme live between Light and Dark along with the rest of your UI.
 | `FormatTextBox` | Text box with masked / formatted input. |
 | `Search` | Search box with a text-changed workflow. |
 | `ComboBoxSearch` | Combo box with searchable / filterable items. |
+| `Autocomplete` | Text box completing what is typed with the most likely item. |
 | `ComboBoxTags` | Multi-select combo box rendering choices as tags. |
 | `TextEditable` | Label that turns into an inline editor on click. |
 | `FilePicker` | Pick a file or folder. |

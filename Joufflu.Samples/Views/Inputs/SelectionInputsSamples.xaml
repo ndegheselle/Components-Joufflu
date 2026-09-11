@@ -50,6 +50,34 @@
                         SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" />
                 </StackPanel>
             </c:CodeExample>
+
+            <c:CodeExample
+                Title="Autocomplete"
+                Code="{Binding AutocompleteCode}"
+                Description="A text box completing what is typed with the most likely item, greyed after the caret : Tab takes it, the arrows walk the suggestions, and a text the list doesn't hold stays as it is typed.">
+                <StackPanel
+                    Width="360"
+                    HorizontalAlignment="Left"
+                    toolkit:Spacing.Gap="4">
+                    <inputs:Autocomplete ItemsSource="{Binding Countries}" />
+
+                    <inputs:Autocomplete
+                        ItemsSource="{Binding Airports}"
+                        SelectedItem="{Binding SelectedAirport, Mode=TwoWay}"
+                        TextMemberPath="Code">
+                        <inputs:Autocomplete.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel toolkit:Spacing.Gap="6" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="{Binding Code}" />
+                                    <TextBlock Style="{StaticResource Muted}" Text="{Binding City}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </inputs:Autocomplete.ItemTemplate>
+                    </inputs:Autocomplete>
+
+                    <TextBlock Style="{StaticResource Muted}" Text="{Binding SelectedAirport, StringFormat='SelectedItem : {0}', TargetNullValue='SelectedItem : (none)'}" />
+                </StackPanel>
+            </c:CodeExample>
         </StackPanel>
     </ScrollViewer>
 </UserControl>
