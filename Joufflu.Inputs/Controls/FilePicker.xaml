@@ -25,14 +25,11 @@
                             <!--  Clear button  -->
                             <Button
                                 x:Name="ClearButton"
-                                Width="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
-                                Height="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
-                                Padding="0"
                                 toolkit:Derive.Margin="{x:Static joufflu:Dimensions.InputPaddingMd}"
                                 toolkit:Derive.MarginFactor="1,0"
                                 Command="{Binding ClearCommand}">
                                 <Button.Style>
-                                    <Style BasedOn="{StaticResource GhostButton}" TargetType="{x:Type Button}">
+                                    <Style BasedOn="{StaticResource EmbeddedButton}" TargetType="{x:Type Button}">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding FilePath}" Value="">
                                                 <Setter Property="Visibility" Value="Collapsed" />

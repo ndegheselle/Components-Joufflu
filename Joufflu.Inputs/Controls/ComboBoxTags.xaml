@@ -68,13 +68,10 @@
                                                             </TextBlock.Text>
                                                         </TextBlock>
                                                         <Button
-                                                            Width="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
-                                                            Height="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
-                                                            Padding="0"
                                                             Margin="3"
                                                             Command="{Binding RemoveSelectedCommand, RelativeSource={RelativeSource AncestorType=local:ComboBoxTags}}"
                                                             CommandParameter="{Binding}"
-                                                            Style="{StaticResource GhostButton}">
+                                                            Style="{StaticResource EmbeddedButton}">
                                                             <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.x}" />
                                                         </Button>
                                                     </StackPanel>

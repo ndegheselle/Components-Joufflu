@@ -54,10 +54,8 @@
                             </TextBlock>
                             <Button
                                 Grid.Column="1"
-                                toolkit:Sizing.IsSquare="True"
-                                toolkit:Sizing.Size="xs"
                                 Command="{Binding EditCommand}"
-                                Style="{DynamicResource GhostButton}">
+                                Style="{DynamicResource EmbeddedButton}">
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Pencil}" />
                             </Button>
                         </Grid>
@@ -81,18 +79,10 @@
                             </TextBox>
 
                             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                                <Button
-                                    toolkit:Sizing.IsSquare="True"
-                                    toolkit:Sizing.Size="xs"
-                                    Command="{Binding CancelCommand}"
-                                    Style="{DynamicResource GhostButton}">
+                                <Button Command="{Binding CancelCommand}" Style="{DynamicResource EmbeddedButton}">
                                     <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.x}" />
                                 </Button>
-                                <Button
-                                    toolkit:Sizing.IsSquare="True"
-                                    toolkit:Sizing.Size="xs"
-                                    Command="{Binding ValidateCommand}"
-                                    Style="{DynamicResource GhostButton}">
+                                <Button Command="{Binding ValidateCommand}" Style="{DynamicResource EmbeddedButton}">
                                     <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Check}" />
                                 </Button>
                             </StackPanel>

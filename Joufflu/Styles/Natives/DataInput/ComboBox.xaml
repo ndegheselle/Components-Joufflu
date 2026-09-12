@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:fonts="clr-namespace:Joufflu.Assets.Fonts"
     xmlns:joufflu="clr-namespace:Joufflu"
     xmlns:toolkit="clr-namespace:Joufflu.Toolkit">
 
@@ -74,27 +75,13 @@
         <Border Background="Transparent" />
     </ControlTemplate>
 
-    <!--  Chevron of the drop down, pointing at the popup it opens  -->
-    <PathGeometry x:Key="ComboBoxChevronGeometry" Figures="M 0 0 L 5 5 L 10 0" />
-
     <!--  Hit target drawing the chevron itself, for the templates whose surface is taken by  -->
     <!--  something else (an editable text box, tags…) and cannot host the chevron on their own  -->
     <ControlTemplate x:Key="ComboBoxChevronToggleButtonTemplate" TargetType="ToggleButton">
-        <Border Background="Transparent" SnapsToDevicePixels="True">
-            <Viewbox
-                Width="10"
-                Height="10"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-                <Path
-                    Data="{StaticResource ComboBoxChevronGeometry}"
-                    Stroke="{TemplateBinding Foreground}"
-                    StrokeEndLineCap="Round"
-                    StrokeLineJoin="Round"
-                    StrokeStartLineCap="Round"
-                    StrokeThickness="1.5" />
-            </Viewbox>
-        </Border>
+        <fonts:FontIcon
+            Background="Transparent"
+            SnapsToDevicePixels="True"
+            Text="{x:Static fonts:LucideFontIcons.ChevronDown}" />
     </ControlTemplate>
 
     <Style x:Key="{x:Type ComboBox}" TargetType="ComboBox">
@@ -178,20 +165,14 @@
                             </TextBox>
 
                             <!--  Drop down chevron  -->
-                            <Viewbox
+                            <fonts:FontIcon
+                                x:Name="ToggleButton"
                                 Grid.Column="1"
-                                Width="10"
-                                Height="10"
-                                Margin="6,0,10,0"
-                                IsHitTestVisible="False">
-                                <Path
-                                    Data="{StaticResource ComboBoxChevronGeometry}"
-                                    Stroke="{TemplateBinding Foreground}"
-                                    StrokeEndLineCap="Round"
-                                    StrokeLineJoin="Round"
-                                    StrokeStartLineCap="Round"
-                                    StrokeThickness="1.5" />
-                            </Viewbox>
+                                toolkit:Derive.Margin="{x:Static joufflu:Dimensions.InputPaddingMd}"
+                                toolkit:Derive.MarginFactor="0,0,1,0"
+                                IsHitTestVisible="False"
+                                SnapsToDevicePixels="True"
+                                Text="{x:Static fonts:LucideFontIcons.ChevronDown}" />
 
                             <!--  Drop down list  -->
                             <Popup
@@ -241,6 +222,16 @@
 
                         <Trigger Property="Validation.HasError" Value="True">
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource {x:Static joufflu:Brushes.DangerBrush}}" />
+                        </Trigger>
+
+                        <Trigger Property="toolkit:Sizing.Size" Value="xs">
+                            <Setter TargetName="ToggleButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingXs}" />
+                        </Trigger>
+                        <Trigger Property="toolkit:Sizing.Size" Value="sm">
+                            <Setter TargetName="ToggleButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingSm}" />
+                        </Trigger>
+                        <Trigger Property="toolkit:Sizing.Size" Value="lg">
+                            <Setter TargetName="ToggleButton" Property="toolkit:Derive.Margin" Value="{x:Static joufflu:Dimensions.InputPaddingLg}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

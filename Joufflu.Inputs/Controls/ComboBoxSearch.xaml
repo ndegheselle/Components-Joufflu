@@ -80,14 +80,11 @@
                             <Button
                                 x:Name="ClearButton"
                                 Grid.Column="1"
-                                Width="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
-                                Height="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
-                                Padding="0"
                                 toolkit:Derive.Margin="{x:Static joufflu:Dimensions.InputPaddingMd}"
                                 toolkit:Derive.MarginFactor="1,0"
                                 Command="{Binding ClearCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                 Focusable="False"
-                                Style="{StaticResource GhostButton}">
+                                Style="{StaticResource EmbeddedButton}">
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.x}" />
                             </Button>
 

@@ -51,14 +51,11 @@
                             <Button
                                 Name="ClearButton"
                                 Grid.Column="1"
-                                Width="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
-                                Height="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}"
-                                Padding="0"
                                 HorizontalAlignment="Right"
                                 toolkit:Derive.Margin="{x:Static joufflu:Dimensions.InputPaddingMd}"
                                 toolkit:Derive.MarginFactor="1,0"
                                 Command="{Binding ClearSearchCommand}"
-                                Style="{StaticResource GhostButton}">
+                                Style="{StaticResource EmbeddedButton}">
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.x}" />
                             </Button>
                         </Grid>
