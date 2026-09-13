@@ -1,7 +1,8 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:joufflu="clr-namespace:Joufflu">
+    xmlns:joufflu="clr-namespace:Joufflu"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Joufflu;component/Styles/Natives/Actions/Button.xaml" />
@@ -357,5 +358,20 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}" />
         <Setter Property="Width" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}" />
+        <Style.Triggers>
+            <!--  Size variants (md is the default, no trigger needed)  -->
+            <Trigger Property="toolkit:Sizing.Size" Value="xs">
+                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}" />
+                <Setter Property="Padding" Value="0" />
+            </Trigger>
+            <Trigger Property="toolkit:Sizing.Size" Value="sm">
+                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}" />
+                <Setter Property="Padding" Value="0" />
+            </Trigger>
+            <Trigger Property="toolkit:Sizing.Size" Value="lg">
+                <Setter Property="Height" Value="{DynamicResource {x:Static joufflu:Dimensions.HeightEmbedded}}" />
+                <Setter Property="Padding" Value="0" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
