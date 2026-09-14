@@ -82,7 +82,8 @@ public class AppViewModel : ObservableObject
 
             // Inputs (Joufflu.Inputs library)
             new NumericInputsSamplesViewModel(),
-            new SelectionInputsSamplesViewModel(),
+            new SearchSamplesViewModel(),
+            new ComboBoxSearchSamplesViewModel(),
             new ComboBoxTagsSamplesViewModel(),
             new TextEditableSamplesViewModel(),
             new FilePickerSamplesViewModel(),

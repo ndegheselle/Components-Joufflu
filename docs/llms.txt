@@ -19,7 +19,8 @@ Joufflu ships as five NuGet packages that build on each other: `Joufflu` (core s
 ## Inputs (`Joufflu.Inputs`)
 
 - [Numeric & format inputs](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/inputs/numeric-inputs.md): `NumericUpDown`, `DecimalUpDown`, `TimeSpanPicker`, and the underlying `FormatTextBox`.
-- [Search & combo](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/inputs/search-and-combo.md): debounced `Search` box, the filtering `ComboBoxSearch` and `Autocomplete`, a text box completing what is typed with the most likely item.
+- [Search](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/inputs/search.md): debounced `Search` box, raising `SearchChanged` after a delay.
+- [Search combo box](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/inputs/combo-box-search.md): `ComboBoxSearch`, an editable combo box filtering its items as you type.
 - [Combo box tags](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/inputs/combo-box-tags.md): multi-selection `ComboBoxTags` with removable tags and optional free entry.
 - [Text editable](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/inputs/text-editable.md): `TextEditable`, a value that becomes an editable text box on demand.
 - [File picker](https://raw.githubusercontent.com/ndegheselle/Joufflu/main/docs/inputs/file-picker.md): `FilePicker`, selects a file through the system dialog.

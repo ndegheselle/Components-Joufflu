@@ -1,0 +1,31 @@
+<UserControl
+    x:Class="Joufflu.Samples.Views.Inputs.SearchSamples"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:Joufflu.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:inputs="clr-namespace:Joufflu.Inputs.Controls;assembly=Joufflu.Inputs"
+    xmlns:joufflu="clr-namespace:Joufflu;assembly=Joufflu"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Joufflu.Toolkit;assembly=Joufflu"
+    xmlns:vm="clr-namespace:Joufflu.Samples.Views.Inputs"
+    d:DataContext="{d:DesignInstance Type=vm:SearchSamplesViewModel}"
+    mc:Ignorable="d">
+    <ScrollViewer Padding="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}" VerticalScrollBarVisibility="Auto">
+        <StackPanel toolkit:Spacing.Gap="{StaticResource {x:Static joufflu:Dimensions.SpacingThickness}}">
+            <TextBlock Style="{StaticResource H1}" Text="Search" />
+
+            <c:CodeExample
+                Title="Search"
+                Code="{Binding SearchCode}"
+                Description="A text box with a built-in delay before it raises SearchChanged, to limit calls to an API or database. Escape clears it.">
+                <StackPanel toolkit:Spacing.Gap="4">
+                    <inputs:Search toolkit:Sizing.Size="xs" />
+                    <inputs:Search toolkit:Sizing.Size="sm" />
+                    <inputs:Search />
+                    <inputs:Search toolkit:Sizing.Size="lg" />
+                </StackPanel>
+            </c:CodeExample>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

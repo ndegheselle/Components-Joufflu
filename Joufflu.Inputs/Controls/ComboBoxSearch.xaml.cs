@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using System.Collections;
+﻿using System.Collections;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -8,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Joufflu.Inputs.Controls
 {
@@ -47,11 +47,9 @@ namespace Joufflu.Inputs.Controls
             IsTextSearchEnabled = false;
             // Don't let selection follow the view's current item: refreshing the filter moves
             // the CollectionView's CurrentItem, which would otherwise raise spurious selection
-            // changes (and auto-add tags) the first time the filter runs.
+            // changes the first time the filter runs.
             IsSynchronizedWithCurrentItem = false;
 
-            // Attach once here (not in OnApplyTemplate, which can run repeatedly and would
-            // otherwise stack duplicate handlers).
             AddHandler(TextBoxBase.TextChangedEvent, new TextChangedEventHandler(OnTextChanged));
 
             // Release the filter on a possibly caller-owned view while off the visual tree,

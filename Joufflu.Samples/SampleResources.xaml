@@ -172,8 +172,11 @@
     <DataTemplate DataType="{x:Type inputs:NumericInputsSamplesViewModel}">
         <inputs:NumericInputsSamples />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type inputs:SelectionInputsSamplesViewModel}">
-        <inputs:SelectionInputsSamples />
+    <DataTemplate DataType="{x:Type inputs:SearchSamplesViewModel}">
+        <inputs:SearchSamples />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type inputs:ComboBoxSearchSamplesViewModel}">
+        <inputs:ComboBoxSearchSamples />
     </DataTemplate>
     <DataTemplate DataType="{x:Type inputs:ComboBoxTagsSamplesViewModel}">
         <inputs:ComboBoxTagsSamples />

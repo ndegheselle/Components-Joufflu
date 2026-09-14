@@ -336,11 +336,17 @@
                             </nav:NavigationItem.Icon>
                             Numeric inputs
                         </nav:NavigationItem>
-                        <nav:NavigationItem TargetType="{x:Type inputs:SelectionInputsSamplesViewModel}">
+                        <nav:NavigationItem TargetType="{x:Type inputs:SearchSamplesViewModel}">
+                            <nav:NavigationItem.Icon>
+                                <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.Search}" />
+                            </nav:NavigationItem.Icon>
+                            Search
+                        </nav:NavigationItem>
+                        <nav:NavigationItem TargetType="{x:Type inputs:ComboBoxSearchSamplesViewModel}">
                             <nav:NavigationItem.Icon>
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.ListFilter}" />
                             </nav:NavigationItem.Icon>
-                            Search &amp; combo
+                            Search combo box
                         </nav:NavigationItem>
                         <nav:NavigationItem TargetType="{x:Type inputs:ComboBoxTagsSamplesViewModel}">
                             <nav:NavigationItem.Icon>

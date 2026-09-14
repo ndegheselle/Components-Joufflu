@@ -1,7 +1,7 @@
 ---
 title: Combo box tags
 parent: Inputs
-nav_order: 3
+nav_order: 4
 ---
 
 # Combo box tags

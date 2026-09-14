@@ -1,7 +1,7 @@
 ---
 title: File picker
 parent: Inputs
-nav_order: 5
+nav_order: 6
 ---
 
 # File picker

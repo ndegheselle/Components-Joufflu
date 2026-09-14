@@ -2,9 +2,9 @@ using System.Windows.Controls;
 
 namespace Joufflu.Samples.Views.Inputs;
 
-public partial class SelectionInputsSamples : UserControl
+public partial class ComboBoxSearchSamples : UserControl
 {
-    public SelectionInputsSamples()
+    public ComboBoxSearchSamples()
     {
         InitializeComponent();
     }

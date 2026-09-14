@@ -1,7 +1,7 @@
 ---
 title: Text editable
 parent: Inputs
-nav_order: 4
+nav_order: 5
 ---
 
 # Text editable
