@@ -163,7 +163,6 @@
                                 toolkit:Sizing.IsSquare="True"
                                 toolkit:Sizing.Size="sm"
                                 IsEnabled="{Binding IsReadOnly, ElementName=RootElement, Converter={x:Static jonverters:BooleanFlipConverter.Default}}"
-                                Style="{StaticResource ToggleGhost}"
                                 Tag="{Binding AllowsReferences, ElementName=RootElement}"
                                 ToolTip="Options">
                                 <fonts:FontIcon Text="{x:Static fonts:LucideFontIcons.EllipsisVertical}" />
