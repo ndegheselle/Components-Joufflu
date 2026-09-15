@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using Joufflu.Data;
+using CommunityToolkit.Mvvm.Input;
+using Joufflu.Data.Model;
 using NJsonSchema;
 
 namespace Joufflu.Samples.Views.Data;
@@ -32,65 +33,13 @@ public class Order
 
 public partial class SchemaSamplesViewModel : ObservableObject
 {
-    /// <summary>
-    /// The shape the value is filled in against. Derived from a .NET type, which is how a real
-    /// schema usually turns up.
-    /// </summary>
-    public JsonSchema OrderSchema { get; } = JsonSchema.FromType<Order>();
-
-    /// <summary>The value being filled in, written back by the editor on every edit.</summary>
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ValuePreview))]
-    private string? _valueJson;
+    private DataObject? _node;
 
-    /// <summary>The schema being written, written back by the editor on every edit.</summary>
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(SchemaPreview))]
-    private string? _schemaJson =
-        """
-        {
-          "type": "object",
-          "properties": {
-            "Name": { "type": "string", "description": "How the thing is called" },
-            "Count": { "type": "integer" }
-          },
-          "required": [ "Name" ]
-        }
-        """;
-
-    /// <summary>
-    /// What a caller may read a value from instead of typing one. The editor writes the token as a
-    /// string where the value would go, and resolves nothing itself.
-    /// </summary>
-    public IReadOnlyList<DataReference> References { get; } =
-    [
-        new DataReference("previous", "$previous", "{ }", EnumDataKind.Object)
-        {
-            Children =
-            {
-                new DataReference("Customer", "$previous.Customer", "\"Ada\"", EnumDataKind.String),
-                new DataReference("Total", "$previous.Total", "42", EnumDataKind.Integer),
-            }
-        },
-        new DataReference("shared", "$shared", "{ }", EnumDataKind.Object)
-        {
-            Children = { new DataReference("Tenant", "$shared.Tenant", "\"acme\"", EnumDataKind.String) }
-        },
-    ];
-
-    public string ValuePreview => ValueJson ?? "(nothing filled in)";
-
-    public string SchemaPreview => SchemaJson ?? "(describes nothing)";
-
-    public string DataCode =>
-        "<data:DataEditor\n" +
-        "    Schema=\"{Binding OrderSchema}\"\n" +
-        "    Json=\"{Binding ValueJson, Mode=TwoWay}\"\n" +
-        "    References=\"{Binding References}\" />";
-
-    public string SchemaCode =>
-        "<data:SchemaEditor Json=\"{Binding SchemaJson, Mode=TwoWay}\" />\n" +
-        "\n" +
-        "// and the same schema, read only\n" +
-        "<data:SchemaView SchemaJson=\"{Binding SchemaJson}\" />";
+    [RelayCommand]
+    public void Test()
+    {
+        var schema = JsonSchema.FromType<Order>();
+        Node = (DataObject)DataFactory.ToDataNode(schema);
+    }
 }
